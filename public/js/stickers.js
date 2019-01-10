@@ -638,6 +638,9 @@ var stickers = ['apu-1479755144003', 'kot-wageslave', 'kot-2158575', 'kot-opinio
 
 
 
+
+
+
 $(document).ready(function() {
     if(!localStorage['stickers']) localStorage['stickers']=JSON.stringify([]);
     $(document).on('click', function(){

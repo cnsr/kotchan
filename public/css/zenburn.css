@@ -3,6 +3,8 @@
 /* live-zenburn.css */
  
 body,html {
+  /* font-family: arial,helvetica,sans-serif; */
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
   background: none repeat scroll 0% 0% #424242;
   color: #DCDCCC;
 }
@@ -20,12 +22,14 @@ body,html {
  
 textarea{
 	background: #C5C8C6;
+    font-family: arial,helvetica,sans-serif;
 	color: #282A2E;
 	border:1px solid #1D1F21;
 }
  
 input{
    background: #C5C8C6;
+    font-family: arial,helvetica,sans-serif;
   color: #282A2E;
   border:1px solid #1D1F21;
 }

@@ -375,11 +375,132 @@ function set_up_html(){
     }
     get_css($("#theme_select").val());
 
-	// set up banners
-	var banners = ["1.png", "2.jpg", "3.jpg", "4.jpg", "5.jpg", "6.jpg", "7.jpg", "8.jpg",
-				   "9.jpg", "10.jpg", "11.png", "12.jpg", "13.jpg", "14.png", "15.png",
-				   "16.jpg", "17.gif", "18.jpg", "19.gif", "20.jpg", "21.jpg", "22.jpg",
-				   "23.png", "24.gif", "25.png"];
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// set up banners
+var banners = ['kachinsky.jpg', 'dali.jpg', 'drunk.png', 'plane.png', 'pasta.png', 'allah.jpg', 'xerox.png', '38.png', '35.jpg', 'catmouse.jpg', 'trud.png', 'trump_banner.jpg', '37.png', '34.jpg', 'pngchan.png', 'ukr3.png', 'bydlo.png', 'sovietassburger.jpg', 'bezishod.jpg', 'sandwich.png', 'nakedlunch.jpg', '42.jpg', 'ohno.png', 'ukr2.png', '39.png', 'anime.jpg', 'ukr.jpg', 'seacat.jpg', '1694-1tkrjqc.png', 'trackchan.png', 'eurasian.jpg', 'india.jpg', 'phylkot.png', 'respect.png', 'shtrih.png', '27.png', 'MLK.png', '28.png', 'balcony.jpg', 'bannerino.png', 'rus.png', 'norich.png', '13.jpg', 'lenin.png', '41.png', '2.jpg', 'ree.png', 'petra.jpg', 'kotchan_is_great.jpg', 'kotgf.png', 'death.png', 'punto.png', 'india2.jpg', 'gulaged.jpg', 'map.jpg', 'whitenoise.png', '14.png', 'suffering.jpg', 'leo.png', '29.jpg', 'iexplore.png', 'kotcan.png', '30.png', 'commieblock.png'];
+// end of banners
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	
 	$(".sidebar_banner").html(
 			$("<img>").attr("src",
@@ -400,7 +521,7 @@ function set_up_html(){
 /* give me captcha TODO: clean this up and make it work better */
 function captcha_div() {
     "use strict";
-    return '<span>Please enter the captcha</span><br><img src="/captcha.jpg#' + new Date().getTime() + '" alt="Lynx is best browser" /><form action="/login" method="post" target="miframe" style="padding:0;"><input type="text" name="digits" style="display:inline;" /><input style="display:inline;" type="submit"/></form>';
+    return '<span>Please enter the captcha</span><br><img src="/captcha.jpg#' + new Date().getTime() + '" alt="Lynx is best browser" /><form id="loginform" action="/login" method="post" target="miframe" style="padding:0;"><input type="text" name="digits" style="display:inline;" /><input style="display:inline;" type="submit"/></form>';
 }
 
 /* gets cookie, use this function instead of document.cookie */
@@ -553,10 +674,14 @@ function init_cool_down(){
 
 /* simply ask for the captcha TODO: this is buggy, needs to be fixed */
 function submit_captcha(){
+    //$.post('/login', function(data, status){
+    //});
+    //return;
     div_alert(captcha_div(), false, "captcha");
     $("#alert_div_captcha .alert_message form input")[0].focus();
     $("#submit_button").prop("disabled", true);
     cool_down_timer = 0;
+    setTimeout(function(){ $('#loginform').submit(); }, 200);
 }
 
 /* prompt for admin password */
@@ -774,12 +899,12 @@ function submit_chat() {
         cool_down_timer+=14;
 
     last_post = $("#body").val();
-    if (get_cookie("password_livechan") === '') {
+    /*if (get_cookie("password_livechan") === '') {
         submit_captcha();
         $("#submit_button").prop("value", "Submit (Auto)");
         auto_post = true;
         return false;
-    }
+    }*/
 
     $("#submit_button").prop("value", "Submit");
 
@@ -978,7 +1103,7 @@ function submit_chat() {
     }
 
     if (!admin_mode) {
-        cool_down_timer += 7;
+        cool_down_timer += 3
         $("#submit_button").prop("disabled", true);
     }
 

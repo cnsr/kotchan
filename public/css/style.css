@@ -3,6 +3,7 @@ body,html{
     margin:0;
     background:rgb(238, 242, 255);
     font-family: arial,helvetica,sans-serif;
+    /* font-family: "Comic Sans MS", "Comic Sans", cursive; */
     font-size: 14px;
 }
 
@@ -91,7 +92,7 @@ ul {
 	max-height: 70px;
 }
 
-.livechan_banner{
+.livechan_banner1{
 	max-width:100%;
     max-height:100px;
 }
@@ -351,7 +352,7 @@ ul {
     padding-right:3px;
     color:black;
     border-radius:3px;
-    padding: 0 2px;
+    padding: 0 3px;
     margin: 0 5px;
 }
 .chat_refs{

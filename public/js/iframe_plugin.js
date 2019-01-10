@@ -58,7 +58,7 @@ iframe.style.width = width+'px';
 iframe.style.float = 'right';
 iframe.id='livechan_iframe';
 
-iframe.src = 'https://livechan.net';
+iframe.src = 'https://kotchan.org';
 
 container.appendChild(iframe);
 container.appendChild(showhide);

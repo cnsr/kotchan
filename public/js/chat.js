@@ -27,17 +27,634 @@ var highlighted_convos = ["General"];
 var start_press; // for long press detection
 var longpress = 400;
 
-var admins = ["Status","!!rr1C6aJjtk", "!!hSdTJ81KjY", "!!/3R6pgOFdo", "!!Q9nUUthOWU"]; // first trip here is used for server status posts
-var devs = ["!/b/suPrEmE", "!!3xVuTKubFw", "!!8Trs3SaoJ2"];
+var admins = ["Status","!!W1WIYPVSDg"]; // first trip here is used for server status posts
+var devs = ["!!mtmxXFMsB2"];
 /* if you look at source you are essentially helping out, so have some blue colored trips! --> bluerules, testing */
-var default_contribs = ["!!Tia6BuxIxc"];
-var bots = ["!!.w5vzYxkv6","!!RG5a8fLuMM"];
+var default_contribs = ["!!Bk9pc/hnuA"];
+var bots = ["!!Vixfie/c7U"];
 var irc = ["!!SxKC741YKw"];
+
+var kot_names = {
+    'RU': 'Кот',
+    'BY': 'Кот',
+    'TR': 'Kedi',
+    'UA': 'Кiт',
+    'CH': 'Büsi',
+    'DE': 'Katze',
+    'DE': 'Kätzchen',
+    'AT': 'Katze',
+    'AT': 'Muschi',
+    'NL': 'Kat',
+    'KR': '고양이',
+    'FR': 'Chat',
+    'HU': 'Macska',
+    'HR': 'Mačka',
+    'RS': 'Мачка',
+    'MK': 'Мачка',
+    'IT': 'Gatto',
+    'PL': 'Kotek',
+    'SK': 'Mačka',
+    'BR': 'Gato',
+    'PT': 'Gato',
+    'ES': 'Gato',
+    'SE': 'Katt',
+    'SE': 'Kisse',
+    'NO': 'Katt',
+    'CZ': 'Kočička',
+    'GR': 'Γάτος',
+    'FI': 'Kissa',
+    'EE': 'Kass',
+    'EE': 'Kiisu',
+    'LV': 'Kaķis',
+    'LT': 'Katė',
+    'AM': 'Katu',
+    'KZ': 'Мысық',
+    'CN': '猫',
+    'AL': 'Dac',
+    'FO': 'Ketta',
+    'JP': 'ねこ',
+    'TH': 'แมว',
+    'BG': 'Котка',
+    'SI': 'Mačka',
+    'PH': 'Pusa',
+    'DK': 'Kat',
+    'NO': 'Katt',
+};
 
 var flags_image_table  = {};
 var flags_hover_strings = {};
 
 //  Table of tripflags
+// na
+flags_image_table["!HdrzKO2LXY"] = "na.png";
+flags_hover_strings["!HdrzKO2LXY"] = "NA";
+
+// mason
+flags_image_table["!/cNG.9l1XI"] = "mason.png";
+flags_hover_strings["!/cNG.9l1XI"] = "mason";
+
+// newamsterdam
+flags_image_table["!zQoDw/RntE"] = "newamsterdam.png";
+flags_hover_strings["!zQoDw/RntE"] = "newamsterdam";
+
+// dharma
+flags_image_table["!eMfVD.fluQ"] = "dharma.png";
+flags_hover_strings["!eMfVD.fluQ"] = "dharma";
+
+// gold
+flags_image_table["!ir0FRmG1cA"] = "gold.png";
+flags_hover_strings["!ir0FRmG1cA"] = "gold";
+
+// soyak
+flags_image_table["!cSxTprh.cA"] = "soyak.png";
+flags_hover_strings["!cSxTprh.cA"] = "soyak";
+
+// zerg
+flags_image_table["!Y7zbXj.CBM"] = "zerg.gif";
+flags_hover_strings["!Y7zbXj.CBM"] = "zerg";
+
+// minas
+flags_image_table["!8lBKbl9QUU"] = "minas.png";
+flags_hover_strings["!8lBKbl9QUU"] = "minas";
+
+// upist
+flags_image_table["!adHHqWybgc"] = "upist.gif";
+flags_hover_strings["!adHHqWybgc"] = "upist";
+
+// swiner
+flags_image_table["!efVcewaXF2"] = "swiner.gif";
+flags_hover_strings["!efVcewaXF2"] = "swiner";
+
+// swineroll
+flags_image_table["!JgOLcK330E"] = "swineroll.gif";
+flags_hover_strings["!JgOLcK330E"] = "swineroll";
+
+// flight
+flags_image_table["!W/OqJ8CXLM"] = "flight.gif";
+flags_hover_strings["!W/OqJ8CXLM"] = "flight";
+
+// retarded
+flags_image_table["!4sM/I/Auxg"] = "retarded.gif";
+flags_hover_strings["!4sM/I/Auxg"] = "retarded";
+
+// UN
+flags_image_table["!kbkmG0NIcA"] = "UN.png";
+flags_hover_strings["!kbkmG0NIcA"] = "UN";
+// EU
+flags_image_table["!piTRDVv5MY"] = "EU.png";
+flags_hover_strings["!piTRDVv5MY"] = "EU";
+
+// CCCP
+flags_image_table["!2.kiZbF9K2"] = "CCCP.png";
+flags_hover_strings["!2.kiZbF9K2"] = "CCCP";
+// nazbol
+flags_image_table["!9igs9LC15E"] = "nazbol.png";
+flags_hover_strings["!9igs9LC15E"] = "nazbol";
+// south
+flags_image_table["!r1rpNPeqN6"] = "south.png";
+flags_hover_strings["!r1rpNPeqN6"] = "south";
+// NATO
+flags_image_table["!9ZvoooDYP6"] = "NATO.png";
+flags_hover_strings["!9ZvoooDYP6"] = "NATO";
+
+// opinion
+flags_image_table["!1pMuITTj22"] = "opinion.png";
+flags_hover_strings["!1pMuITTj22"] = "opinion";
+
+// 0
+flags_image_table["!IGEMrmvKLI"] = "0.png";
+flags_hover_strings["!IGEMrmvKLI"] = "0";
+
+// think
+flags_image_table["!07am.QsXqY"] = "think.png";
+flags_hover_strings["!07am.QsXqY"] = "think";
+
+
+// webm
+flags_image_table["!kaGwrm0a5M"] = "webm.png";
+flags_hover_strings["!kaGwrm0a5M"] = "webm";
+
+// future
+flags_image_table["!nUVTjrRSpw"] = "future.png";
+flags_hover_strings["!nUVTjrRSpw"] = "future";
+
+// DNR
+flags_image_table["!iefIGq8ixM"] = "DNR.png";
+flags_hover_strings["!iefIGq8ixM"] = "DNR";
+
+// piet
+flags_image_table["!01xyplTz1g"] = "piet.png";
+flags_hover_strings["!01xyplTz1g"] = "Zwarte Piet";
+
+// santa
+flags_image_table["!Tea/kpXOWk"] = "santa.png";
+flags_hover_strings["!Tea/kpXOWk"] = "Santa";
+
+// telegram
+flags_image_table["!4xvohRXPKM"] = "telegram.png";
+flags_hover_strings["!4xvohRXPKM"] = "telegram";
+
+
+// 4u
+flags_image_table["!OG7MHcVHQs"] = "4u.png";
+flags_hover_strings["!OG7MHcVHQs"] = "4u";
+
+// heinrich
+flags_image_table["!NHI32Gfbn6"] = "heinrich.png";
+flags_hover_strings["!NHI32Gfbn6"] = "Heinrich";
+
+// nya
+flags_image_table["!IU9zrZl5bQ"] = "nya.png";
+flags_hover_strings["!IU9zrZl5bQ"] = "nya";
+
+// ninja
+flags_image_table["!IFQSknf/N."] = "ninja.png";
+flags_hover_strings["!IFQSknf/N."] = "ninja";
+
+// guti
+flags_image_table["!LkpkecZi7k"] = "guti.png";
+flags_hover_strings["!LkpkecZi7k"] = "Guti";
+
+
+// maidaun
+flags_image_table["!RBYAB.dyj6"] = "maidaun.png";
+flags_hover_strings["!RBYAB.dyj6"] = "maidaun";
+// nazi
+flags_image_table["!xSrihpC5nc"] = "nazi.png";
+flags_hover_strings["!xSrihpC5nc"] = "Germany";
+
+// dantard
+flags_image_table["!BdNdD82hB6"] = "dantard.png";
+flags_hover_strings["!BdNdD82hB6"] = "Denmark";
+// jewish
+flags_image_table["!trz4NjPrSk"] = "jewish.png";
+flags_hover_strings["!trz4NjPrSk"] = "Israel";
+
+// ushanka
+flags_image_table["!dly4ghzbG."] = "ushanka.png";
+flags_hover_strings["!dly4ghzbG."] = "Россия";
+
+// viking
+flags_image_table["!/hJ/DkDgE."] = "viking.png";
+flags_hover_strings["!/hJ/DkDgE."] = "Viking";
+
+// omich
+flags_image_table["!sFVo3Hy/qc"] = "omich.png";
+flags_hover_strings["!sFVo3Hy/qc"] = "ОМСК";
+
+// bsd
+flags_image_table["!jbYpEGafuI"] = "bsd.png";
+flags_hover_strings["!jbYpEGafuI"] = "BSD";
+
+
+// wawawawaw
+flags_image_table["!gJfndu6gE2"] = "wawawawaw.png";
+flags_hover_strings["!gJfndu6gE2"] = "telegram pidor";
+
+// sibkot
+flags_image_table["!D1TdbFp0Eg"] = "sibkot.png";
+flags_hover_strings["!D1TdbFp0Eg"] = "Holy Siberia";
+
+// upa
+flags_image_table["!J6/bXGjmvI"] = "upa.png";
+flags_hover_strings["!J6/bXGjmvI"] = "UPA";
+
+// USSR
+flags_image_table["!5la.hIIyNg"] = "USSR.png";
+flags_hover_strings["!5la.hIIyNg"] = "СРСР";
+
+// chipped
+flags_image_table["!hb999Bk..w"] = "chipped.gif";
+flags_hover_strings["!hb999Bk..w"] = "chipped";
+
+// chip10
+flags_image_table["!MlRGL76S2s"] = "chip10.png";
+flags_hover_strings["!MlRGL76S2s"] = "chip";
+// chip4
+flags_image_table["!nmJKXN0xBw"] = "chip4.png";
+flags_hover_strings["!nmJKXN0xBw"] = "chip";
+// chip5
+flags_image_table["!MZHpcMEkNA"] = "chip5.png";
+flags_hover_strings["!MZHpcMEkNA"] = "chip";
+// chip6
+flags_image_table["!bUFxArz.Xs"] = "chip6.png";
+flags_hover_strings["!bUFxArz.Xs"] = "chip";
+// chip7
+flags_image_table["!X/CdbQuyZY"] = "chip7.png";
+flags_hover_strings["!X/CdbQuyZY"] = "chip";
+// chip2
+flags_image_table["!HfHwz.EuYs"] = "chip2.png";
+flags_hover_strings["!HfHwz.EuYs"] = "chip";
+// chip3
+flags_image_table["!GvGxOQOF62"] = "chip3.png";
+flags_hover_strings["!GvGxOQOF62"] = "chip";
+// chip8
+flags_image_table["!RL0sTdimik"] = "chip8.png";
+flags_hover_strings["!RL0sTdimik"] = "chip";
+// chip9
+flags_image_table["!lFtTdpFwMI"] = "chip9.png";
+flags_hover_strings["!lFtTdpFwMI"] = "chip";
+
+// chip
+flags_image_table["!J.m4OQD/Ko"] = "chip.png";
+flags_hover_strings["!J.m4OQD/Ko"] = "chip";
+
+// bug
+flags_image_table["!aqYVWzHJTQ"] = "bug.png";
+flags_hover_strings["!aqYVWzHJTQ"] = "bug";
+// webcrawler
+flags_image_table["!qS6FG3FUGc"] = "webcrawler.png";
+flags_hover_strings["!qS6FG3FUGc"] = "webcrawler";
+
+// oun
+flags_image_table["!.M40cCr0oM"] = "oun.png";
+flags_hover_strings["!.M40cCr0oM"] = "OUN";
+
+// mytishchi
+flags_image_table["!t.0qvZtD7o"] = "mytishchi.png";
+flags_hover_strings["!t.0qvZtD7o"] = "359";
+
+// senyera
+flags_image_table["!tRytUA6v5."] = "senyera.png";
+flags_hover_strings["!tRytUA6v5."] = "Senyera";
+// estelada
+flags_image_table["!PFnWyznTBg"] = "estelada.png";
+flags_hover_strings["!PFnWyznTBg"] = "Estelada";
+
+// nigkot
+flags_image_table["!1D4RpiGkR2"] = "nigkot.png";
+flags_hover_strings["!1D4RpiGkR2"] = "nigkot";
+
+
+
+// folk
+flags_image_table["!ZOc15v3UcQ"] = "folk.png";
+flags_hover_strings["!ZOc15v3UcQ"] = "Russia";
+
+// gaykot
+flags_image_table["!1G7HlWql/Q"] = "gaykot.png";
+flags_hover_strings["!1G7HlWql/Q"] = "gaykot";
+
+// pickle
+flags_image_table["!of1n2SQ4cw"] = "pickle.png";
+flags_hover_strings["!of1n2SQ4cw"] = "Rick";
+
+// czestochowa
+flags_image_table["!vHW4.lSvpM"] = "czestochowa.png";
+flags_hover_strings["!vHW4.lSvpM"] = "czestochowa";
+
+// busstop
+flags_image_table["!jumdZ2a4kM"] = "busstop.png";
+flags_hover_strings["!jumdZ2a4kM"] = "busstop";
+
+
+// gondola
+flags_image_table["!gz90NduqYg"] = "gondola.png";
+flags_hover_strings["!gz90NduqYg"] = "gondola";
+// why worry
+flags_image_table["!BA17NU.jwA"] = "why worry.png";
+flags_hover_strings["!BA17NU.jwA"] = "why worry";
+
+// cross
+flags_image_table["!yjvIWhDK7Q"] = "cross.png";
+flags_hover_strings["!yjvIWhDK7Q"] = "cross";
+
+// pony
+flags_image_table["!IHwejl/aNY"] = "pony.png";
+flags_hover_strings["!IHwejl/aNY"] = "pony";
+
+// spurdo
+flags_image_table["!B7tS8MGV/c"] = "spurdo.png";
+flags_hover_strings["!B7tS8MGV/c"] = "spurdo";
+
+// cock
+flags_image_table["!0K1gKfMIEc"] = "cock.png";
+flags_hover_strings["!0K1gKfMIEc"] = "cock";
+
+// lombard
+flags_image_table["!wS.YR5QzqY"] = "lombard.png";
+flags_hover_strings["!wS.YR5QzqY"] = "lombard";
+
+// wojak
+flags_image_table["!eivzV8MQes"] = "wojak.png";
+flags_hover_strings["!eivzV8MQes"] = "wojak";
+
+// kotdebil
+flags_image_table["!fi9y6mb.sQ"] = "kotdebil.png";
+flags_hover_strings["!fi9y6mb.sQ"] = "debil";
+
+// mercia
+flags_image_table["!UtymugBk8s"] = "mercia.png";
+flags_hover_strings["!UtymugBk8s"] = "mercia";
+
+// swine
+flags_image_table["!ACLfnuaIuk"] = "swine.png";
+flags_hover_strings["!ACLfnuaIuk"] = "not even human reee";
+
+// nedm
+flags_image_table["!9tmmTG88aI"] = "nedm.png";
+flags_hover_strings["!9tmmTG88aI"] = "NEDM!";
+// ddr
+flags_image_table["!8O11vvKjdY"] = "ddr.png";
+flags_hover_strings["!8O11vvKjdY"] = "DDR";
+// hellokot
+flags_image_table["!4MbAuGSBW."] = "hellokot.png";
+flags_hover_strings["!4MbAuGSBW."] = "hellokot";
+// worry
+flags_image_table["!98sxJKzUpA"] = "worry.png";
+flags_hover_strings["!98sxJKzUpA"] = "worry";
+
+// ltkot
+flags_image_table["!HW9cOcxxaU"] = "ltkot.png";
+flags_hover_strings["!HW9cOcxxaU"] = "ltkot";
+// frkot
+flags_image_table["!wfqsVPwDmE"] = "frkot.png";
+flags_hover_strings["!wfqsVPwDmE"] = "frkot";
+// vickot
+flags_image_table["!qM4pBR0jhA"] = "vickot.png";
+flags_hover_strings["!qM4pBR0jhA"] = "vickot";
+
+flags_image_table["!HPWb853uls"] = "kotosib.png";
+flags_hover_strings["!HPWb853uls"] = "kotosib";
+
+
+// minnesota
+flags_image_table["!XeMaTyE2AU"] = "mnkot.png";
+flags_hover_strings["!XeMaTyE2AU"] = "minnekot";
+
+
+// eastsuxxsexx <-reeee what's the spelling
+flags_image_table["!D1O1BBP/Ms"] = "eastsux.png";
+flags_hover_strings["!D1O1BBP/Ms"] = "97.7% white";
+
+
+// croatian kot
+flags_image_table["!f4yFcEnaa2"] = "hrkot.png";
+flags_hover_strings["!f4yFcEnaa2"] = "macka";
+
+// churka
+flags_image_table["!.1KRT5UO2w"] = "churka.png";
+flags_hover_strings["!.1KRT5UO2w"] = "churka";
+
+// kemerovo kot
+flags_image_table["!HEFdWoE70w"] = "kemerkot.png";
+flags_hover_strings["!HEFdWoE70w"] = "kemerkot";
+
+// eblarus
+flags_image_table["!qnVDBgZDig"] = "bykot.png";
+flags_hover_strings["!qnVDBgZDig"] = "kot";
+
+// swiss kot just like cheese
+flags_image_table["!9HiOkRp5TE"] = "swisskot.png";
+flags_hover_strings["!9HiOkRp5TE"] = "Chatz";
+
+// argentina kot
+flags_image_table["!ekb2k/K8Gc"] = "arkot.png";
+flags_hover_strings["!ekb2k/K8Gc"] = "gato";
+
+// mexicankot
+flags_image_table["!v/kAvoj90U"] = "tacokot.png";
+flags_hover_strings["!v/kAvoj90U"] = "el señr gato ";
+
+// austriakot
+flags_image_table["!/CEX65GSgo"] = "aukot.png";
+flags_hover_strings["!/CEX65GSgo"] = "der katze";
+
+// brazilkot
+flags_image_table["!yg4Zqte0Ws"] = "brkot.png";
+flags_hover_strings["!yg4Zqte0Ws"] = "gato";
+
+// trkot
+flags_image_table["!MB9btqiWIc"] = "trkot.png";
+flags_hover_strings["!MB9btqiWIc"] = "kedi";
+
+// bavariakot
+flags_image_table["!ml/hhX3zA6"] = "bavaria.png";
+flags_hover_strings["!ml/hhX3zA6"] = "katze";
+
+// irish kot
+flags_image_table["!Xk.yQ0h9QY"] = "irishkot.png";
+flags_hover_strings["!Xk.yQ0h9QY"] = "cat";
+
+// hungarykot
+flags_image_table["!nincCE5MSI"] = "hukot.png";
+flags_hover_strings["!nincCE5MSI"] = "hukot";
+
+// netherlandskot
+flags_image_table["!CN.k.RRqd2"] = "nlkot.png";
+flags_hover_strings["!CN.k.RRqd2"] = "nlkot";
+
+// lsdot
+flags_image_table["!Ak7eIewZ7w"] = "lsdot.png";
+flags_hover_strings["!Ak7eIewZ7w"] = "Shanti";
+
+// itkot
+flags_image_table["!zZw75dcfDg"] = "itkot.gif";
+flags_hover_strings["!zZw75dcfDg"] = "gatto";
+
+// croc
+flags_image_table["!hCIJMSZRso"] = "croc.png";
+flags_hover_strings["!hCIJMSZRso"] = "croc";
+
+// nrwkot
+flags_image_table["!SWhihItiLA"] = "nrwkot.png";
+flags_hover_strings["!SWhihItiLA"] = "kot";
+
+// crosskot
+flags_image_table["!ZZsVS6H3ww"] = "crosskot.png";
+flags_hover_strings["!ZZsVS6H3ww"] = "kot";
+
+// kotnik
+flags_image_table["!YiX1/8ukz2"] = "kotnik.png";
+flags_hover_strings["!YiX1/8ukz2"] = "kot cyka";
+
+// sdkot
+flags_image_table["!xrLoRKpZ8o"] = "sdkot.png";
+flags_hover_strings["!xrLoRKpZ8o"] = "kot";
+
+// spqr
+flags_image_table["!plA27extLA"] = "spqr.png";
+flags_hover_strings["!plA27extLA"] = "kot";
+
+// colorado
+flags_image_table["!Sy.TmFydx6"] = "colorado.png";
+flags_hover_strings["!Sy.TmFydx6"] = "kot";
+
+// saxony
+flags_image_table["!nTvlXQEyNo"] = "saxony.png";
+flags_hover_strings["!nTvlXQEyNo"] = "kot";
+
+// ural
+flags_image_table["!DD3WkNl9CA"] = "ural.png";
+flags_hover_strings["!DD3WkNl9CA"] = "kot";
+
+// krasnoyarsk
+flags_image_table["!/dQBX59oZg"] = "krasnoyarsk.png";
+flags_hover_strings["!/dQBX59oZg"] = "kot";
+
+// scotkot
+flags_image_table["!rAF5ClCljc"] = "scotkot.png";
+flags_hover_strings["!rAF5ClCljc"]  = "scot";
+
+// ukot
+flags_image_table["!kgI91HnVFs"] = "ukot.png";
+flags_hover_strings["!kgI91HnVFs"]  = "cat";
+
+// virginkot
+flags_image_table["!saiBYKKN9I"] = "vakot.png";
+flags_hover_strings["!saiBYKKN9I"]  = "virginikot";
+
+// finnkot
+flags_image_table["!xK8AsMHolU"] = "finnkot.png";
+flags_hover_strings["!xK8AsMHolU"]  = "kissa";
+
+// krym
+flags_image_table["!OJLfIUhVaU"] = "crimea.png";
+flags_hover_strings["!OJLfIUhVaU"]  = "kot";
+
+// waifu
+flags_image_table["!qmjEFFPBhA"] = "waifu.png";
+flags_hover_strings["!qmjEFFPBhA"]  = "shalava";
+
+// mskot
+flags_image_table["!/KAavyPo8g"] = "mskot.png";
+flags_hover_strings["!/KAavyPo8g"]  = "Moscow";
+
+// uskot
+flags_image_table["!MGkJVyslg6"] = "uskot.png";
+flags_hover_strings["!MGkJVyslg6"]  = "kot";
+
+// auskot
+flags_image_table["!TkB1hX8Grk"] = "auskot.png";
+flags_hover_strings["!TkB1hX8Grk"]  = "kotm8";
+
+// spainkot
+flags_image_table["!iMoTZDiWWA"] = "spainkot.png";
+flags_hover_strings["!iMoTZDiWWA"]  = "gato";
+
+// ctkot
+flags_image_table["!EiR7Ct5J9Y"] = "ctkot.png";
+flags_hover_strings["!EiR7Ct5J9Y"]  = "kot";
+
+// canadakot
+flags_image_table["!ofZRVNo6d2"] = "canadakot.png";
+flags_hover_strings["!ofZRVNo6d2"]  = "canadakot";
+
+// horde
+flags_image_table["!GnJ58K.Wvw"]    = "horde.png";
+flags_hover_strings["!GnJ58K.Wvw"]  = "Golden Horde";
+
+// elmash
+flags_image_table["!yN89ZsJ6zg"]    = "elmash.png";
+flags_hover_strings["!yN89ZsJ6zg"]  = "elmash";
+
+// spb
+flags_image_table["!CpEcMihTwA"]    = "empire.gif";
+flags_hover_strings["!CpEcMihTwA"]  = "Russia";
+
+// badge
+flags_image_table["!NxotCs1mpk"]    = "badge.png";
+flags_hover_strings["!NxotCs1mpk"]  = "sheriff";
+
+// salo
+flags_image_table["!TlqMzxfCPk"]    = "salo.png";
+flags_hover_strings["!TlqMzxfCPk"]  = "salo";
+
+// kansas
+flags_image_table["!GwLjtaA0m6"]    = "kansas.jpg";
+flags_hover_strings["!GwLjtaA0m6"]  = "kanfrogs";
+
+// satan
+flags_image_table["!vTD990UodI"]    = "satan.png";
+flags_hover_strings["!vTD990UodI"]  = "satan";
+
+// ekb
+flags_image_table["!gGfIco.QNg"]    = "ekb.gif";
+flags_hover_strings["!gGfIco.QNg"]  = "ekb";
+
+// abo
+flags_image_table["!/4rO3lI9FE"]    = "abo.png";
+flags_hover_strings["!/4rO3lI9FE"]  = "abo";
+
+// rat
+flags_image_table["!xAcF5j2oZw"]    = "rat.png";
+flags_hover_strings["!xAcF5j2oZw"]  = "stefan";
+
+// woop
+flags_image_table["!sOOFxXpl6Q"]    = "woop.png";
+flags_hover_strings["!sOOFxXpl6Q"]  = "woop";
+
+// corn
+flags_image_table["!xB8Bvx5W9o"]    = "corn.png";
+flags_hover_strings["!xB8Bvx5W9o"]  = "corn";
+
+// usarmy
+flags_image_table["!9jS7daPDwA"]    = "usarmy.png";
+flags_hover_strings["!9jS7daPDwA"]  = "America Fuck Yeah";
+
+// katze
+flags_image_table["!DqFXFNHovY"]    = "katze.gif";
+flags_hover_strings["!DqFXFNHovY"]  = "katze";
+
+// uakot
+flags_image_table["!QOQGd7qHZc"]    = "uakot.gif";
+flags_hover_strings["!QOQGd7qHZc"]  = "kit";
+
+// plkot
+flags_image_table["!5iGcTcOEv2"]    = "plkot.gif";
+flags_hover_strings["!5iGcTcOEv2"]  = "kotek";
+
+// rukot
+flags_image_table["!99Qc2L4dw6"]    = "rukot.gif";
+flags_hover_strings["!99Qc2L4dw6"]  = "kot";
+
+// chilekot
+flags_image_table["!K5a2zohj7."]    = "chilekot.gif";
+flags_hover_strings["!K5a2zohj7."]  = "kot";
+
+// rupepe
+flags_image_table["!V6JMlZPVF6"]    = "RUPEPE.png";
+flags_hover_strings["!V6JMlZPVF6"]  = "Russia";
 
 // noflag
 flags_image_table["!RQ1r/nUdfw"]    = "GAY.png";
@@ -522,11 +1139,18 @@ var displayAlign;              // CSS position attribute to set: "left" or "righ
 // Generate blank post element
 function generate_post(id) {
     "use strict";
+    //var hat = "<img src=\"/images/icon-santa.png\" style=\"position:absolute;margin-top:-7px;margin-left:10px;z-index:3;\">";
+    //if (localStorage.theme == "/sad.css")
+    var hat = "";
+
     var post = $(
         "<article class='chat'>" +
             "<header class='chat_header'>" +
                 "<a class='chat_label' style='display: none;'/>" +
-                "<output class='chat_name'><output class='name_part'/><output class='trip_code'/><output class='flag tooltip'/></output>" +
+                "<output class='chat_name'><output class='name_part'/><output class='trip_code'/>" +
+                hat + 
+                "<output class='flag tooltip'/>" +
+                "</output>" +
                 "<output class='chat_convo'/>" +
                 "<output class='chat_date'/>" +
                 "<output class='chat_number'/>" +
@@ -550,6 +1174,9 @@ function generate_post(id) {
             "<output class='chat_body'/>" +
         "</article>"
     );
+                //"<output style='float: right'>" +
+                //	"[<output class='mute_part'>mute</output>]"+
+                //"</output>" +
     post.attr("id", "chat_" + id);
    
     post.find(".delete_part")
@@ -770,7 +1397,12 @@ function update_chat(new_data, first_load) {
     if (id === undefined) return;
     var new_post = (chat[id] === undefined || id == 0);
 
-		console.log($.inArray(new_data.identifier, ignored_ids) > -1);
+    // Set kot name
+    if (new_data.name == 'Kot') {
+	if (typeof new_data.country !== 'undefined')
+	        new_data.name = kot_names[new_data.country.split('-')[0]] || 'Kot';
+    }
+
 		if (ignored_ids && new_data && new_data.identifier && $.inArray(new_data.identifier, ignored_ids) > -1) {
 			return;
 		}
@@ -917,7 +1549,7 @@ function update_chat(new_data, first_load) {
                 .text(base_name);
 
             if (extension === "ogg" || extension === "mp3" || extension === 'flac') {
-                audio_container.append($("<audio/>").attr({src: url_file, controls: "controls"}));
+                audio_container.append($("<audio/>").attr({src: url_file, controls: "controls", preload: "none"}));
             }
 
             var url_static = null;
@@ -1098,6 +1730,29 @@ function update_chat(new_data, first_load) {
                 });
                 get_youtube_data(m[1],elem);
             }],
+            [/(?:https?:\/\/)?(?:www\.)?(?:music\.yandex\.[a-z]{2})\/album\/(\d+)\/track\/(\d+)\/?/g, function(m, o){
+                var main = $("<span/>");        
+                var url = m[0][0] == 'y' ? "https://"+m[0] : m[0];
+                var elem = $("<a target='_blank' class='yandex'/>").attr("href", url).text(url);
+                var embed = $("<span>(embed)</span>").css({cursor:"pointer", fontSize:'10px'});
+                main.append(elem, " ", embed);  
+                o.push(main);  
+                var embedded = false;           
+                embed.click(function(e) {       
+                    e.stopPropagation();            
+                        if (embedded) {                 
+                            main.find("iframe").remove();   
+                        } else {
+                            var src = "https://music.yandex.ru/iframe/#track/"+ m[2] + "/";
+                            main.append($('<iframe frameborder="0" style="border:none;width:400px;height:100px;" width="400" height="100">')
+                                .attr('src', src));             
+                        }
+                    embedded = !embedded;           
+                    embed.text(embedded ? "(unembed)" : "(embed)");
+                    var post = main.parents(".chat");
+                    post.toggleClass('chat_embed', post.find("iframe").length > 0);
+                });
+            }],
             [/https?:\/\/\S+()/g, function(m, o) { // stupid extra () is for some syntax highlighters to play nice.
                 o.push($("<a target='_blank'/>").attr("href", m[0]).text(m[0]));
             }],
@@ -1132,7 +1787,7 @@ function update_chat(new_data, first_load) {
             [/\[flag\]/g, function(m, o) {
                 var body = this.parse(rules, /\[\/flag\]/g);
                 if (special_countries) {
-                	o.push($("<img/>").attr("src", encodeURI("/icons/countries/"+body[0].data.toUpperCase()+".png")).css({height:"44px"}));
+                	o.push($("<img/>").attr("src", encodeURI("/icons/countries2/"+body[0].data.replace('/','').toUpperCase()+".png")).css({height:"44px"}));
                 } else {
                 	o.push($("<span>").text(body[0].data.toUpperCase()));
                 }
@@ -1686,7 +2341,7 @@ function set_channel(new_channel, new_post, no_push_state, tab) {
     // indicate new channel
     $('#board_select').val(new_channel);
     $('#comment-form').attr('action', '/chat/' + new_channel);
-    title = "livechan" + (new_channel === "home" ? "" : " - /" + new_channel);
+    title = "kotchan" + (new_channel === "home" ? "" : " - /" + new_channel);
     window.document.title = title;
 
     // hide form, sidebar on /home, /all pages
@@ -1779,9 +2434,9 @@ function set_channel(new_channel, new_post, no_push_state, tab) {
         });
     }
 
-    if (new_channel !== "home" && new_channel !== "all" && get_cookie("password_livechan") === '') {
+    /*if (new_channel !== "home" && new_channel !== "all" && get_cookie("password_livechan") === '') {
         submit_captcha();
-    }
+    }*/
 }
 
 /* scrolls to a given post */

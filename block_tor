@@ -14,7 +14,7 @@ fi
  
 cd $WORKING_DIR
 
-wget -q -O - "https://check.torproject.org/cgi-bin/TorBulkExitList.py?ip=$IP_ADDRESS&port=80" -U NoSuchBrowser/1.0 > temp_tor_list
+wget -q -O - "https://check.torproject.org/cgi-bin/TorBulkExitList.py?ip=$IP_ADDRESS&port=443" -U NoSuchBrowser/1.0 > temp_tor_list
 wget -q -O - "https://check.torproject.org/cgi-bin/TorBulkExitList.py?ip=$IP_ADDRESS&port=9998" -U NoSuchBrowser/1.0 >> temp_tor_list
 sed -i 's|^#.*$||g' temp_tor_list
  

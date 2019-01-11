@@ -10,9 +10,5 @@ names = [os.path.splitext(f)[0] for f in os.listdir('public/images/stickers/') i
 
 names.sort(key=lambda f: count.get(f), reverse=True)
 
-data = open('public/js/stickers.js').read()
 newdata = "var stickers = " + repr(names) + ';'
-newdata += "\n// end of stickers\n"
-newdata += data.split('// end of stickers')[1]
-open('public/js/stickers.js', 'w').write(newdata)
-
+open('public/js/sticker_list.js', 'w').write(newdata)

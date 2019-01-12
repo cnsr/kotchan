@@ -1816,7 +1816,7 @@ function update_chat(new_data, first_load) {
             [/\:\-\|\:\-\//g, "/icons/smiles/ao.gif"],
             [/\*JOKINGLY\*/g, "/icons/smiles/ap.gif"],
             [/\]\:\-\>/g, "/icons/smiles/aq.gif"],
-            [/\, "/icons/smiles/ar.gif"],
+            [/\[\:\-\}/g, "/icons/smiles/ar.gif"],
             [/\:\-\!/g, "/icons/smiles/at.gif"],
             [/\*TIRED\*/g, "/icons/smiles/au.gif"],
             [/\*STOP\*/g, "/icons/smiles/av.gif"],

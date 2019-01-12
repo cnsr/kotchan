@@ -1802,70 +1802,172 @@ function update_chat(new_data, first_load) {
             }]
         ];
         var smiles = [
-            [/\:\-\)|\:\)|\=\)/g, "/icons/smiles/ab.gif"],
-            [/\:\-\(|\:\(|\;\(/g, "/icons/smiles/ac.gif"],
-            [/\:\-P/g, "/icons/smiles/ae.gif"],
-            [/8\-\)/g, "/icons/smiles/af.gif"],
-            [/\:\-D/g, "/icons/smiles/ag.gif"],
-            [/\:\-\[/g, "/icons/smiles/ah.gif"],
-            [/\=\-O/g, "/icons/smiles/ai.gif"],
-            [/\:'\(/g, "/icons/smiles/ak.gif"],
-            [/\:\-X|\:\-x/g, "/icons/smiles/al.gif"],
-            [/\>\:o/g, "/icons/smiles/am.gif"],
-            [/\:\-\|/g, "/icons/smiles/an.gif"],
-            [/\:\-\|\:\-\//g, "/icons/smiles/ao.gif"],
-            [/\*JOKINGLY\*/g, "/icons/smiles/ap.gif"],
-            [/\]\:\-\>/g, "/icons/smiles/aq.gif"],
-            [/\[\:\-\}/g, "/icons/smiles/ar.gif"],
-            [/\:\-\!/g, "/icons/smiles/at.gif"],
-            [/\*TIRED\*/g, "/icons/smiles/au.gif"],
-            [/\*STOP\*/g, "/icons/smiles/av.gif"],
-            [/\*THUMBS|UP\*/g, "/icons/smiles/ay.gif"],
-            [/\*DRINK\*/g, "/icons/smiles/az.gif"],
-            [/\*HELP\*/g, "/icons/smiles/bc.gif"],
-            [/\m\//g, "/icons/smiles/bd.gif"],
-            [/\%\)/g, "/icons/smiles/be.gif"],
-            [/\*OK\*/g, "/icons/smiles/bf.gif"],
-            [/\*SORRY\*/g, "/icons/smiles/bh.gif"],
-            [/\*ROFL\*|\*LOL\*/g, "/icons/smiles/bj.gif"],
-            [/\*NO\*/g, "/icons/smiles/bl.gif"],
-            [/\*CRAZY\*/g, "/icons/smiles/bm.gif"],
-            [/\*DUNNO\*/g, "/icons/smiles/bn.gif"],
-            [/\*DANCE\*/g, "/icons/smiles/bo.gif"],
-            [/\*YAHOO\*/g, "/icons/smiles/bp.gif"],
-            [/\*HI\*/g, "/icons/smiles/bq.gif"],
-            [/\*BYE\*/g, "/icons/smiles/br.gif"],
-            [/\*YES\*/g, "/icons/smiles/bs.gif"],
-            [/\;D/g, "/icons/smiles/bt.gif"],
-            [/\*WALL\*/g, "/icons/smiles/bu.gif"],
-            [/\*SCRATCH\*/g, "/icons/smiles/bw.gif"],
-            [/\*BANANA\*/g, "/icons/smiles/banana.gif"],
-            [/\*SUP\*/g, "/icons/smiles/bg.gif"],
-            [/\*YEEES\!\*/g, "/icons/smiles/bx.gif"],
-            [/\*SMOKE\*/g, "/icons/smiles/by.gif"],
-            [/\*GAMER\*/g, "/icons/smiles/cc.gif"],
-            [/\*BLACKEYE\*/g, "/icons/smiles/cg.gif"],
-            [/\*SEARCH\*/g, "/icons/smiles/ci.gif"],
-            [/\*FOCUS\*/g, "/icons/smiles/ck.gif"],
-            [/\*HUNTER\*/g, "/icons/smiles/cl.gif"],
-            [/X\)/g, "/icons/smiles/dc.gif"],
-            [/\*JOB\*/g, "/icons/smiles/de.gif"],
-            [/\*THANK\*/g, "/icons/smiles/dh.gif"],
-            [/\*LAZY\*/g, "/icons/smiles/dj.gif"],
-            [/\*WIZARD\*/g, "/icons/smiles/dm.gif"],
-            [/\*TEASE\*/g, "/icons/smiles/dp.gif"],
-            [/\*TRAINING\*/g, "/icons/smiles/du.gif"],
-            [/\*POPCORN\*/g, "/icons/smiles/dw.gif"]
+            [/\:\-\)|\:\)|\=\)/g, function(m, o) {
+                o.push($("<img/>").attr("src", "/icons/smiles/ab.gif"));
+            }],
+            [/\:\-\(|\:\(|\;\(/g, function(m, o) {
+                o.push($("<img/>").attr("src", "/icons/smiles/ac.gif"));
+            }],
+            [/\:\-P/g, function(m, o) {
+                o.push($("<img/>").attr("src", "/icons/smiles/ae.gif"));
+            }],
+            [/8\-\)/g, function(m, o) {
+                o.push($("<img/>").attr("src", "/icons/smiles/af.gif"));
+            }],
+            [/\:\-D/g, function(m, o) {
+                o.push($("<img/>").attr("src", "/icons/smiles/ag.gif"));
+            }],
+            [/\:\-\[/g, function(m, o) {
+                o.push($("<img/>").attr("src", "/icons/smiles/ah.gif"));
+            }],
+            [/\=\-O/g, function(m, o) {
+                o.push($("<img/>").attr("src", "/icons/smiles/ai.gif"));
+            }],
+            [/\:\'\(/g, function(m, o) {
+                o.push($("<img/>").attr("src", "/icons/smiles/ak.gif"));
+            }],
+            [/\:\-X|\:\-x/g, function(m, o) {
+                o.push($("<img/>").attr("src", "/icons/smiles/al.gif"));
+            }],
+            [/\>\:o/g, function(m, o) {
+                o.push($("<img/>").attr("src", "/icons/smiles/am.gif"));
+            }],
+            [/\:\-\|/g, function(m, o) {
+                o.push($("<img/>").attr("src", "/icons/smiles/an.gif"));
+            }],
+            [/\:\-\\|\:\-\//g, function(m, o) {
+                o.push($("<img/>").attr("src", "/icons/smiles/ao.gif"));
+            }],
+            [/\*JOKINGLY\*/g, function(m, o) {
+                o.push($("<img/>").attr("src", "/icons/smiles/ap.gif"));
+            }],
+            [/\]\:\-\>/g, function(m, o) {
+                o.push($("<img/>").attr("src", "/icons/smiles/aq.gif"));
+            }],
+            [/\[\:\-\}/g, function(m, o) {
+                o.push($("<img/>").attr("src", "/icons/smiles/ar.gif"));
+            }],
+            [/\:\-\!/g, function(m, o) {
+                o.push($("<img/>").attr("src", "/icons/smiles/at.gif"));
+            }],
+            [/\*TIRED\*/g, function(m, o) {
+                o.push($("<img/>").attr("src", "/icons/smiles/au.gif"));
+            }],
+            [/\*STOP\*/g, function(m, o) {
+                o.push($("<img/>").attr("src", "/icons/smiles/av.gif"));
+            }],
+            [/\*THUMBS|UP\*/g, function(m, o) {
+                o.push($("<img/>").attr("src", "/icons/smiles/ay.gif"));
+            }],
+            [/\*DRINK\*/g, function(m, o) {
+                o.push($("<img/>").attr("src", "/icons/smiles/az.gif"));
+            }],
+            [/\*HELP\*/g, function(m, o) {
+                o.push($("<img/>").attr("src", "/icons/smiles/bc.gif"));
+            }],
+            [/\\m\//g, function(m, o) {
+                o.push($("<img/>").attr("src", "/icons/smiles/bd.gif"));
+            }],
+            [/\%\)/g, function(m, o) {
+                o.push($("<img/>").attr("src", "/icons/smiles/be.gif"));
+            }],
+            [/\*OK\*/g, function(m, o) {
+                o.push($("<img/>").attr("src", "/icons/smiles/bf.gif"));
+            }],
+            [/\*SORRY\*/g, function(m, o) {
+                o.push($("<img/>").attr("src", "/icons/smiles/bh.gif"));
+            }],
+            [/\*ROFL\*|\*LOL\*/g, function(m, o) {
+                o.push($("<img/>").attr("src", "/icons/smiles/bj.gif"));
+            }],
+            [/\*NO\*/g, function(m, o) {
+                o.push($("<img/>").attr("src", "/icons/smiles/bl.gif"));
+            }],
+            [/\*CRAZY\*/g, function(m, o) {
+                o.push($("<img/>").attr("src", "/icons/smiles/bm.gif"));
+            }],
+            [/\*DUNNO\*/g, function(m, o) {
+                o.push($("<img/>").attr("src", "/icons/smiles/bn.gif"));
+            }],
+            [/\*DANCE\*/g, function(m, o) {
+                o.push($("<img/>").attr("src", "/icons/smiles/bo.gif"));
+            }],
+            [/\*YAHOO\*/g, function(m, o) {
+                o.push($("<img/>").attr("src", "/icons/smiles/bp.gif"));
+            }],
+            [/\*HI\*/g, function(m, o) {
+                o.push($("<img/>").attr("src", "/icons/smiles/bq.gif"));
+            }],
+            [/\*BYE\*/g, function(m, o) {
+                o.push($("<img/>").attr("src", "/icons/smiles/br.gif"));
+            }],
+            [/\*YES\*/g, function(m, o) {
+                o.push($("<img/>").attr("src", "/icons/smiles/bs.gif"));
+            }],
+            [/\;D/g, function(m, o) {
+                o.push($("<img/>").attr("src", "/icons/smiles/bt.gif"));
+            }],
+            [/\*WALL\*/g, function(m, o) {
+                o.push($("<img/>").attr("src", "/icons/smiles/bu.gif"));
+            }],
+            [/\*SCRATCH\*/g, function(m, o) {
+                o.push($("<img/>").attr("src", "/icons/smiles/bw.gif"));
+            }],
+            [/\*BANANA\*/g, function(m, o) {
+                o.push($("<img/>").attr("src", "/icons/smiles/banana.gif"));
+            }],
+            [/\*SUP\*/g, function(m, o) {
+                o.push($("<img/>").attr("src", "/icons/smiles/bg.gif"));
+            }],
+            [/\*YEEES\!\*/g, function(m, o) {
+                o.push($("<img/>").attr("src", "/icons/smiles/bx.gif"));
+            }],
+            [/\*SMOKE\*/g, function(m, o) {
+                o.push($("<img/>").attr("src", "/icons/smiles/by.gif"));
+            }],
+            [/\*GAMER\*/g, function(m, o) {
+                o.push($("<img/>").attr("src", "/icons/smiles/cc.gif"));
+            }],
+            [/\*BLACKEYE\*/g, function(m, o) {
+                o.push($("<img/>").attr("src", "/icons/smiles/cg.gif"));
+            }],
+            [/\*SEARCH\*/g, function(m, o) {
+                o.push($("<img/>").attr("src", "/icons/smiles/ci.gif"));
+            }],
+            [/\*FOCUS\*/g, function(m, o) {
+                o.push($("<i    mg/>").attr("src", "/icons/smiles/ck.gif"));
+            }],
+            [/\*HUNTER\*/g, function(m, o) {
+                o.push($("<img/>").attr("src", "/icons/smiles/cl.gif"));
+            }],
+            [/X\)/g, function(m, o) {
+                o.push($("<img/>").attr("src", "/icons/smiles/dc.gif"));
+            }],
+            [/\*JOB\*/g, function(m, o) {
+                o.push($("<img/>").attr("src", "/icons/smiles/de.gif"));
+            }],
+            [/\*THANK\*/g, function(m, o) {
+                o.push($("<img/>").attr("src", "/icons/smiles/dh.gif"));
+            }],
+            [/\*LAZY\*/g, function(m, o) {
+                o.push($("<img/>").attr("src", "/icons/smiles/dj.gif"));
+            }],
+            [/\*WIZARD\*/g, function(m, o) {
+                o.push($("<img/>").attr("src", "/icons/smiles/dm.gif"));
+            }],
+            [/\*TEASE\*/g, function(m, o) {
+                o.push($("<img/>").attr("src", "/icons/smiles/dp.gif"));
+            }],
+            [/\*TRAINING\*/g, function(m, o) {
+                o.push($("<img/>").attr("src", "/icons/smiles/du.gif"));
+            }],
+            [/\*POPCORN\*/g, function(m, o) {
+                o.push($("<img/>").attr("src", "/icons/smiles/dw.gif"));
+            }],
         ];
-
-
-
+        rules = rules.concat(smiles);
         var body = new Parser(data.body).parse(rules);
         post.find(".chat_body").empty().append(body);
-        var body = post.find(".chat_body")[0];
-        for(var i=0; i<smiles.length; i++) {
-            body.innerHTML = body.innerHTML.replace(smiles[i][0], '<img src="'+smiles[i][1]+'">');
-        }
         
         var for_you = /\(You\)/.test(post.find(".quote_link").text());
         

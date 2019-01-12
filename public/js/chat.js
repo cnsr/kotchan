@@ -1859,11 +1859,13 @@ function update_chat(new_data, first_load) {
         ];
 
 
-        // for(var i=0; i<rules.length; i++) {
-        //     data.body = data.body.replace(rules[i][0], '<img src="'+rules[i][1]+'">');
-        // }
+        for(var i=0; i<smiles.length; i++) {
+            data.body = data.body.replace(smiles[i][0], '<img src="'+smiles[i][1]+'">');
+        }
         var body = new Parser(data.body).parse(rules);
         post.find(".chat_body").empty().append(body);
+        // var body = post.find(".chat_body")[0];
+
         
         var for_you = /\(You\)/.test(post.find(".quote_link").text());
         

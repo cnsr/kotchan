@@ -1802,224 +1802,66 @@ function update_chat(new_data, first_load) {
             }]
         ];
         var smiles = [
-            [/\:\-\)|\:\)|\=\)/g, function(m, o) {
-                var body = this.parse(rules, /\:\-\)|\:\)|\=\)/g);
-                o.push($("<img/>").attr("src", "/icons/smiles/ab.gif"));
-            }],
-            [/\:\-\(|\:\(|\;\(/g, function(m, o) {
-                var body = this.parse(rules, /\:\-\(|\:\(|\;\(/g);
-                o.push($("<img/>").attr("src", "/icons/smiles/ac.gif"));
-            }],
-            [/\:\-P/g, function(m, o) {
-                var body = this.parse(rules, /\:\-P/g);
-                o.push($("<img/>").attr("src", "/icons/smiles/ae.gif"));
-            }],
-            [/8\-\)/g, function(m, o) {
-                var body = this.parse(rules, /8\-\)/g);
-                o.push($("<img/>").attr("src", "/icons/smiles/af.gif"));
-            }],
-            [/\:\-D/g, function(m, o) {
-                var body = this.parse(rules, /\:\-D/g);
-                o.push($("<img/>").attr("src", "/icons/smiles/ag.gif"));
-            }],
-            [/\:\-\[/g, function(m, o) {
-                var body = this.parse(rules, /\:\-\[/g);
-                o.push($("<img/>").attr("src", "/icons/smiles/ah.gif"));
-            }],
-            [/\=\-O/g, function(m, o) {
-                var body = this.parse(rules, /\=\-O/g);
-                o.push($("<img/>").attr("src", "/icons/smiles/ai.gif"));
-            }],
-            [/\:\'\(/g, function(m, o) {
-                var body = this.parse(rules, /\:\'\(/g);
-                o.push($("<img/>").attr("src", "/icons/smiles/ak.gif"));
-            }],
-            [/\:\-X|\:\-x/g, function(m, o) {
-                var body = this.parse(rules, /\:\-X|\:\-x/g);
-                o.push($("<img/>").attr("src", "/icons/smiles/al.gif"));
-            }],
-            [/\>\:o/g, function(m, o) {
-                var body = this.parse(rules, /\>\:o/g);
-                o.push($("<img/>").attr("src", "/icons/smiles/am.gif"));
-            }],
-            [/\:\-\|/g, function(m, o) {
-                var body = this.parse(rules, /\:\-\|/g);
-                o.push($("<img/>").attr("src", "/icons/smiles/an.gif"));
-            }],
-            [/\:\-\\|\:\-\//g, function(m, o) {
-                var body = this.parse(rules, /\:\-\\|\:\-\//g);
-                o.push($("<img/>").attr("src", "/icons/smiles/ao.gif"));
-            }],
-            [/\*JOKINGLY\*/g, function(m, o) {
-                var body = this.parse(rules, /\*JOKINGLY\*/g);
-                o.push($("<img/>").attr("src", "/icons/smiles/ap.gif"));
-            }],
-            [/\]\:\-\>/g, function(m, o) {
-                var body = this.parse(rules, /\]\:\-\>/g);
-                o.push($("<img/>").attr("src", "/icons/smiles/aq.gif"));
-            }],
-            [/\[\:\-\}/g, function(m, o) {
-                var body = this.parse(rules, /\[\:\-\}/g);
-                o.push($("<img/>").attr("src", "/icons/smiles/ar.gif"));
-            }],
-            [/\:\-\!/g, function(m, o) {
-                var body = this.parse(rules, /\:\-\!/g);
-                o.push($("<img/>").attr("src", "/icons/smiles/at.gif"));
-            }],
-            [/\*TIRED\*/g, function(m, o) {
-                var body = this.parse(rules, /\*TIRED\*/g);
-                o.push($("<img/>").attr("src", "/icons/smiles/au.gif"));
-            }],
-            [/\*STOP\*/g, function(m, o) {
-                var body = this.parse(rules, /\*STOP\*/g);
-                o.push($("<img/>").attr("src", "/icons/smiles/av.gif"));
-            }],
-            [/\*THUMBS|UP\*/g, function(m, o) {
-                var body = this.parse(rules, /\*THUMBS|UP\*/g);
-                o.push($("<img/>").attr("src", "/icons/smiles/ay.gif"));
-            }],
-            [/\*DRINK\*/g, function(m, o) {
-                var body = this.parse(rules, /\*DRINK\*/g);
-                o.push($("<img/>").attr("src", "/icons/smiles/az.gif"));
-            }],
-            [/\*HELP\*/g, function(m, o) {
-                var body = this.parse(rules, /\*HELP\*/g);
-                o.push($("<img/>").attr("src", "/icons/smiles/bc.gif"));
-            }],
-            [/\\m\//g, function(m, o) {
-                var body = this.parse(rules, /\\m\//g);
-                o.push($("<img/>").attr("src", "/icons/smiles/bd.gif"));
-            }],
-            [/\%\)/g, function(m, o) {
-                var body = this.parse(rules, /\%\)/g);
-                o.push($("<img/>").attr("src", "/icons/smiles/be.gif"));
-            }],
-            [/\*OK\*/g, function(m, o) {
-                var body = this.parse(rules, /\*OK\*/g);
-                o.push($("<img/>").attr("src", "/icons/smiles/bf.gif"));
-            }],
-            [/\*SORRY\*/g, function(m, o) {
-                var body = this.parse(rules, /\*SORRY\*/g);
-                o.push($("<img/>").attr("src", "/icons/smiles/bh.gif"));
-            }],
-            [/\*ROFL\*|\*LOL\*/g, function(m, o) {
-                var body = this.parse(rules, /\*ROFL\*|\*LOL\*/g);
-                o.push($("<img/>").attr("src", "/icons/smiles/bj.gif"));
-            }],
-            [/\*NO\*/g, function(m, o) {
-                var body = this.parse(rules, /\*NO\*/g);
-                o.push($("<img/>").attr("src", "/icons/smiles/bl.gif"));
-            }],
-            [/\*CRAZY\*/g, function(m, o) {
-                var body = this.parse(rules, /\*CRAZY\*/g);
-                o.push($("<img/>").attr("src", "/icons/smiles/bm.gif"));
-            }],
-            [/\*DUNNO\*/g, function(m, o) {
-                var body = this.parse(rules, /\*DUNNO\*/g);
-                o.push($("<img/>").attr("src", "/icons/smiles/bn.gif"));
-            }],
-            [/\*DANCE\*/g, function(m, o) {
-                var body = this.parse(rules, /\*DANCE\*/g);
-                o.push($("<img/>").attr("src", "/icons/smiles/bo.gif"));
-            }],
-            [/\*YAHOO\*/g, function(m, o) {
-                var body = this.parse(rules, /\*YAHOO\*/g);
-                o.push($("<img/>").attr("src", "/icons/smiles/bp.gif"));
-            }],
-            [/\*HI\*/g, function(m, o) {
-                var body = this.parse(rules, /\*HI\*/g);
-                o.push($("<img/>").attr("src", "/icons/smiles/bq.gif"));
-            }],
-            [/\*BYE\*/g, function(m, o) {
-                var body = this.parse(rules, /\*BYE\*/g);
-                o.push($("<img/>").attr("src", "/icons/smiles/br.gif"));
-            }],
-            [/\*YES\*/g, function(m, o) {
-                var body = this.parse(rules, /\*YES\*/g);
-                o.push($("<img/>").attr("src", "/icons/smiles/bs.gif"));
-            }],
-            [/\;D/g, function(m, o) {
-                var body = this.parse(rules, /\;D/g);
-                o.push($("<img/>").attr("src", "/icons/smiles/bt.gif"));
-            }],
-            [/\*WALL\*/g, function(m, o) {
-                var body = this.parse(rules, /\*WALL\*/g);
-                o.push($("<img/>").attr("src", "/icons/smiles/bu.gif"));
-            }],
-            [/\*SCRATCH\*/g, function(m, o) {
-                var body = this.parse(rules, /\*SCRATCH\*/g);
-                o.push($("<img/>").attr("src", "/icons/smiles/bw.gif"));
-            }],
-            [/\*BANANA\*/g, function(m, o) {
-                var body = this.parse(rules, /\*BANANA\*/g);
-                o.push($("<img/>").attr("src", "/icons/smiles/banana.gif"));
-            }],
-            [/\*SUP\*/g, function(m, o) {
-                    var body = this.parse(rules, /\*SUP\*/g);
-                        o.push($("<img/>").attr("src", "/icons/smiles/bg.gif"));
-            }],
-            [/\*YEEES\!\*/g, function(m, o) {
-                    var body = this.parse(rules, /\*YEEES\!\*/g);
-                        o.push($("<img/>").attr("src", "/icons/smiles/bx.gif"));
-            }],
-            [/\*SMOKE\*/g, function(m, o) {
-                    var body = this.parse(rules, /\*SMOKE\*/g);
-                        o.push($("<img/>").attr("src", "/icons/smiles/by.gif"));
-            }],
-            [/\*GAMER\*/g, function(m, o) {
-                    var body = this.parse(rules, /\*GAMER\*/g);
-                        o.push($("<img/>").attr("src", "/icons/smiles/cc.gif"));
-            }],
-            [/\*BLACKEYE\*/g, function(m, o) {
-                    var body = this.parse(rules, /\*BLACKEYE\*/g);
-                        o.push($("<img/>").attr("src", "/icons/smiles/cg.gif"));
-            }],
-            [/\*SEARCH\*/g, function(m, o) {
-                    var body = this.parse(rules, /\*SEARCH\*/g);
-                        o.push($("<img/>").attr("src", "/icons/smiles/ci.gif"));
-            }],
-            [/\*FOCUS\*/g, function(m, o) {
-                    var body = this.parse(rules, /\*FOCUS\*/g);
-                        o.push($("<img/>").attr("src", "/icons/smiles/ck.gif"));
-            }],
-            [/\*HUNTER\*/g, function(m, o) {
-                    var body = this.parse(rules, /\*HUNTER\*/g);
-                        o.push($("<img/>").attr("src", "/icons/smiles/cl.gif"));
-            }],
-            [/X\)/g, function(m, o) {
-                    var body = this.parse(rules, /X\)/g);
-                        o.push($("<img/>").attr("src", "/icons/smiles/dc.gif"));
-            }],
-            [/\*JOB\*/g, function(m, o) {
-                    var body = this.parse(rules, /\*JOB\*/g);
-                        o.push($("<img/>").attr("src", "/icons/smiles/de.gif"));
-            }],
-            [/\*THANK\*/g, function(m, o) {
-                    var body = this.parse(rules, /\*THANK\*/g);
-                        o.push($("<img/>").attr("src", "/icons/smiles/dh.gif"));
-            }],
-            [/\*LAZY\*/g, function(m, o) {
-                    var body = this.parse(rules, /\*LAZY\*/g);
-                        o.push($("<img/>").attr("src", "/icons/smiles/dj.gif"));
-            }],
-            [/\*WIZARD\*/g, function(m, o) {
-                    var body = this.parse(rules, /\*WIZARD\*/g);
-                        o.push($("<img/>").attr("src", "/icons/smiles/dm.gif"));
-            }],
-            [/\*TEASE\*/g, function(m, o) {
-                    var body = this.parse(rules, /\*TEASE\*/g);
-                        o.push($("<img/>").attr("src", "/icons/smiles/dp.gif"));
-            }],
-            [/\*TRAINING\*/g, function(m, o) {
-                    var body = this.parse(rules, /\*TRAINING\*/g);
-                        o.push($("<img/>").attr("src", "/icons/smiles/du.gif"));
-            }],
-            [/\*POPCORN\*/g, function(m, o) {
-                    var body = this.parse(rules, /\*POPCORN\*/g);
-                        o.push($("<img/>").attr("src", "/icons/smiles/dw.gif"));
-            }],
+            [/\:\-\)|\:\)|\=\)/g, "/icons/smiles/ab.gif"],
+            [/\:\-\(|\:\(|\;\(/g, "/icons/smiles/ac.gif"],
+            [/\:\-P/g, "/icons/smiles/ae.gif"],
+            [/8\-\)/g, "/icons/smiles/af.gif"],
+            [/\:\-D/g, "/icons/smiles/ag.gif"],
+            [/\:\-\, "/icons/smiles/ah.gif"],
+            [/\=\-O/g, "/icons/smiles/ai.gif"],
+            [/\:'\(/g, "/icons/smiles/ak.gif"],
+            [/\:\-X|\:\-x/g, "/icons/smiles/al.gif"],
+            [/\>\:o/g, "/icons/smiles/am.gif"],
+            [/\:\-\|/g, "/icons/smiles/an.gif"],
+            [/\:\-\|\:\-\//g, "/icons/smiles/ao.gif"],
+            [/\*JOKINGLY\*/g, "/icons/smiles/ap.gif"],
+            [/\]\:\-\>/g, "/icons/smiles/aq.gif"],
+            [/\, "/icons/smiles/ar.gif"],
+            [/\:\-\!/g, "/icons/smiles/at.gif"],
+            [/\*TIRED\*/g, "/icons/smiles/au.gif"],
+            [/\*STOP\*/g, "/icons/smiles/av.gif"],
+            [/\*THUMBS|UP\*/g, "/icons/smiles/ay.gif"],
+            [/\*DRINK\*/g, "/icons/smiles/az.gif"],
+            [/\*HELP\*/g, "/icons/smiles/bc.gif"],
+            [/\m\//g, "/icons/smiles/bd.gif"],
+            [/\%\)/g, "/icons/smiles/be.gif"],
+            [/\*OK\*/g, "/icons/smiles/bf.gif"],
+            [/\*SORRY\*/g, "/icons/smiles/bh.gif"],
+            [/\*ROFL\*|\*LOL\*/g, "/icons/smiles/bj.gif"],
+            [/\*NO\*/g, "/icons/smiles/bl.gif"],
+            [/\*CRAZY\*/g, "/icons/smiles/bm.gif"],
+            [/\*DUNNO\*/g, "/icons/smiles/bn.gif"],
+            [/\*DANCE\*/g, "/icons/smiles/bo.gif"],
+            [/\*YAHOO\*/g, "/icons/smiles/bp.gif"],
+            [/\*HI\*/g, "/icons/smiles/bq.gif"],
+            [/\*BYE\*/g, "/icons/smiles/br.gif"],
+            [/\*YES\*/g, "/icons/smiles/bs.gif"],
+            [/\;D/g, "/icons/smiles/bt.gif"],
+            [/\*WALL\*/g, "/icons/smiles/bu.gif"],
+            [/\*SCRATCH\*/g, "/icons/smiles/bw.gif"],
+            [/\*BANANA\*/g, "/icons/smiles/banana.gif"],
+            [/\*SUP\*/g, "/icons/smiles/bg.gif"],
+            [/\*YEEES\!\*/g, "/icons/smiles/bx.gif"],
+            [/\*SMOKE\*/g, "/icons/smiles/by.gif"],
+            [/\*GAMER\*/g, "/icons/smiles/cc.gif"],
+            [/\*BLACKEYE\*/g, "/icons/smiles/cg.gif"],
+            [/\*SEARCH\*/g, "/icons/smiles/ci.gif"],
+            [/\*FOCUS\*/g, "/icons/smiles/ck.gif"],
+            [/\*HUNTER\*/g, "/icons/smiles/cl.gif"],
+            [/X\)/g, "/icons/smiles/dc.gif"],
+            [/\*JOB\*/g, "/icons/smiles/de.gif"],
+            [/\*THANK\*/g, "/icons/smiles/dh.gif"],
+            [/\*LAZY\*/g, "/icons/smiles/dj.gif"],
+            [/\*WIZARD\*/g, "/icons/smiles/dm.gif"],
+            [/\*TEASE\*/g, "/icons/smiles/dp.gif"],
+            [/\*TRAINING\*/g, "/icons/smiles/du.gif"],
+            [/\*POPCORN\*/g, "/icons/smiles/dw.gif"]
         ];
-        rules = rules.concat(smiles);
+
+
+        for(var i=0; i<rules.length; i++) {
+            data.body = data.body.replace(rules[i][0], '<img src="'+rules[i][1]+'">');
+        }
         var body = new Parser(data.body).parse(rules);
         post.find(".chat_body").empty().append(body);
         

@@ -1807,7 +1807,7 @@ function update_chat(new_data, first_load) {
             [/\:\-P/g, "/icons/smiles/ae.gif"],
             [/8\-\)/g, "/icons/smiles/af.gif"],
             [/\:\-D/g, "/icons/smiles/ag.gif"],
-            [/\:\-\, "/icons/smiles/ah.gif"],
+            [/\:\-\[/g, "/icons/smiles/ah.gif"],
             [/\=\-O/g, "/icons/smiles/ai.gif"],
             [/\:'\(/g, "/icons/smiles/ak.gif"],
             [/\:\-X|\:\-x/g, "/icons/smiles/al.gif"],

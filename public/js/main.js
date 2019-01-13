@@ -437,9 +437,11 @@ function set_up_html(){
 
 
 
+
 // set up banners
-var banners = ['bezishod.jpg', 'bannerino.png', 'balcony.jpg', 'drunk.png', 'kachinsky.jpg', 'suffering.jpg', 'punto.png', 'trackchan.png', 'india2.jpg', 'plane.png', '1694-1tkrjqc.png', 'whitenoise.png', 'eurasian.jpg', '14.png', '28.png', 'leo.png', 'dali.jpg', 'kotchan_is_great.jpg', 'map.jpg', 'allah.jpg', 'pngchan.png', 'bydlo.png', '29.jpg', 'rus.png', 'kotgf.png', 'ukr.jpg', 'sovietassburger.jpg', '13.jpg', 'shtrih.png', '39.png', '38.png', 'norich.png', '35.jpg', '34.jpg', 'MLK.png', 'commieblock.png', 'gulaged.jpg', 'phylkot.png', '37.png', '27.png', 'petra.jpg', 'iexplore.png', '30.png', 'seacat.jpg', 'respect.png', '42.jpg', 'kotcan.png', 'xerox.png', '41.png', 'lenin.png', 'sandwich.png', 'india.jpg', 'death.png', 'ukr2.png', '2.jpg', 'pasta.png', 'ukr3.png', 'ohno.png', 'nakedlunch.jpg', 'catmouse.jpg', 'ree.png', 'anime.jpg'];
+var banners = ['kachinsky.jpg', 'dali.jpg', 'drunk.png', 'plane.png', 'pasta.png', 'allah.jpg', 'xerox.png', '38.png', '35.jpg', 'catmouse.jpg', '37.png', '34.jpg', 'pngchan.png', 'ukr3.png', 'bydlo.png', 'sovietassburger.jpg', 'bezishod.jpg', 'sandwich.png', 'nakedlunch.jpg', '42.jpg', 'ohno.png', 'ukr2.png', '39.png', 'anime.jpg', 'ukr.jpg', 'seacat.jpg', '1694-1tkrjqc.png', 'trackchan.png', 'eurasian.jpg', 'lambtard.png', 'india.jpg', 'phylkot.png', 'respect.png', 'shtrih.png', '27.png', 'MLK.png', '28.png', 'balcony.jpg', 'bannerino.png', 'rus.png', 'norich.png', '13.jpg', 'lenin.png', '41.png', '2.jpg', 'ree.png', 'petra.jpg', 'kotchan_is_great.jpg', 'kotgf.png', 'death.png', 'punto.png', 'india2.jpg', 'gulaged.jpg', 'map.jpg', 'whitenoise.png', '14.png', 'suffering.jpg', 'leo.png', '29.jpg', 'iexplore.png', 'kotcan.png', '30.png', 'commieblock.png'];
 // end of banners
+
 
 
 

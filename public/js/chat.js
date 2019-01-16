@@ -85,6 +85,10 @@ var flags_image_table  = {};
 var flags_hover_strings = {};
 
 //  Table of tripflags
+// boar
+flags_image_table["!uAdHLpu.7A"] = "boar.png";
+flags_hover_strings["!uAdHLpu.7A"] = "boar";
+
 // na
 flags_image_table["!HdrzKO2LXY"] = "na.png";
 flags_hover_strings["!HdrzKO2LXY"] = "NA";

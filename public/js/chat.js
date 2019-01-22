@@ -85,6 +85,10 @@ var flags_image_table  = {};
 var flags_hover_strings = {};
 
 //  Table of tripflags
+// lopinion
+flags_image_table["!BC0Huj4r02"] = "lopinion.png";
+flags_hover_strings["!BC0Huj4r02"] = "lopinion";
+
 // boar
 flags_image_table["!uAdHLpu.7A"] = "boar.png";
 flags_hover_strings["!uAdHLpu.7A"] = "boar";

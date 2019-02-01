@@ -1,0 +1,62 @@
+.lspin {
+	display:inline-block;
+}
+
+/*
+.lspin {
+	display:block;
+	position:relative;
+}
+.lspin,
+.lspin.inline {
+	display:inline-block
+}
+*/
+
+.chat_body > .lspin {
+/* .lspin { */
+
+    -webkit-animation-name: lspin;
+    -webkit-animation-duration: 2.0s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+
+    -moz-animation-name: lspin;
+    -moz-animation-duration: 2.0s;
+    -moz-animation-iteration-count: infinite;
+    -moz-animation-timing-function: linear;
+    -ms-animation-name: lspin;
+
+    -ms-animation-duration: 2.0s;
+    -ms-animation-iteration-count: infinite;
+    -ms-animation-timing-function: linear;
+
+    animation-name: lspin;
+    animation-duration: 2.0s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+@-ms-keyframes lspin {
+    from { -ms-transform: rotate(0deg); }
+    to { -ms-transform: rotate(-360deg); }
+}
+
+@-moz-keyframes lspin {
+    from { -moz-transform: rotate(0deg); }
+    to { -moz-transform: rotate(-360deg); }
+}
+
+@-webkit-keyframes lspin {
+    from { -webkit-transform: rotate(0deg); }
+    to { -webkit-transform: rotate(-360deg); }
+}
+
+@keyframes lspin {
+    from {
+        transform:rotate(0deg);
+    }
+    to {
+        transform:rotate(-360deg);
+    }
+}

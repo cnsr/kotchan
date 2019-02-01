@@ -1,0 +1,80 @@
+.roll {
+	display:inline-block;
+}
+
+/*
+.roll {
+	display:block;
+	position:relative;
+}
+.roll,
+.roll.inline {
+	display:inline-block
+}
+*/
+
+
+.chat_body > .roll {
+/* .roll {
+
+    -webkit-animation-name: roll;
+    -webkit-animation-duration: 1.0s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+
+    -moz-animation-name: roll;
+    -moz-animation-duration: 1.0s;
+    -moz-animation-iteration-count: infinite;
+    -moz-animation-timing-function: linear;
+    -ms-animation-name: roll;
+
+    -ms-animation-duration: 1.0s;
+    -ms-animation-iteration-count: infinite;
+    -ms-animation-timing-function: linear;
+*/
+    position: relative;
+    animation: spin 2000ms linear infinite, moveLeftToRight 4s linear infinite;
+    /* animation-name: roll; */
+    /* animation-duration: 1.0s; */
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+@-ms-keyframes roll {
+    from { -ms-transform: rotate(0deg); }
+    to { -ms-transform: rotate(360deg); }
+}
+
+@-moz-keyframes roll {
+    from { -moz-transform: rotate(0deg); }
+    to { -moz-transform: rotate(360deg); }
+}
+
+@-webkit-keyframes roll {
+    from { -webkit-transform: rotate(0deg); }
+    to { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes roll {
+    from {
+        transform:rotate(0deg);
+    }
+    to {
+        transform:rotate(360deg);
+    }
+}
+
+@keyframes moveLeftToRight {
+  0%   { left: -100px; }
+  100% { left: 100%; }
+}
+
+@-moz-keyframes moveLeftToRight {
+  from   { left: -100px; }
+  to     { left: 100%; }
+}
+
+@-webkit-keyframes moveLeftToRight {
+  from   { left: -100px; }
+  to     { left: 100%; }
+}

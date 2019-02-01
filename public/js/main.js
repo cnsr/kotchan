@@ -350,6 +350,8 @@ function set_up_html(){
 
         if (localStorage.name !== undefined) $("#name").val(localStorage.name);
         if (localStorage.spoilers !== undefined) $("#spoilers").prop("checked", localStorage.spoilers === "true");
+
+
         if (localStorage.sounds !== undefined) $("#sounds").prop("checked", localStorage.sounds === "true");
         else $("#sounds").prop("checked", false);
         if (localStorage.selquote !== undefined) $("#selquote").prop("checked", localStorage.selquote === "true");

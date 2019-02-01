@@ -715,6 +715,7 @@ var on_chat = function(d) {};
 var message_sound = new Audio('/js/message.mp3');
 message_sound.load();
 
+
 function ajaxTranslate(textToTranslate, fromLanguage, toLanguage, callback) {
 	var p = {};
 	var apikeys =['98BAFD350ACBE1FE601ABF6274820CC03BAAC1D4', '8E54095330F0B7E7CB73527A50437E6110A64730']; //['9BEE70120363E77B0528A0E24953BFD00F59D58E',
@@ -1784,6 +1785,26 @@ function update_chat(new_data, first_load) {
                 var body = this.parse(rules, /\[\/ree\]/g);
                 o.push($("<article class='shake'/>").append(body));
             }],
+            [/\[roll\]/g, function(m, o) {
+                var body = this.parse(rules, /\[\/roll\]/g);
+                o.push($("<article class='roll'/>").append(body));
+            }],
+            [/\[lspin\]/g, function(m, o) {
+                var body = this.parse(rules, /\[\/lspin\]/g);
+                o.push($("<article class='lspin'/>").append(body));
+            }],
+            [/\[spin\]/g, function(m, o) {
+                var body = this.parse(rules, /\[\/spin\]/g);
+                o.push($("<article class='spin'/>").append(body));
+            }],
+            [/\[hflip\]/g, function(m, o) {
+                var body = this.parse(rules, /\[\/hflip\]/g);
+                o.push($("<article class='hflip'/>").append(body));
+            }],
+            [/\[vflip\]/g, function(m, o) {
+                var body = this.parse(rules, /\[\/vflip\]/g);
+                o.push($("<article class='vflip'/>").append(body));
+            }],
             [/\[color=([#\w]+)\]/g, function(m, o) {
                 var body = this.parse(rules, /\[\/color\]/g);
                 if ($('#spoilers').prop("checked")) {
@@ -1791,6 +1812,10 @@ function update_chat(new_data, first_load) {
                 } else {
                 	o.push($("<span/>").append(body));
                 }
+            }],
+            [/\[rotate=([+-\d]+)\]/g, function(m, o) {
+                var body = this.parse(rules, /\[\/rotate\]/g);
+                o.push($("<article/>").css("transform", "rotate("+m[1]+"deg)").css("display", "inline-block").append(body));
             }],
             [/\[flag\]/g, function(m, o) {
                 var body = this.parse(rules, /\[\/flag\]/g);
@@ -2050,6 +2075,7 @@ function update_chat(new_data, first_load) {
 		    }
 	    }
 	    
+        var post_id = post.attr('id').split("_")[1];
         
         insert_post(post, data.chat);
         if (!first_load) {
@@ -2510,12 +2536,5 @@ $(document).ready(function () {
     });
     
     entry_hash = window.location.hash;
-
-    /*setInterval(function() {
-        $('.shake').toggleClass('shake-vertical');
-        setTimeout(function() {
-            $('.shake').toggleClass('shake-vertical');
-        }, 500);
-    }, 5000);*/
 
 });

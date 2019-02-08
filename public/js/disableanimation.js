@@ -52,7 +52,7 @@ function toggle_animation() {
 
 
 if (localStorage.disableAnimation !== undefined) {
-    $("#disableAnimation").prop("checked", localStorage.disableAnimation === "true");
+    $("#disableAnimation").prop("checked", localStorage.disableAnimation === "false");
     if(localStorage.disableAnimation === "true") disable_animation();
     else enable_animation();
 }

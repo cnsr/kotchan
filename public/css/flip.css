@@ -17,3 +17,21 @@
         -ms-filter: "FlipH";*/
         display: inline-block;
 }
+
+.nonono {
+        display:        inline-block;
+        position:       relative;
+
+        animation:      2000ms nonono;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+}
+
+@keyframes nonono {
+    from {
+        transform: scaleX(1);
+    }
+    to {
+        transform: scaleX(-1);
+    }
+}

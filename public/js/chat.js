@@ -62,7 +62,7 @@ var kot_names = {
     'NO': 'Katt',
     'CZ': 'Kočička',
     'GR': 'Γάτος',
-    'FI': 'Kissa',
+    'FI': 'Mirri',
     'EE': 'Kass',
     'EE': 'Kiisu',
     'LV': 'Kaķis',
@@ -85,6 +85,10 @@ var flags_image_table  = {};
 var flags_hover_strings = {};
 
 //  Table of tripflags
+// lubeck
+flags_image_table["!zPXE6Evt/g"] = "lubeck.png";
+flags_hover_strings["!zPXE6Evt/g"] = "Lübeck";
+
 // lopinion
 flags_image_table["!BC0Huj4r02"] = "lopinion.png";
 flags_hover_strings["!BC0Huj4r02"] = "lopinion";
@@ -1804,6 +1808,10 @@ function update_chat(new_data, first_load) {
             [/\[vflip\]/g, function(m, o) {
                 var body = this.parse(rules, /\[\/vflip\]/g);
                 o.push($("<article class='vflip'/>").append(body));
+            }],
+            [/\[nonono\]/g, function(m, o) {
+                var body = this.parse(rules, /\[\/nonono\]/g);
+                o.push($("<article class='nonono'/>").append(body));
             }],
             [/\[color=([#\w]+)\]/g, function(m, o) {
                 var body = this.parse(rules, /\[\/color\]/g);

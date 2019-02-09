@@ -256,7 +256,7 @@ flags_hover_strings["!sFVo3Hy/qc"] = "ОМСК";
 
 // bsd
 flags_image_table["!jbYpEGafuI"] = "bsd.png";
-flags_hover_strings["!jbYpEGafuI"] = "BSD";
+flags_hover_strings["!jbYpEGafuI"] = "Berkeley Software Distribution";
 
 
 // wawawawaw
@@ -1821,7 +1821,7 @@ function update_chat(new_data, first_load) {
                 	o.push($("<span/>").append(body));
                 }
             }],
-            [/\[rotate=([+-\d]+)\]/g, function(m, o) {
+            [/\[rotate=([+-]{0,1}[\d]+)\]/g, function(m, o) {
                 var body = this.parse(rules, /\[\/rotate\]/g);
                 o.push($("<article/>").css("transform", "rotate("+m[1]+"deg)").css("display", "inline-block").append(body));
             }],

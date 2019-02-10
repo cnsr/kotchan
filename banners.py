@@ -1,13 +1,8 @@
 #!/usr/bin/python
 import os
 
-names = [f for f in os.listdir('public/images/banners/') if f.endswith('png') or f.endswith('jpg')]
+names = [f for f in os.listdir('public/images/banners/') if f.endswith('png') or f.endswith('jpg') or f.endswith('gif')]
 
-data = open('public/js/main.js').read()
-newdata = data.split('// set up banners')[0]
-newdata += "\n// set up banners\n"
-newdata += "var banners = " + repr(names) + ';'
-newdata += "\n// end of banners\n"
-newdata += data.split('// end of banners')[1]
-open('public/js/main.js', 'w').write(newdata)
+newdata = "var banners = " + repr(names) + ';'
+open('public/js/banners.js', 'w').write(newdata)
 

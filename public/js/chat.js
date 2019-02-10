@@ -32,7 +32,6 @@ var devs = ["!!mtmxXFMsB2"];
 /* if you look at source you are essentially helping out, so have some blue colored trips! --> bluerules, testing */
 var default_contribs = ["!!Bk9pc/hnuA"];
 var bots = ["!!Vixfie/c7U"];
-var irc = ["!!SxKC741YKw"];
 
 var kot_names = {
     'RU': 'Кот',
@@ -698,7 +697,7 @@ var color_trips = {'!2kGkudiwr6': 'blue',
     '!zbc0mftbJU': 'gray',
     '!k11/f4Kc0Y': 'white'};
 
-var special_trips = bots.concat(irc).concat(hidden_trips);
+var special_trips = bots.concat(hidden_trips);
 var my_ids = [];
 var contribs = default_contribs;
 var ignored_ids;
@@ -1458,12 +1457,7 @@ function update_chat(new_data, first_load) {
     }
     
     if (changed.country || (special_trips.indexOf(data.trip)>-1)) {
-    	if (data.trip == "!!SxKC741YKw") {
-    		var country = $("<img src='/icons/irc.png' style='height:10px;margin-bottom:1px;'/>");
-	        country_name = "IRC";
-	        post.find(".flag").attr("data-country", country_name);
-	        post.find(".flag").prepend(country);
-	} else if (hidden_trips.indexOf(data.trip) > -1) {
+    	if (hidden_trips.indexOf(data.trip) > -1) {
             if ((data.trip in flags_image_table) && (data.trip in flags_hover_strings)) {
                 var country = $("<img src='/icons/tripflags/" + flags_image_table[data.trip] + "'/>");
                 post.find(".flag").attr("data-country", flags_hover_strings[data.trip]);

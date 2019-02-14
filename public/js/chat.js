@@ -1079,6 +1079,30 @@ function update_chat(new_data, first_load) {
                     post.toggleClass('chat_embed', embedded);// post.find("div.twit").length > 0);
                 });
             }],
+            [/(?:https?:\/\/)?(?:www\.)?(?:coub\.com)\/view\/(\S+)/g, function(m, o) {
+                var main = $("<span/>");
+                var url = m[0][0] == 'y' ? "https://"+m[0] : m[0];
+                var elem = $("<a target='_blank'/>").attr("href", url).text(m[0]);
+                var embed = $("<span>(embed)</span>").css({cursor:"pointer", fontSize:'10px'});
+                main.append(elem, " ", embed);
+                o.push(main);
+                var embedded = false;
+                embed.click(function(e) {
+                    e.stopPropagation();
+                    if (embedded) {
+                        main.find("iframe").remove();
+                    } else {
+                        var cb = $('<iframe allowfullscreen frameborder="0" width="640" height="360" allow="autoplay"></iframe>')
+                            .attr("src", '<iframe src="//coub.com/embed/'+m[1]+'?muted=false&autostart=false&originalSize=false&startWithHD=false" allowfullscreen frameborder="0" width="640" height="360" allow="autoplay"></iframe>')
+                            .css({float:"left", marginRight:'5px'});
+                        main.append(cb);
+                    }
+                    embedded = !embedded;
+                    embed.text(embedded ? "(unembed)" : "(embed)");
+                    var post = main.parents(".chat");
+                    post.toggleClass('chat_embed', post.find("iframe").length > 0);
+                });
+            }],
             [/(?:https?:\/\/)?(?:www\.)?(?:instagram\.com)\/(.*)/g, function(m, o) {
                 var main = $("<span/>");
                 var url = m[0][0] == 'y' ? "https://"+m[0] : m[0];

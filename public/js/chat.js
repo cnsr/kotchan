@@ -1093,7 +1093,7 @@ function update_chat(new_data, first_load) {
                         main.find("iframe").remove();
                     } else {
                         var cb = $('<iframe allowfullscreen frameborder="0" width="640" height="360" allow="autoplay"></iframe>')
-                            .attr("src", '<iframe src="//coub.com/embed/'+m[1]+'?muted=false&autostart=false&originalSize=false&startWithHD=false" allowfullscreen frameborder="0" width="640" height="360" allow="autoplay"></iframe>')
+                            .attr("src", '//coub.com/embed/'+m[1]+'?muted=false&autostart=false&originalSize=false&startWithHD=false')
                             .css({float:"left", marginRight:'5px'});
                         main.append(cb);
                     }

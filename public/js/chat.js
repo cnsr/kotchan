@@ -77,6 +77,7 @@ var kot_names = {
     'PH': 'Pusa',
     'DK': 'Kat',
     'NO': 'Katt',
+    'MA': 'Mušš',
 };
 
 var color_trips = {'!2kGkudiwr6': 'blue',

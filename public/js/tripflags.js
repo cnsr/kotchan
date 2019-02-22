@@ -281,8 +281,8 @@ flags_hover_strings["!jumdZ2a4kM"] = "busstop";
 flags_image_table["!gz90NduqYg"] = "gondola.png";
 flags_hover_strings["!gz90NduqYg"] = "gondola";
 // why worry
-flags_image_table["!BA17NU.jwA"] = "why worry.png";
-flags_hover_strings["!BA17NU.jwA"] = "why worry";
+flags_image_table["!gyc5miadHo"] = "why worry.png";
+flags_hover_strings["!gyc5miadHo"] = "why worry";
 
 // cross
 flags_image_table["!yjvIWhDK7Q"] = "cross.png";

@@ -22,9 +22,9 @@
         display:        inline-block;
         position:       relative;
 
-        animation:      2000ms nonono;
+        animation:      800ms nonono;
         animation-iteration-count: infinite;
-        animation-timing-function: linear;
+        animation-timing-function: steps(2, jump-none);
 }
 
 @keyframes nonono {

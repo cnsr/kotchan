@@ -1417,6 +1417,9 @@ function update_chat(new_data, first_load) {
             [/\*POPCORN\*/g, function(m, o) {
                 o.push($("<img/>").attr("src", "/icons/smiles/dw.gif"));
             }],
+            [/\*PARDON\*/g, function(m, o) {
+                o.push($("<img/>").attr("src", "/icons/smiles/pardon.gif"));
+            }],
         ];
         rules = rules.concat(smiles);
         var body = new Parser(data.body).parse(rules);

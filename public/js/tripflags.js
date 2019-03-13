@@ -2,6 +2,10 @@ var flags_image_table  = {};
 var flags_hover_strings = {};
 
 //  Table of tripflags
+// pruned
+flags_image_table["!WbtVwFGbS6"] = "pruned.png";
+flags_hover_strings["!WbtVwFGbS6"] = "pruned";
+
 // lubeck
 flags_image_table["!zPXE6Evt/g"] = "lubeck.png";
 flags_hover_strings["!zPXE6Evt/g"] = "Lübeck";

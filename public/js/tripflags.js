@@ -2,6 +2,13 @@ var flags_image_table  = {};
 var flags_hover_strings = {};
 
 //  Table of tripflags
+// bavka
+flags_image_table["!1o97TR8.wI"] = "bavka.png";
+flags_hover_strings["!1o97TR8.wI"] = "bavka";
+// china
+flags_image_table["!BxtJQeQrI6"] = "china.png";
+flags_hover_strings["!BxtJQeQrI6"] = "china";
+
 // pruned
 flags_image_table["!WbtVwFGbS6"] = "pruned.png";
 flags_hover_strings["!WbtVwFGbS6"] = "pruned";

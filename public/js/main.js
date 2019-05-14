@@ -18,8 +18,8 @@
 
 var auto_post = false;
 var last_post = "";
-var cool_down_timer = 0;
-var cool_down_interval;
+var cool_down_timer = true ;
+var cool_down_interval = 1000;
 var admin_mode = false;
 var admin_pass = ""; // pass to auth with server for admin commands, set by /admin command
 var highlight_regex = /.^/; // matches nothing

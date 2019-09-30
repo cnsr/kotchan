@@ -152,10 +152,14 @@ $(document).ready(function () {
         if (html5) localStorage.sounds = $(this).prop("checked");
     });
 
+    $('#sounds_onyou').change(function () {
+        if (html5) localStorage.sounds_onyou = $(this).prop("checked");
+    });
+
     $('#selquote').change(function () {
         if (html5) localStorage.selquote = $(this).prop("checked");
     });
-    
+
     $('#bbcode').change(function () {
         if (html5) localStorage.bbcode = $(this).prop("checked");
         if($(this).prop("checked")) $('#bbcode_buttons').show();
@@ -164,6 +168,14 @@ $(document).ready(function () {
 
     $('#volume').change(function () {
         if (html5) localStorage.volume = $(this).val();
+    });
+
+    $('#image_paste_quality').change(function () {
+        if (html5) localStorage.image_paste_quality = $(this).val();
+    });
+
+    $('#image_paste_format').change(function () {
+        if (html5) localStorage.image_paste_format = $(this).val();
     });
 
     $('#board_select').change(function () {
@@ -351,9 +363,26 @@ function set_up_html(){
         if (localStorage.name !== undefined) $("#name").val(localStorage.name);
         if (localStorage.spoilers !== undefined) $("#spoilers").prop("checked", localStorage.spoilers === "true");
 
+	if (localStorage.image_paste_quality !== undefined) {
+	    $("#image_paste_quality").val(localStorage.image_paste_quality);
+	} else {
+	    localStorage.image_paste_quality = 1.0;
+	    $("#image_paste_quality").val(localStorage.image_paste_quality);
+	}
 
+	if (localStorage.image_paste_format !== undefined) {
+	    $("#image_paste_format").val(localStorage.image_paste_format);
+	} else {
+	    localStorage.image_paste_format = "jpeg";
+	    $("#image_paste_format").val(localStorage.image_paste_format);
+	}
         if (localStorage.sounds !== undefined) $("#sounds").prop("checked", localStorage.sounds === "true");
         else $("#sounds").prop("checked", false);
+        if (localStorage.sounds_onyou !== undefined) $("#sounds_onyou").prop("checked", localStorage.sounds_onyou === "true");
+        else $("#sounds_onyou").prop("checked", false);
+	if (localStorage.volume !== undefined) $("#volume").val(localStorage.volume);
+	//$("#volume").val(1);
+	//$("#sounds").prop("checked", true);
         if (localStorage.selquote !== undefined) $("#selquote").prop("checked", localStorage.selquote === "true");
         else $("#selquote").prop("checked", false);
         if (localStorage.bbcode !== undefined) $("#bbcode").prop("checked", localStorage.bbcode === "true");
@@ -362,9 +391,9 @@ function set_up_html(){
         else $('#bbcode_buttons').hide();
         if (localStorage.theme !== undefined) $("#theme_select").val(localStorage.theme);
         if (localStorage.clearConvo !== undefined) $("#clearconvo").prop("checked", localStorage.clearConvo === "true");
-        if (localStorage.volume !== undefined) $("#volume").val(localStorage.volume);
-		if (localStorage.hidden !== undefined) hidden = localStorage.hidden;
-		if (localStorage.highlight_regex !== undefined) highlight_regex = localStorage.highlight_regex;
+        
+	if (localStorage.hidden !== undefined) hidden = localStorage.hidden;
+	if (localStorage.highlight_regex !== undefined) highlight_regex = localStorage.highlight_regex;
         if (localStorage.max_chats !== undefined) max_chats = localStorage.max_chats;
 
         cool_down_timer = localStorage.cool_down_timer ? parseInt(localStorage.cool_down_timer) : 0;
@@ -812,27 +841,27 @@ function submit_chat() {
             }
             break; 
         case "stream":
-        		var tempName = Math.random().toString(36).substring(2);
-        		var options = "";
-        		if (param) {
-	        		if (param == "webcam") {
-		        		options = "&type=1";
-	        		} else if (param == "desktop") {
-		        		options = "&type=0";
-	        		}
-        		}
-        		window.open('https://' + document.location.host + '/js/stream/cam.html?name=' + tempName + options, tempName, "width=800, height=600");
-        		var el = $("#body")[0];
-        		var tempHash = Sha256.hash(tempName);
-		    		el.value += 'stream: '+'https://' + document.location.host + '/js/stream/cam.html?hash=' + tempHash;
-        		break;
+                var tempName = Math.random().toString(36).substring(2);
+                var options = "";
+                if (param) {
+                    if (param == "webcam") {
+                        options = "&type=1";
+                    } else if (param == "desktop") {
+                        options = "&type=0";
+                    }
+                }
+                window.open('https://' + document.location.host + '/js/stream/cam.html?name=' + tempName + options, tempName, "width=800, height=600");
+                var el = $("#body")[0];
+                var tempHash = Sha256.hash(tempName);
+                    el.value += 'stream: '+'https://' + document.location.host + '/js/stream/cam.html?hash=' + tempHash;
+                break;
         case "c":
         case "cache":
             if (param) {
                 max_chats = parseInt(param);
                 if (!(max_chats > 0)) { max_chats = 100; }
                 if (localStorage) {
-	                localStorage.max_chats = max_chats;
+                    localStorage.max_chats = max_chats;
                 }
             } else {
                 div_alert("usage: /highlight [javascript regex]");
@@ -840,10 +869,10 @@ function submit_chat() {
             break;
         /*case "plugin":
             var el = $("#body")[0];
-		    var text = "[plugin]\n[title]My Plugin[/title]\n"+
-		    "[script]\n\n[/script]\n"+
-		    "[html]\n\n[/html]\n[/plugin]";
-		    el.value = text;
+            var text = "[plugin]\n[title]My Plugin[/title]\n"+
+            "[script]\n\n[/script]\n"+
+            "[html]\n\n[/html]\n[/plugin]";
+            el.value = text;
             break;*/
         case "delete":
             prompt_password(function(password) {
@@ -896,10 +925,14 @@ function submit_chat() {
         case "p":
         case "priv":
             param = param.split(' ');
+            let name = $("#name")[0].value;
+            name = name == "" ? "Kot" : name;
+            let name_index = name.indexOf("#");
+            name = name_index == -1 ? name : name.slice(0,name_index);
             $.ajax({
                 type: "POST",
                 url: '/priv',
-                data: {id: param[0], text: param.splice(1).join(' ')}
+                data: {id: param[0], text: param.splice(1).join(' '), name: name}
             }).done(function (data_delete) {
                 if(data_delete.success)
                     div_alert("success");
@@ -911,17 +944,17 @@ function submit_chat() {
             alert(param);
             break;
         case "ignore":
-        	var chat_count = parseInt(param);
-        	if (chat_count !== NaN) {
-        		console.log(chat_count, chat[chat_count]);
-	        	ignored_ids.push(chat[chat_count].identifier);
-	        	localStorage.ignored_ids = JSON.stringify(ignored_ids);
-        	}
-					break;
-				case "unignore":
-	        localStorage.ignored_ids = JSON.stringify([]);
-	        ignored_ids = [];
-					break;
+            var chat_count = parseInt(param);
+            if (chat_count !== NaN) {
+                console.log(chat_count, chat[chat_count]);
+                ignored_ids.push(chat[chat_count].identifier);
+                localStorage.ignored_ids = JSON.stringify(ignored_ids);
+            }
+                    break;
+                case "unignore":
+            localStorage.ignored_ids = JSON.stringify([]);
+            ignored_ids = [];
+                    break;
         case "refresh":
             prompt_password(function(password) {
                 if (password) {
@@ -966,12 +999,26 @@ function submit_chat() {
             data.append("image", submit_file, submit_filename);
         }
         $.ajax({
+            xhr: function() {
+                var xhr = new window.XMLHttpRequest();
+                xhr.upload.addEventListener("progress",function(event) {
+                    if (event.lengthComputable) {
+                        var button = document.getElementById("submit_button")
+                        var percent = (event.loaded / event.total) * 100;
+                        button.value = "Submit ("+Math.floor(percent)+"%)"
+                    }
+                },false)
+                return xhr;
+            },
             type: "POST",
             url: $("#comment-form").attr("action"),
             dataType: "json",
             data: data,
             contentType: false,
-            processData: false
+            processData: false,
+            success: function() {
+                document.getElementById("submit_button").value = "Submit";
+            }
         }).done(handle_post_response);
     } else {
         $("#comment-form").submit();
@@ -1076,4 +1123,3 @@ function wrapText(openTag) {
     }
     return false;
 }
-

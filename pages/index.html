@@ -40,27 +40,38 @@
 			-->
 
 		</select>
-        <span id="user_count" class="left_float" style="padding-left:5px;"></span>
-        <span id="tabs"class="left_float"></span>
-		<button id="settings_button" class="right_float">Settings</button>
-        <a href="https://map.kotchan.org/" class="right_float" style="margin-right:6px;">Poster&nbsp;map</a>
-        <!--a href="http://webm.kotchan.org/" class="right_float" style="margin-right:6px;">Webms</a-->
-        <a href="https://map.kotchan.org/help" class="right_float" style="margin-right:6px;">Help</a>
-        <a href="https://radio.kotchan.org/" class="right_float" style="margin-right:6px;">Radio</a>
-        <span id="radio_track" class="right_float" style="margin-right:6px;overflow:hidden;"></span>
-
+	    <span id="user_count" class="left_float" style="padding-left:5px;"></span>
+	    <span id="tabs" class="left_float"></span>
+	    <button id="settings_button" class="right_float">Settings</button>
+	    <a href="https://map.kotchan.org/" class="right_float" style="margin-right:6px;">Poster&nbsp;map</a>
+	    <!--a href="http://webm.kotchan.org/" class="right_float" style="margin-right:6px;">Webms</a-->
+	    <a href="https://map.kotchan.org/help" class="right_float" style="margin-right:6px;">Help</a>
+	    <a href="https://radio.kotchan.org/" class="right_float" style="margin-right:6px;">Radio</a>
+	    <span id="radio_track" class="right_float" style="margin-right:6px;overflow:hidden;"></span>
 	</header>
 	<nav class="settings_nav hidden">
 		<ul class="settings_list">
-		<li><input type="checkbox" id="disableanimation" class="input_checkbox" value="checked"/> <label for="disableanimation" style="font-size:14px" >Disable animation</label></li>
+		<li><input type="checkbox" id="disableanimation" class="input_checkbox" value="checked"/> <label for="disableanimation" style="font-size:14px" >Disable anime</label></li>
 		<li><input type="checkbox" id="autoscroll" class="input_checkbox" checked value="checked"/> <label for="autoscroll" style="font-size:14px" >Auto scroll</label></li>
-		<li><input type="checkbox" id="sounds" class="input_checkbox" checked value="checked"/> <label for="sounds" style="font-size:14px" >Sounds</label></li>
+		<li><input type="checkbox" id="sounds" class="input_checkbox" checked value="checked"/> <label for="sounds" style="font-size:14px" >Sounds on new messages</label></li>
+		<li><input type="checkbox" id="sounds_onyou" class="input_checkbox" checked value="checked"/> <label for="sounds_onyou" style="font-size:14px" >Sounds on (You)</label></li>
 		<li><input type="checkbox" id="selquote" class="input_checkbox" checked value="checked"/> <label for="selquote" style="font-size:14px" >Select to quote</label></li>
 		<li><input type="checkbox" id="bbcode" class="input_checkbox" checked value="checked"/> <label for="bbcode" style="font-size:14px" >bbcode buttons</label></li>
 		<li><input type="checkbox" id="clearconvo" class="input_checkbox" checked value="checked"/> <label for="clearconvo" style="font-size:14px" >Clear convo on submit</label></li>
 		<li><input type="checkbox" id="autosubmit" class="input_checkbox" checked value="checked"/> <label for="autosubmit" style="font-size:14px" >Submit on enter</label></li>
 		<li><input type="checkbox" id="spoilers" class="input_checkbox" checked value="checked"/> <label for="spoilers" style="font-size:14px" >Spoilers</label></li>
 		<li><input type="range" id="volume" class="input_range" min="0" max="1" step="0.01" value="1"/> <label for="volume" style="font-size:14px" >Volume</label></li>
+		<li><input type="range" id="image_paste_quality" class="input_range" min="0" max="1" step="0.05" value="1"/> <label for="image_paste_quality" style="font-size:14px" >Image quality</label></li>
+		
+
+        <li><select id="image_paste_format" class="input_select">
+                    <option value="jpeg" selected>jpeg</option>
+                    <option value="png">png</option>
+                    <!--<option value="gif">gif</option>-->
+                    <!--<option value="bmp">bmp</option>-->
+                    <!--<option value="webp">webp</option>-->
+        </select><label for="image_paste_format" style="font-size:14px" >Image ctrl+v format</label></li>
+
         <li><select id="thumbnail_mode" class="input_select">
                     <option value="links-only">Image links only</option>
                     <option value="static" selected>Static thumbnails</option>
@@ -82,11 +93,11 @@
 			<option value="/krautchan.css">krautchan</option>
 			<option value="/terminal.css">terminal</option>
 		</select></li>
-		<li><button id='sidebar_hider'>hide sidebar</button></li>
+		<li><button id="sidebar_hider">hide sidebar</button></li>
 		</ul>
 	</nav>
 	<section class="home_screen">
-			<article class="chat" id="chat_boards" style="opacity: 1;">
+		<article class="chat" id="chat_boards" style="opacity: 1;">
 	        <section class="chat_file" style="display: none;">File:
 	            <a class="file_link" target="_blank"></a>
 	            <output class="file_data"></output>
@@ -95,7 +106,7 @@
 	        <output class="chat_body" style="text-align: center;display: block;background:#ada8fa;">
 	        	            <br>
 
-	         <img src='/images/witch.jpg' height="609" class='livechan_banner'></img>
+	        <img src="/images/witch.jpg" height="609" class="livechan_banner" alt="Kotchan banner"></img>
 	        <nav class="container" style="text-align:center;">
 	         	               <a class="link homescreen" href="/chat/int">international - /int </a>
 	         	               <!--a class="link homescreen" href="/chat/pl">Polska - /pl </a-->
@@ -231,7 +242,7 @@ backup domains: <a href="http://kotchan.ga">kotchan.ga</a> , <a href="http://deb
 	    <script src="/js/sticker_list.js"></script>
         <script src="/js/stickers.js"></script>
         <script src="/js/paste.js"></script>
-        <script src="/js/radio_track.js"></script>
+        <!--<script src="/js/radio_track.js"></script>-->
         <script src="/js/disableanimation.js"></script>
         
     <div id="stickers">

@@ -2,6 +2,48 @@ var flags_image_table  = {};
 var flags_hover_strings = {};
 
 //  Table of tripflags
+// proohh
+flags_image_table["!l4IdVYy2o2"] = "proohh.png";
+flags_hover_strings["!l4IdVYy2o2"] = "proohh";
+// anarchy
+flags_image_table["!hLL4vKPSQM"] = "anarchy.png";
+flags_hover_strings["!hLL4vKPSQM"] = "anarchy";
+
+// psyop
+flags_image_table["!q3IuIuUKDY"] = "psyop.png";
+flags_hover_strings["!q3IuIuUKDY"] = "psyop";
+
+// clover
+flags_image_table["!ODmtHj3GLQ"] = "clover.png";
+flags_hover_strings["!ODmtHj3GLQ"] = "clover";
+
+// hr
+flags_image_table["!SqbRHgDDSE"] = "hr.png";
+flags_hover_strings["!SqbRHgDDSE"] = "hr";
+// fzero
+flags_image_table["!f8n9LS2FnE"] = "fzero.png";
+flags_hover_strings["!f8n9LS2FnE"] = "fzero";
+// screwattack
+flags_image_table["!tWJmC7UnZc"] = "screwattack.png";
+flags_hover_strings["!tWJmC7UnZc"] = "screwattack";
+// bandana
+flags_image_table["!DgoStaisz2"] = "bandana.png";
+flags_hover_strings["!DgoStaisz2"] = "bandana";
+// triforce
+flags_image_table["!JtRtdjRz/k"] = "triforce.png";
+flags_hover_strings["!JtRtdjRz/k"] = "triforce";
+// seki
+flags_image_table["!eU1qN.ie8."] = "seki.png";
+flags_hover_strings["!eU1qN.ie8."] = "seki";
+// kuruminha
+flags_image_table["!v2AF99kgR2"] = "kuruminha.png";
+flags_hover_strings["!v2AF99kgR2"] = "kuruminha";
+
+// kwkot
+flags_image_table["!4bLAS2tf9I"] = "kwkot.png";
+flags_hover_strings["!4bLAS2tf9I"] = "kwkot";
+
+
 // bavka
 flags_image_table["!1o97TR8.wI"] = "bavka.png";
 flags_hover_strings["!1o97TR8.wI"] = "bavka";

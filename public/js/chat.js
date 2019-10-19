@@ -110,7 +110,9 @@ var special_countries;
 var on_chat = function(d) {};
 
 var message_sound = new Audio('/js/message.mp3');
+var message_sound_onyou = new Audio('/js/message_onyou.ogg');
 message_sound.load();
+message_sound_onyou.load();
 
 
 function ajaxTranslate(textToTranslate, fromLanguage, toLanguage, callback) {
@@ -330,8 +332,15 @@ function quote_link(dest) {
     link.attr("href", "#" + dest);
     link.data("dest", dest);
     link.text(function () {
-        //message_sound.play();
-        return ">>" + dest + (($.inArray(dest, my_ids) > -1) ? " (You)" : "");
+        if ($.inArray(dest, my_ids) > -1) {
+            if($("#sounds_onyou").prop('checked')){
+                message_sound_onyou.play();
+            }
+            //message_sound.play();
+            return ">>" + dest + " (You)";
+        } else {
+            return ">>" + dest;
+        }
     });
     link.click(quote_click);
     link.mouseover(quote_mouseover);
@@ -841,6 +850,7 @@ function update_chat(new_data, first_load) {
     if (changed.name) {
         post.find(".name_part").text(data.name);
     }
+    
     
     if (changed.identifier) {
     	post.find(".chat_identifier")

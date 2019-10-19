@@ -376,13 +376,26 @@ function set_up_html(){
 	    localStorage.image_paste_format = "jpeg";
 	    $("#image_paste_format").val(localStorage.image_paste_format);
 	}
-        if (localStorage.sounds !== undefined) $("#sounds").prop("checked", localStorage.sounds === "true");
-        else $("#sounds").prop("checked", false);
-        if (localStorage.sounds_onyou !== undefined) $("#sounds_onyou").prop("checked", localStorage.sounds_onyou === "true");
-        else $("#sounds_onyou").prop("checked", false);
-	if (localStorage.volume !== undefined) $("#volume").val(localStorage.volume);
+
 	//$("#volume").val(1);
 	//$("#sounds").prop("checked", true);
+        //$("#sounds_onyou").prop("checked", true);
+/*
+*---------------------------------------------------
+*	Why does this keep gettin commented out?
+*---------------------------------------------------
+*/
+
+
+        if (localStorage.sounds !== undefined) {
+		$("#sounds").prop("checked", localStorage.sounds === "true");
+	}
+       // } else {
+	//	$("#sounds").prop("checked", false);
+	
+        if (localStorage.sounds_onyou !== undefined) $("#sounds_onyou").prop("checked", localStorage.sounds_onyou === "true");
+        //else $("#sounds_onyou").prop("checked", false);
+	if (localStorage.volume !== undefined) $("#volume").val(localStorage.volume);
         if (localStorage.selquote !== undefined) $("#selquote").prop("checked", localStorage.selquote === "true");
         else $("#selquote").prop("checked", false);
         if (localStorage.bbcode !== undefined) $("#bbcode").prop("checked", localStorage.bbcode === "true");

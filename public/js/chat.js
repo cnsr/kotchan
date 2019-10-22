@@ -102,6 +102,7 @@ var blink;
 var unread_chats = 0;
 var title = "";
 var max_chats = 100;
+if (localStorage.max_chats !== undefined) max_chats = localStorage.max_chats;
 
 var chat_id = "";
 var linked_post = "";

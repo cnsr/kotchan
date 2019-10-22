@@ -16,6 +16,8 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>. 
 */
 // for tabs
+
+var is_mobile = (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
 var all_chats = {};
 
 var chat = {};
@@ -101,7 +103,7 @@ var window_alert;
 var blink;
 var unread_chats = 0;
 var title = "";
-var max_chats = 100;
+var max_chats = is_mobile?10:100;
 if (localStorage.max_chats !== undefined) max_chats = localStorage.max_chats;
 
 var chat_id = "";

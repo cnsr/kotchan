@@ -387,14 +387,11 @@ function set_up_html(){
 */
 
 
-        if (localStorage.sounds !== undefined) {
-		$("#sounds").prop("checked", localStorage.sounds === "true");
-	}
-       // } else {
-	//	$("#sounds").prop("checked", false);
+        if (localStorage.sounds !== undefined) $("#sounds").prop("checked", localStorage.sounds === "true");
+	    else $("#sounds").prop("checked", false);
 	
         if (localStorage.sounds_onyou !== undefined) $("#sounds_onyou").prop("checked", localStorage.sounds_onyou === "true");
-        //else $("#sounds_onyou").prop("checked", false);
+        else $("#sounds_onyou").prop("checked", false);
 	if (localStorage.volume !== undefined) $("#volume").val(localStorage.volume);
         if (localStorage.selquote !== undefined) $("#selquote").prop("checked", localStorage.selquote === "true");
         else $("#selquote").prop("checked", false);

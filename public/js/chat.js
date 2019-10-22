@@ -1806,7 +1806,8 @@ function set_channel(new_channel, new_post, no_push_state, tab) {
         }).done(function (data_convo) {
             $.ajax({
                 type: "GET",
-                url: "/data/" + new_channel
+                url: "/data/" + new_channel,
+                data: {limit: max_chats}
             }).done(function (data_chat) {
                 draw_data = draw_data.concat(data_convo, data_chat);
                 draw_data.sort(function(a, b) {return b.count - a.count;});

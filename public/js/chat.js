@@ -1663,7 +1663,8 @@ function split_channel(channel){
 function pull_chats(channel, convo) {
 	$.ajax({
         type: "GET",
-        url: "/data/" + channel + '?limit=' + max_chats
+        url: "/data/" + channel,
+        data: {limit: max_chats}
     }).done(function (data_chat) {
         draw_data = draw_data.concat(data_convo, data_chat);
         draw_data.sort(function(a, b) {return b.count - a.count;});

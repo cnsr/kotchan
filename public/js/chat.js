@@ -578,7 +578,6 @@ function generate_post(id) {
                 	"[<output class='delete_part'>delete</output> - "+
                 	"<output class='wipe_part'>wipe</output> - "+
                 	"<output class='warn_part'>warn</output> - "+
-                	"<output class='move_part'>move</output> - "+
                 	"<output class='ban_part'>ban</output> - "+
                 	"<output class='country_part'>country</output>]"+
                 "</output>" +
@@ -617,13 +616,6 @@ function generate_post(id) {
                 return;
             mod_warn_poster(id, admin_pass);
         });
-        
-    post.find(".move_part")
-        .click(function() {
-            if (!window.confirm("Are you sure you want to move this post?"))
-                return;
-            mod_move_post(id, admin_pass);
-        });   
              
     post.find(".ban_part")
         .click(function() {

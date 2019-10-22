@@ -508,35 +508,6 @@ function div_alert(message, add_button, div_id) {
     $('.chats:first').append(alert_div);
 }
 
-/* spawns a plugin */
-var plugin;
-function spawn_plugin(script_text,elem_html){
-	if (!confirm("Livechan is not responsible for the scripts in this plugin. Are you sure you want to continue?")) return;
-	if (plugin) {
-		plugin.remove();
-	}
-	plugin = $('<div>');
-	plugin.addClass('chat_plugin');
-	var close = $('<div>');
-	close.addClass('chat_plugin_close link');
-	close.text('X');
-	close.click(function(){
-		plugin.remove();
-	})
-
-	var plugin_html = $('<div>');
-	var script = $('<script>');
-
-	script.html(script_text);
-	plugin_html.html(elem_html);
-	
-	plugin.prepend(script);
-	plugin.append(plugin_html);
-	plugin.append(close);
-
-	$('.chats_container').prepend(plugin);
-}
-
 
 /* clear input fields */
 function clear_fields() {
@@ -752,27 +723,6 @@ function mod_pin_post(id, password)
     });
 }
 
-function mod_move_post(id, password)
-{
-    if(!password || password.length <= 0 || !id || id.length <= 0)
-    {
-        console.log("mod_warn_poster: invalid param");
-        return;
-    }
-    
-    var convo = window.prompt("Convo to move to","");
-    $.ajax({
-        type: "POST",
-        url: '/move',
-        data: {password: password, id: id, convo: convo}
-    }).done(function (post_move) {
-        if(post_move.success)
-            div_alert("success");
-        else
-            div_alert("failure");
-    });
-}
-
 function mod_ban_poster(id, board, password)
 {
     if(!password || password.length <= 0 || !id || id.length <= 0 || !board || board.length <= 0)
@@ -884,13 +834,6 @@ function submit_chat() {
                 div_alert("usage: /highlight [javascript regex]");
             }
             break;
-        /*case "plugin":
-            var el = $("#body")[0];
-            var text = "[plugin]\n[title]My Plugin[/title]\n"+
-            "[script]\n\n[/script]\n"+
-            "[html]\n\n[/html]\n[/plugin]";
-            el.value = text;
-            break;*/
         case "delete":
             prompt_password(function(password) {
                 mod_delete_post(param, password);

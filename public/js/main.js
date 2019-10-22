@@ -760,11 +760,11 @@ function mod_move_post(id, password)
         return;
     }
     
-    var chat_room = window.prompt("Channel to move to","");
+    var convo = window.prompt("Convo to move to","");
     $.ajax({
         type: "POST",
         url: '/move',
-        data: {password: password, id: id, chat_room: chat_room}
+        data: {password: password, id: id, convo: convo}
     }).done(function (post_move) {
         if(post_move.success)
             div_alert("success");

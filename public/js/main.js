@@ -50,6 +50,12 @@ navigator.getMedia = (
     navigator.msGetUserMedia
 );
 
+function on_delete(data) {
+    var chat_id = parseInt(data['count']);
+    delete chat[chat_id];
+    $('#chat_'+chat_id).remove();
+}
+
 /* stuff to do on load */
 $(document).ready(function () {
     "use strict";
@@ -57,6 +63,7 @@ $(document).ready(function () {
     /* set up socket */
     socket = io.connect('/', {secure: (location.protocol === "https:")});
     socket.on('chat', function(data) {on_chat(data);});
+    socket.on('delete', function(chat_id) {on_delete(chat_id);});
     socket.on('alert', div_alert);
     socket.on('silent', silent_poster);
     socket.on('refresh', function() {setTimeout(function(){location.reload();},5000);});

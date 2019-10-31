@@ -31,8 +31,7 @@
     "async": "0.2.10",
     "socket.io-stream": "0.5.2",
     "read": "1.0.5",
-    "geoip": "*",
-    "sse-express": "^1.0.2"
+    "geoip": "*"
   },
   "devDependencies": {
     "bower": "1.2.8",

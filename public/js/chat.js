@@ -1252,6 +1252,7 @@ function split_channel(channel){
 
 /* pulls the data */
 function pull_chats(new_channel) {
+    var draw_data=[];
     on_chat = function(data) {
         draw_data.push(data);
     }

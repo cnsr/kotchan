@@ -61,19 +61,45 @@ $(document).ready(function () {
     "use strict";
 
     /* set up socket */
-    socket = io.connect('/', {secure: (location.protocol === "https:")});
-    socket.on('chat', function(data) {on_chat(data);});
-    socket.on('delete', function(chat_id) {on_delete(chat_id);});
-    socket.on('alert', div_alert);
-    socket.on('silent', silent_poster);
-    socket.on('refresh', function() {setTimeout(function(){location.reload();},5000);});
-    
-    socket.on('disconnect', function(){create_server_post('You have been disconnected from the server, attempting to reconnect...');});
-    socket.on('reconnect', function(){var old_id = chat_id; chat_id = "home"; set_channel(old_id); setTimeout(function(){create_server_post('Reconnected!')}, 2*1000);});
-    socket.on('user_count', function(data){
-        var s = data == 1 ? "" : "s";
-        $("#user_count").text(data+" user"+s);
-     });
+        socket = {emit: function(){}}
+
+        socket = io.connect('/', {secure: (location.protocol === "https:")});
+        if(localStorage.sse == 'sse') {
+            var evtSource = new EventSource('/messages');
+            evtSource.addEventListener('event', function(evt) {
+                on_chat(JSON.parse(evt.data));
+            },false);
+        } else {
+            socket.on('chat', function (data) {
+                on_chat(data);
+            });
+        }
+        socket.on('delete', function (chat_id) {
+            on_delete(chat_id);
+        });
+        socket.on('alert', div_alert);
+        socket.on('silent', silent_poster);
+        socket.on('refresh', function () {
+            setTimeout(function () {
+                location.reload();
+            }, 5000);
+        });
+
+        socket.on('disconnect', function () {
+            create_server_post('You have been disconnected from the server, attempting to reconnect...');
+        });
+        socket.on('reconnect', function () {
+            var old_id = chat_id;
+            chat_id = "home";
+            set_channel(old_id);
+            setTimeout(function () {
+                create_server_post('Reconnected!')
+            }, 2 * 1000);
+        });
+        socket.on('user_count', function (data) {
+            var s = data == 1 ? "" : "s";
+            $("#user_count").text(data + " user" + s);
+        });
     /* key bindings for actions */
     $("#name").keydown(function (event) {
         if (event.keyCode === 13) {

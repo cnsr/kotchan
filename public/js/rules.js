@@ -410,21 +410,6 @@ function apply_rules(data, post, id) {
     var body = new Parser(data.body).parse(rules);
     post.find(".chat_body").empty().append(body);
 
-    var for_you = /\(You\)/.test(post.find(".quote_link").text());
-
-    if (for_you) {
-        post.toggleClass("chat_highlight", true);
-    }
-
-    if (admin_pass != "" && /(admin|dev(eloper)?)/.test(post.find(".chat_body").text().toLowerCase())) {
-        post.toggleClass("chat_highlight", true);
-        for_you = true;
-    }
-
-    if (highlight_regex && highlight_regex.test(post.find(".chat_body").text().toLowerCase())) {
-        post.toggleClass("chat_highlight", true);
-        for_you = true;
-    }
 
     // Create new backlinks
     $(ref_ids).each(function () {

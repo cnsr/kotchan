@@ -28,7 +28,6 @@ var convo_map = {};
 var highlighted_convos = ["General"];
 var start_press; // for long press detection
 var longpress = 400;
-var scroll_timeout = null;
 
 var admins = ["Status","!!U6hZeQd.Tc"]; // first trip here is used for server status posts
 var devs = ["!!mtmxXFMsB2"];
@@ -1221,7 +1220,7 @@ function split_channel(channel){
 }
 
 /* pulls the data */
-function pull_chats(new_channel) {
+function pull_chats(new_channel, new_post) {
     var draw_data=[];
     on_chat = function(data) {
         draw_data.push(data);
@@ -1254,9 +1253,8 @@ function pull_chats(new_channel) {
                     }
                 }
             };
-            clearInterval(scroll_timeout);
-            scroll_timeout = setTimeout(function () {
-                if (new_post !== "") {
+            setTimeout(function () {
+                if (new_post) {
                     if ($("#chat_" + linked_post).length) $("#chat_" + linked_post)[0].scrollIntoView();
                 } else {
                     scroll();
@@ -1366,7 +1364,7 @@ function set_channel(new_channel, new_post, no_push_state, tab) {
         socket.emit('subscribe', new_channel);
 
         // get posts
-        pull_chats(new_channel);
+        pull_chats(new_channel, new_post);
     } else {
         $('.chats').append($('.home_screen').contents().clone());
         $('.chats').toggleClass('shown', true);

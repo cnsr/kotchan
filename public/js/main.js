@@ -830,6 +830,7 @@ function submit_chat() {
                 if (localStorage) {
                     localStorage.max_chats = max_chats;
                 }
+                pull_chats(chat_id);
             } else {
                 div_alert("usage: /highlight [javascript regex]");
             }

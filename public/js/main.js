@@ -67,7 +67,9 @@ $(document).ready(function () {
         if(localStorage.sse == 'sse') {
             var evtSource = new EventSource('/messages');
             evtSource.addEventListener('event', function(evt) {
-                on_chat(JSON.parse(evt.data));
+                var data = JSON.parse(evt.data);
+                on_chat(data);
+                console.log(data);
             },false);
         } else {
             socket.on('chat', function (data) {

@@ -1,4 +1,4 @@
-function apply_rules(data) {
+function apply_rules(data, post) {
 
     var ref_ids = [];
     var rules = [

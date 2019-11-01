@@ -1023,7 +1023,7 @@ function update_chat(new_data, first_load) {
 
         // Process body markup
 
-        apply_rules();
+        apply_rules(data);
     }
 
     if (new_post) {

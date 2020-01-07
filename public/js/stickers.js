@@ -57,7 +57,14 @@ function put_sticker(val){
     last_stickers.unshift(val);
     if(last_stickers.length>15) last_stickers.pop();
     localStorage['stickers']=JSON.stringify(last_stickers);
-    $('#body').val($('#body').val() + '[st]' + val + '[/st]');
+    // $('#body').val($('#body').val() + '[st]' + val + '[/st]');
+    var pos = $('#body').prop('selectionStart');
+    var text = $('#body').val();
+    $('#body').val(
+            text.substring(0, pos) +
+            '[st]' + val + '[/st]' +
+            text.substring(pos, text.length)
+    );
     $('#stickers').hide();
     $('#body').focus();
 }

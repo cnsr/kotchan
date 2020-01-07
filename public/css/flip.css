@@ -24,14 +24,15 @@
 
         animation:      800ms nonono;
         animation-iteration-count: infinite;
-        animation-timing-function: steps(2, jump-none);
+        /*animation-timing-function: steps(2, jump-none);*/
+        animation-timing-function: step-end;
 }
 
 @keyframes nonono {
-    from {
+    0% {
         transform: scaleX(1);
     }
-    to {
+    50% {
         transform: scaleX(-1);
     }
 }

@@ -102,6 +102,13 @@ $(document).ready(function () {
             var s = data == 1 ? "" : "s";
             $("#user_count").text(data + " user" + s);
         });
+        socket.on('geoip_data', function(data) {
+            if (localStorage.name === undefined || localStorage.name == "") {
+                localStorage.name = kot_names[data.country.split('-')[0]] || 'Kot';
+                $("#name").val(localStorage.name);
+            }
+        });
+        socket.emit('geoip_data');
     /* key bindings for actions */
     $("#name").keydown(function (event) {
         if (event.keyCode === 13) {
@@ -395,7 +402,10 @@ function set_up_html(){
         }*/
 
 
-        if (localStorage.name !== undefined) $("#name").val(localStorage.name);
+        if (localStorage.name !== undefined) 
+            $("#name").val(localStorage.name);
+//        else
+//            localStorage.name = kot_names[new_data.country.split('-')[0]] || 'Kot';
         if (localStorage.spoilers !== undefined) $("#spoilers").prop("checked", localStorage.spoilers === "true");
 
 	if (localStorage.image_paste_quality !== undefined) {

@@ -102,6 +102,7 @@ $(document).ready(function () {
             var s = data == 1 ? "" : "s";
             $("#user_count").text(data + " user" + s);
         });
+<<<<<<< HEAD
         socket.on('geoip_data', function(data) {
             if (localStorage.name === undefined || localStorage.name == "") {
                 localStorage.name = kot_names[data.country.split('-')[0]] || 'Kot';
@@ -109,6 +110,8 @@ $(document).ready(function () {
             }
         });
         socket.emit('geoip_data');
+=======
+>>>>>>> 4c0e730119c0970fb88047e3983daf7d5c461cef
     /* key bindings for actions */
     $("#name").keydown(function (event) {
         if (event.keyCode === 13) {
@@ -720,6 +723,7 @@ function mod_silent_poster(id, password)
     if(!password || password.length <= 0 || !id || id.length <= 0)
     {
         console.log("mod_silent_poster: invalid param");
+<<<<<<< HEAD
         return;
     }
     
@@ -743,11 +747,39 @@ function mod_pin_post(id, password)
     if(!password || password.length <= 0 || !id || id.length <= 0)
     {
         console.log("mod_pin_post: invalid param");
+=======
+>>>>>>> 4c0e730119c0970fb88047e3983daf7d5c461cef
         return;
     }
     
     $.ajax({
         type: "POST",
+<<<<<<< HEAD
+=======
+        url: '/silent',
+        data: {password: password, id: id}
+    }).done(function (data_warn) {
+        console.log(data_warn);
+        if(data_warn.success)
+            div_alert("success");
+        else if (data_warn.failure)
+            div_alert("failure:", data_warn.failure);
+        else
+            div_alert("failure");
+    });
+}
+
+function mod_pin_post(id, password)
+{
+    if(!password || password.length <= 0 || !id || id.length <= 0)
+    {
+        console.log("mod_pin_post: invalid param");
+        return;
+    }
+    
+    $.ajax({
+        type: "POST",
+>>>>>>> 4c0e730119c0970fb88047e3983daf7d5c461cef
         url: '/pin',
         data: {password: password, id: id}
     }).done(function (data_warn) {

@@ -57,6 +57,7 @@ function put_sticker(val){
     last_stickers.unshift(val);
     if(last_stickers.length>15) last_stickers.pop();
     localStorage['stickers']=JSON.stringify(last_stickers);
+<<<<<<< HEAD
     // $('#body').val($('#body').val() + '[st]' + val + '[/st]');
     var pos = $('#body').prop('selectionStart');
     var text = $('#body').val();
@@ -65,6 +66,9 @@ function put_sticker(val){
             '[st]' + val + '[/st]' +
             text.substring(pos, text.length)
     );
+=======
+    $('#body').val($('#body').val() + '[st]' + val + '[/st]');
+>>>>>>> 4c0e730119c0970fb88047e3983daf7d5c461cef
     $('#stickers').hide();
     $('#body').focus();
 }

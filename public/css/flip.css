@@ -24,6 +24,7 @@
 
         animation:      800ms nonono;
         animation-iteration-count: infinite;
+<<<<<<< HEAD
         /*animation-timing-function: steps(2, jump-none);*/
         animation-timing-function: step-end;
 }
@@ -33,6 +34,16 @@
         transform: scaleX(1);
     }
     50% {
+=======
+        animation-timing-function: steps(2, jump-none);
+}
+
+@keyframes nonono {
+    from {
+        transform: scaleX(1);
+    }
+    to {
+>>>>>>> 4c0e730119c0970fb88047e3983daf7d5c461cef
         transform: scaleX(-1);
     }
 }

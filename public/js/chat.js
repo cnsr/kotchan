@@ -17,8 +17,11 @@
 */
 // for tabs
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 4c0e730119c0970fb88047e3983daf7d5c461cef
 var is_mobile = (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
 var all_chats = {};
 
@@ -36,8 +39,11 @@ var devs = ["!!mtmxXFMsB2"];
 /* if you look at source you are essentially helping out, so have some blue colored trips! --> bluerules, testing */
 var default_contribs = ["!!Bk9pc/hnuA"];
 
+<<<<<<< HEAD
 
 /*
+=======
+>>>>>>> 4c0e730119c0970fb88047e3983daf7d5c461cef
 var kot_names = {
     'RU': 'Кот',
     'BY': 'Кот',
@@ -85,7 +91,10 @@ var kot_names = {
     'NO': 'Katt',
     'MA': 'Mušš',
 };
+<<<<<<< HEAD
 */
+=======
+>>>>>>> 4c0e730119c0970fb88047e3983daf7d5c461cef
 
 var color_trips = {'!2kGkudiwr6': 'blue',
     '!4JkKbRZR5E': 'purple',
@@ -122,12 +131,15 @@ var message_sound_onyou = new Audio('/js/message_onyou.ogg');
 message_sound.load();
 message_sound_onyou.load();
 
+<<<<<<< HEAD
 
 
 RegExp.escape = function(s) {
     return s.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
 };
 
+=======
+>>>>>>> 4c0e730119c0970fb88047e3983daf7d5c461cef
 
 function ajaxTranslate(textToTranslate, fromLanguage, toLanguage, callback) {
 	var p = {};
@@ -568,8 +580,13 @@ var displayAlign;              // CSS position attribute to set: "left" or "righ
 // Generate blank post element
 function generate_post(id) {
     "use strict";
+<<<<<<< HEAD
     var hat = "<img src=\"/images/icon-santa.png\" style=\"position:absolute;margin-top:-7px;margin-left:10px;z-index:3;\">";
     if (localStorage.theme == "/sad.css")
+=======
+    //var hat = "<img src=\"/images/icon-santa.png\" style=\"position:absolute;margin-top:-7px;margin-left:10px;z-index:3;\">";
+    //if (localStorage.theme == "/sad.css")
+>>>>>>> 4c0e730119c0970fb88047e3983daf7d5c461cef
     var hat = "";
 
     var post = $(
@@ -1036,12 +1053,20 @@ function update_chat(new_data, first_load) {
         apply_rules(data, post, id);
 
         var for_you = /\(You\)/.test(post.find(".quote_link").text());
+<<<<<<< HEAD
         var name_mentioned = RegExp("(^|\s)@"+RegExp.escape(localStorage.name)+"($|\s)").test(post.find(".chat_body").text());
 
         if (for_you || name_mentioned) {
             post.toggleClass("chat_highlight", true);
         }
 
+=======
+
+        if (for_you) {
+            post.toggleClass("chat_highlight", true);
+        }
+
+>>>>>>> 4c0e730119c0970fb88047e3983daf7d5c461cef
         if (admin_pass != "" && /(admin|dev(eloper)?)/.test(post.find(".chat_body").text().toLowerCase())) {
             post.toggleClass("chat_highlight", true);
             for_you = true;

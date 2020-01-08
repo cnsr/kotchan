@@ -11,5 +11,10 @@ RUN npm install
 COPY node_modules node_modules
 RUN npm i bcrypt@1.0.3
 RUN npm i geoip
+RUN python stickers.py
+RUN python banners.py
+RUN python tripflags.py
+RUN python banners.py
+RUN python graph.py
 
 

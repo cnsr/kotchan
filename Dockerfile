@@ -7,6 +7,7 @@ RUN bash -c "cd /tmp && wget https://johnvansickle.com/ffmpeg/releases/ffmpeg-re
 RUN mkdir /app
 WORKDIR /app
 ADD package.json package.json
-#RUN npm install
-COPY . /app
+RUN npm install
+RUN npm i bcrypt@1.0.3
+
 

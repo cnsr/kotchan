@@ -3,14 +3,16 @@ version: '3'
 services:
   livechan:
     restart: always
-    build: .
-    image: kotchan:latest
+    #build: .
+    image: robotnaoborot/kotchan:latest
     expose:
       - "5800"
     volumes:
       - .:/app
       - public:/app/public
     env_file: .env
+    environment:
+      - DB_HOST=mongodb
     command: node lib/index.js
 
   nginx:
@@ -19,8 +21,9 @@ services:
     image: nginx:latest
     ports:
       - "80:80"
+      - "443:443"
     volumes:
-      - public:/www/public
+      - public:/app/public
 
   mongodb:
     restart: always
@@ -32,7 +35,7 @@ services:
     environment:
         - MONGO_DATA_DIR=/data/db
         - MONGO_LOG_DIR=/dev/null
-    command: mongod --smallfiles --logpath=/dev/null # --quiet
+    command: mongod --logpath=/dev/null # --quiet
 
 volumes:
   public:

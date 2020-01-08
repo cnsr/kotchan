@@ -24,13 +24,13 @@ services:
       - "443:443"
     volumes:
       - public:/app/public
-      - ./data/certbot/conf:/etc/letsencrypt
-      - ./data/certbot/www:/var/www/certbot
-  certbot:
-      image: certbot/certbot
-      volumes:
-        - ./data/certbot/conf:/etc/letsencrypt
-        - ./data/certbot/www:/var/www/certbot
+      - ./data/certbot/etc/letsencrypt:/etc/letsencrypt
+        #      - ./data/certbot/www:/var/www/certbot
+# certbot:
+#   image: certbot/certbot
+#   volumes:
+#     - ./data/certbot/conf:/etc/letsencrypt
+#     - ./data/certbot/www:/var/www/certbot
   #kotchan-letsencrypt:
   #  image: linuxserver/letsencrypt
   #  container_name: kotchan-letsencrypt

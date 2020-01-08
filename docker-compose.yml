@@ -4,6 +4,7 @@ services:
   livechan:
     restart: always
     build: .
+    image: kotchan:latest
     expose:
       - "5800"
     volumes:
@@ -15,6 +16,7 @@ services:
   nginx:
     restart: always
     build: ./nginx/
+    image: nginx:latest
     ports:
       - "80:80"
     volumes:
@@ -25,7 +27,13 @@ services:
     image: mongo:latest
     ports:
         - "27017:27017"
+    volumes:
+        mongodata:/data/db
+    environment:
+        - MONGO_DATA_DIR=/data/db
+        - MONGO_LOG_DIR=/dev/null
     command: mongod --smallfiles --logpath=/dev/null # --quiet
 
 volumes:
   public:
+  mongodata:

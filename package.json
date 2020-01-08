@@ -27,7 +27,7 @@
     "captcha": "0.0.4",
     "express": "^3.4.8",
     "geoip": "*",
-    "logfmt": "0.18.1",
+    "logfmt": "^0.18.1",
     "mongoose": "3.8.6",
     "read": "1.0.5",
     "socket.io": "0.9.16",

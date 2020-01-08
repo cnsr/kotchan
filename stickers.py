@@ -2,7 +2,7 @@
 import os
 import sqlite3
 
-os.chdir('/home/ph/livechan-js')
+os.chdir(os.path.dirname(__file__))
 lb_db = sqlite3.connect('/home/ph/anna3/lb.sqlite')
 count = dict(lb_db.execute('select name,count(*) from stickers group by name'))
 

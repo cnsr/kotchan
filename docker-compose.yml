@@ -28,7 +28,7 @@ services:
     ports:
         - "27017:27017"
     volumes:
-        mongodata:/data/db
+        - mongodata:/data/db
     environment:
         - MONGO_DATA_DIR=/data/db
         - MONGO_LOG_DIR=/dev/null

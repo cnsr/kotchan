@@ -31,22 +31,22 @@ services:
       volumes:
         - ./data/certbot/conf:/etc/letsencrypt
         - ./data/certbot/www:/var/www/certbot
-  kotchan-letsencrypt:
-    image: linuxserver/letsencrypt
-    container_name: kotchan-letsencrypt
-    ports:
-      - 80:80
-      - 443:443
-    volumes:
-      - ./config/letsencrypt:/config
-    environment:
-      - EMAIL=robotnaoborot@gmail.com
-      - URL=kotchan.org
-      - SUBDOMAINS=wildcard
-      - VALIDATION=dns
-      - TZ=Europe/Moscow
-      - PUID=0
-      - PGID=0
+  #kotchan-letsencrypt:
+  #  image: linuxserver/letsencrypt
+  #  container_name: kotchan-letsencrypt
+  #  ports:
+  #    - 80:80
+  #    - 443:443
+  #  volumes:
+  #    - ./config/letsencrypt:/config
+  #  environment:
+  #    - EMAIL=robotnaoborot@gmail.com
+  #    - URL=kotchan.org
+  #    - SUBDOMAINS=wildcard
+  #    - VALIDATION=dns
+  #    - TZ=Europe/Moscow
+  #    - PUID=0
+  #    - PGID=0
 
   mongodb:
     restart: always

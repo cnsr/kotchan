@@ -3,8 +3,8 @@ version: '3'
 services:
   livechan:
     restart: always
-    #build: .
-    image: robotnaoborot/kotchan:latest
+    build: .
+    #    image: robotnaoborot/kotchan:latest
     expose:
       - "5800"
     volumes:
@@ -24,6 +24,29 @@ services:
       - "443:443"
     volumes:
       - public:/app/public
+      - ./data/certbot/conf:/etc/letsencrypt
+      - ./data/certbot/www:/var/www/certbot
+  certbot:
+      image: certbot/certbot
+      volumes:
+        - ./data/certbot/conf:/etc/letsencrypt
+        - ./data/certbot/www:/var/www/certbot
+  kotchan-letsencrypt:
+    image: linuxserver/letsencrypt
+    container_name: kotchan-letsencrypt
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - ./config/letsencrypt:/config
+    environment:
+      - EMAIL=robotnaoborot@gmail.com
+      - URL=kotchan.org
+      - SUBDOMAINS=wildcard
+      - VALIDATION=dns
+      - TZ=Europe/Moscow
+      - PUID=0
+      - PGID=0
 
   mongodb:
     restart: always

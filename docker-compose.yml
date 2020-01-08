@@ -1,0 +1,31 @@
+version: '3'
+
+services:
+  livechan:
+    restart: always
+    build: .
+    expose:
+      - "5800"
+    volumes:
+      - .:/app
+      - public:/app/public
+    env_file: .env
+    command: node lib/index.js
+
+  nginx:
+    restart: always
+    build: ./nginx/
+    ports:
+      - "80:80"
+    volumes:
+      - public:/www/public
+
+  mongodb:
+    restart: always
+    image: mongo:latest
+    ports:
+        - "27017:27017"
+    command: mongod --smallfiles --logpath=/dev/null # --quiet
+
+volumes:
+  public:

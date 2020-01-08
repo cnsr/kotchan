@@ -1,0 +1,111 @@
+upstream app_livechan {
+    server 127.0.0.1:5080;
+}
+upstream app_draw {
+    server 127.0.0.1:5000;
+}
+
+
+
+server {
+	listen 443;
+   ssl_certificate /etc/letsencrypt/live/kotchan.org-0001/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/kotchan.org-0001/privkey.pem;
+    server_name www.kotchan.org;
+    return 301 https://kotchan.org$request_uri;
+}
+
+server {
+#	listen 80;
+	listen 443;
+    ssl_certificate /etc/letsencrypt/live/kotchan.org-0001/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/kotchan.org-0001/privkey.pem;
+
+    server_name kotchan.org;
+    #access_log /var/log/nginx/kotchan.log;
+    access_log off;
+
+    location /tmp {
+      alias /app/public/tmp;
+    }
+
+    location /css {
+      alias /app/public/css;
+    }
+
+    location /icons {
+      alias /app/public/icons;
+    }
+
+    location /images {
+      alias /app/public/images;
+    }
+
+    location /js {
+      alias /app/public/js;
+    }
+    location /json {
+      alias /app/public/json;
+    }
+    location /plugins {
+      alias /app/public/plugins;
+    }
+
+	location ^~ /.well-known/acme-challenge/ {
+	default_type "text/plain";
+	root /app/public;
+}
+
+    location / {
+      proxy_http_version 1.1;
+      proxy_set_header Upgrade $http_upgrade;
+      proxy_set_header Connection "upgrade";
+      proxy_set_header X-Real-IP $remote_addr;
+      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+      proxy_set_header Host $http_host;
+      proxy_set_header X-NginX-Proxy true;
+
+      proxy_pass http://app_livechan/;
+      proxy_redirect off;
+    }
+    location /messages {
+      proxy_http_version 1.1;
+      proxy_pass http://kotchan.org:8080/messages/int;
+    }
+    location /lurkers {
+      proxy_pass http://kotchan.org:8007/lurkers;
+    }
+}
+
+
+### SADFROGS 50001 SSL drawing app
+
+server {
+ #   listen 0.0.0.0:80;
+    listen 5001 ssl;
+    ssl_certificate /etc/letsencrypt/live/www.kotchan.org/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/www.kotchan.org/privkey.pem;
+    access_log off;
+    location / {
+      proxy_http_version 1.1;
+      proxy_set_header Upgrade $http_upgrade;
+      proxy_set_header Connection "upgrade";
+      proxy_set_header X-Real-IP $remote_addr;
+      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+      proxy_set_header Host $http_host;
+      proxy_set_header X-NginX-Proxy true;
+
+      proxy_pass http://app_draw/;
+      proxy_redirect off;
+    }
+}
+
+### DEFAULT HTTP
+
+server {
+    listen 80 default_server;
+    server_name _;
+    access_log off;
+#    return 301 https://$host$request_uri;
+	return 301 https://$host$request_uri;
+}

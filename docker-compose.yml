@@ -14,6 +14,8 @@ services:
     environment:
       - DB_HOST=mongodb
     command: node lib/index.js
+    depends_on:
+      - mongodb
 
   nginx:
     restart: always
@@ -26,6 +28,8 @@ services:
       - public:/app/public
       - ./data/certbot/etc/letsencrypt:/etc/letsencrypt
         #      - ./data/certbot/www:/var/www/certbot
+    depends_on:
+      - livechan
 # certbot:
 #   image: certbot/certbot
 #   volumes:

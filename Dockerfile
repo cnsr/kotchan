@@ -13,10 +13,9 @@ COPY . /app
 RUN  rm -rf /app/node_modules/bcrypt/node_modules/bindings/
 RUN npm i bcrypt@1.0.3
 RUN npm i geoip
-RUN python stickers.py
+#RUN python stickers.py
 RUN python banners.py
 RUN python tripflags.py
-RUN python banners.py
-RUN python graph.py
+#RUN python graph.py
 
 

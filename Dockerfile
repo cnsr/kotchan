@@ -15,6 +15,7 @@ RUN npm i bcrypt@1.0.3
 RUN npm i geoip
 #RUN python stickers.py
 RUN python banners.py
+RUN pip install -r requirements.txt
 RUN python tripflags.py
 #RUN python graph.py
 

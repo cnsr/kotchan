@@ -8,7 +8,7 @@ $(document).ready(function() {
 
 function blobToFile(blob, filename){
     //A Blob() is almost a File() - it's just missing the two properties below which we will add
-console.log('pre-file blob: ', blob);
+//console.log('pre-file blob: ', blob);
     return new File([blob], filename, {type: blob.type, lastModified: Date.now()});
 }
 
@@ -40,7 +40,7 @@ function prepare_blob(blob, callback) {
 
                 var pre_blob = dataURItoBlob(canvas.toDataURL("image/"+localStorage.image_paste_format, parseFloat(localStorage.image_paste_quality)));
                 var file = blobToFile(pre_blob, 'image.'+localStorage.image_paste_format);
-                console.log('file blob: ', file);
+                //console.log('file blob: ', file);
                 callback(file);
             });
         }
@@ -54,13 +54,13 @@ function onpaste_handler(event){
 
     for (index in items) {
         var item = items[index];
-        console.log(item);
+        //console.log(item);
         if (item.kind === 'file') {
             blob = item.getAsFile();
-            console.log('item.kind is file, blob=', blob);
+            //console.log('item.kind is file, blob=', blob);
         }
     }
-console.log('in blob: ', blob);
+//console.log('in blob: ', blob);
     if(!blob) return;
     prepare_blob(blob, send_blob);
 /*  if(!blob || parseInt(localStorage.cool_down_timer)) return;
@@ -72,7 +72,7 @@ console.log('in blob: ', blob);
 
 function send_blob(blob) {
     var fd = new FormData();
-console.log('out blob: ', blob);
+//console.log('out blob: ', blob);
     fd.append('image', blob);
     fd.append('name', $('#name')[0].value);
     fd.append('convo', $('#convo')[0].value);

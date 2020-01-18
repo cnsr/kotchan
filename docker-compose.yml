@@ -68,6 +68,8 @@ services:
     expose:
       - "8007"
     command: python /app/server.py
+    depends_on:
+      - livechan
 
   anna:
     restart: always
@@ -75,7 +77,9 @@ services:
     volumes:
       - ./anna:/app
     command: python /app/anna.py
+    depends_on:
+      - livechan
+      - mongodb
 
 volumes:
-  public:
   mongodata:

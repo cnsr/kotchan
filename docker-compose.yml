@@ -16,8 +16,6 @@ services:
     command: node lib/index.js
     depends_on:
       - mongodb
-    networks:
-      - mongo_net
 
   nginx:
     restart: always
@@ -29,9 +27,6 @@ services:
     volumes:
       - ./public:/app/public
       - ./data/etc/letsencrypt:/etc/letsencrypt
-    networks:
-      - mongo_net
-      - ext
         #      - ./data/certbot/www:/var/www/certbot
 # certbot:
 #   image: certbot/certbot
@@ -66,8 +61,6 @@ services:
         - MONGO_DATA_DIR=/data/db
         - MONGO_LOG_DIR=/dev/null
     command: mongod --logpath=/dev/null # --quiet
-    networks:
-      - mongo_net
 
   map:
     restart: always
@@ -87,13 +80,7 @@ services:
     depends_on:
       - livechan
       - mongodb
-    networks:
-      - mongo_net
 
 volumes:
   mongodata:
 
-networks:
-  mongo_net:
-    driver: bridge
-  ext:

@@ -10,6 +10,7 @@ services:
     volumes:
       - .:/app
       - public:/app/public
+      - ../anna3:/app/anna
     env_file: .env
     environment:
       - DB_HOST=mongodb
@@ -27,7 +28,6 @@ services:
     volumes:
       - public:/app/public
       - ./data/certbot/etc/letsencrypt:/etc/letsencrypt
-      - ../anna3:/app/anna
         #      - ./data/certbot/www:/var/www/certbot
 # certbot:
 #   image: certbot/certbot

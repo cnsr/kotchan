@@ -2,8 +2,8 @@
 import os
 import sqlite3
 
-os.chdir(os.path.dirname(__file__))
-lb_db = sqlite3.connect('/home/ph/anna3/lb.sqlite')
+os.chdir(os.path.dirname(__file__) or '.')
+lb_db = sqlite3.connect('anna/lb.sqlite')
 count = dict(lb_db.execute('select name,count(*) from stickers group by name'))
 
 names = [os.path.splitext(f)[0] for f in os.listdir('public/images/stickers/') if f.endswith('png')]

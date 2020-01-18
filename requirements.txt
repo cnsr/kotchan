@@ -1,1 +1,4 @@
 tripcode==0.1
+pymongo
+pygeoip
+matplotlib

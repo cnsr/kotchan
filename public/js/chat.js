@@ -266,7 +266,7 @@ function image_mouseover(obj, event, id) {
 
     var base_name = chat[id].image.match(/[\w\-\.]*$/)[0];
 
-    var extension = base_name.match(/\w*$/)[0];
+    var extension = base_name.match(/\w*$/)[0].toLowerCase(); /// .toLowerCase() is needed for videos, reposted via tg bot
     if ($.inArray(extension, ["ogv", "webm", "mp4"]) > -1) {
         if (display === undefined) {
             display = $("<video/>");

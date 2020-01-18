@@ -8,7 +8,7 @@ server {
 #   ssl_certificate /etc/letsencrypt/live/kotchan.org-0001/fullchain.pem;
 #    ssl_certificate_key /etc/letsencrypt/live/kotchan.org-0001/privkey.pem;
     server_name www.kotchan.org;
-    return 301 https://kotchan.org$request_uri;
+    return 301 https://new.kotchan.org$request_uri;
 }
 
 server {
@@ -17,7 +17,7 @@ server {
 #    ssl_certificate /etc/letsencrypt/live/kotchan.org-0001/fullchain.pem;
 #    ssl_certificate_key /etc/letsencrypt/live/kotchan.org-0001/privkey.pem;
 
-    server_name localhost;
+    server_name new.kotchan.org;
     #access_log /var/log/nginx/kotchan.log;
     access_log off;
 
@@ -66,10 +66,10 @@ server {
     }
     location /messages {
       proxy_http_version 1.1;
-      proxy_pass http://kotchan.org:8080/messages/int;
+      proxy_pass http://new.kotchan.org:8080/messages/int;
     }
     location /lurkers {
-      proxy_pass http://kotchan.org:8007/lurkers;
+      proxy_pass http://new.kotchan.org:8007/lurkers;
     }
 }
 

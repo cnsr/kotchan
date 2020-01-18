@@ -4,13 +4,14 @@ import os
 import pygeoip
 import json
 import sys
-import pymongo
-geoip = pygeoip.GeoIP('/app/GeoLiteCity.dat')
-regions = json.load(open('/app/public/json/regioncodes.json'))
+
+os.chdir(os.path.dirname(__file__) or '.')
+geoip = pygeoip.GeoIP('GeoLiteCity.dat')
+regions = json.load(open('public/json/regioncodes.json'))
 #db = pymongo.MongoClient().livechan_db
 country_names = {"BE": "Belgium", "FR": "France", "BG": "Bulgaria", "HR": "Croatia", "DE": "Germany", "JP": "Japan", "HU": "Hungary", "BR":     "Brazil", "FI": "Finland", "BY": "Belarus", "GR": "Greece", "RU": "Russian Federation", "NL": "Netherlands", "NO": "Norway", "TR": "Turkey",        "LU": "Luxembourg", "PL": "Poland", "CN": "China", "CL": "Chile", "CA": "Canada", "IT": "Italy", "CZ": "Czech Republic", "AR": "Argentina",         "AU": "Australia", "AT": "Austria", "IE": "Ireland", "ES": "Spain", "MD": "Moldova, Republic of", "OM": "Oman", "UA": "Ukraine", "MN":              "Mongolia", "US": "United States", "KR": "Korea, Republic of", "MY": "Malaysia", "MX": "Mexico", "SE": "Sweden", "GB": "United Kingdom", "RS":      "Serbia", "DK": "Denmark"}
 #fuck this shit t. ncat 2018-07-17
-exceptions = json.loads(open('/app/config.js').read().split('ip_exceptions:')[1].split('}')[0].rstrip(',\n ')+'}')
+exceptions = json.loads(open('config.js').read().split('ip_exceptions:')[1].split('}')[0].rstrip(',\n ')+'}')
 
 def ips():
     return set(x.split()[4].split(':')[0] for x in os.popen('netstat -n |egrep ":(443|8888)"').read().splitlines())

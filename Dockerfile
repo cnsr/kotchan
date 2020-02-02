@@ -21,7 +21,7 @@ COPY . /app
 #RUN python stickers.py
 #RUN python banners.py
 #COPY requirements.txt requirements.txt
-RIN apk add python3
+RUN apk add python3
 RUN python3 -m pip install -r requirements.txt
 #RUN python tripflags.py
 #RUN python graph.py

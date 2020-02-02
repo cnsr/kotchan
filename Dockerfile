@@ -6,17 +6,18 @@ RUN bash -c "cd /tmp && wget https://johnvansickle.com/ffmpeg/releases/ffmpeg-re
 
 RUN mkdir /app
 WORKDIR /app
-ADD package.json package.json
-RUN npm install
-COPY node_modules node_modules
+COPY . /app
+#ADD package.json package.json
+#RUN npm install
+#COPY node_modules node_modules
 #COPY . /app
-RUN  rm -rf /app/node_modules/bcrypt/node_modules/bindings/
-RUN npm i bcrypt@1.0.3
-RUN  rm -rf /app/node_modules/geoip/node_modules/bindings/
-RUN npm i geoip
+#RUN  rm -rf /app/node_modules/bcrypt/node_modules/bindings/
+#RUN npm i bcrypt@1.0.3
+#RUN  rm -rf /app/node_modules/geoip/node_modules/bindings/
+#RUN npm i geoip
 #RUN python stickers.py
 #RUN python banners.py
-COPY requirements.txt requirements.txt
+#COPY requirements.txt requirements.txt
 RUN pip install -r requirements.txt
 #RUN python tripflags.py
 #RUN python graph.py

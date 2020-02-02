@@ -20,5 +20,6 @@ COPY requirements.txt requirements.txt
 RUN pip install -r requirements.txt
 #RUN python tripflags.py
 #RUN python graph.py
+EXPOSE 5080
 
 

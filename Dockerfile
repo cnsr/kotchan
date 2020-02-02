@@ -7,7 +7,7 @@ RUN apk add imagemagick git cairo libjpeg pango g++ wget gcc
 RUN sh -c "cd /tmp && wget https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-amd64-static.tar.xz && tar xJf ffmpeg-release-amd64-static.tar.xz && cd ffmpeg-4.2.2-amd64-static && mv ffmpeg ffprobe /usr/local/bin"
 # cache package.json and node_modules to speed up builds
 
-RUN mkdir /app
+RUN mkdir -p /app
 WORKDIR /app
 COPY . /app
 #ADD package.json package.json

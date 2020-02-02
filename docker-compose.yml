@@ -9,7 +9,7 @@ services:
       - "5800"
     volumes:
       - .:/app
-      - public:/app/public
+      - ./public:/app/public
     env_file: .env
     environment:
       - DB_HOST=mongodb
@@ -25,8 +25,8 @@ services:
       - "80:80"
       - "443:443"
     volumes:
-      - public:/app/public
-      - ./data/certbot/etc/letsencrypt:/etc/letsencrypt
+      - ./public:/app/public
+      - ./data/etc/letsencrypt:/etc/letsencrypt
         #      - ./data/certbot/www:/var/www/certbot
 # certbot:
 #   image: certbot/certbot
@@ -62,6 +62,25 @@ services:
         - MONGO_LOG_DIR=/dev/null
     command: mongod --logpath=/dev/null # --quiet
 
+  map:
+    restart: always
+    build: map
+    expose:
+      - "8007"
+    command: python /app/server.py
+    depends_on:
+      - livechan
+
+  anna:
+    restart: always
+    build: anna
+    volumes:
+      - ./anna:/app
+    command: python /app/anna.py
+    depends_on:
+      - livechan
+      - mongodb
+
 volumes:
-  public:
   mongodata:
+

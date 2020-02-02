@@ -3,23 +3,25 @@ upstream app_livechan {
 }
 
 
-server {
-	listen 443;
-#   ssl_certificate /etc/letsencrypt/live/kotchan.org-0001/fullchain.pem;
-#    ssl_certificate_key /etc/letsencrypt/live/kotchan.org-0001/privkey.pem;
-    server_name www.kotchan.org;
-    return 301 https://kotchan.org$request_uri;
-}
+#server {
+#s       listen 443;
+#s  ssl_certificate /etc/letsencrypt/live/kotchan.org-0001/fullchain.pem;
+#s   ssl_certificate_key /etc/letsencrypt/live/kotchan.org-0001/privkey.pem;
+#s   server_name www.kotchan.org;
+#s   return 301 https://kotchan.org$request_uri;
+#}
 
 server {
-	listen 80;
-	listen 443;
-#    ssl_certificate /etc/letsencrypt/live/kotchan.org-0001/fullchain.pem;
-#    ssl_certificate_key /etc/letsencrypt/live/kotchan.org-0001/privkey.pem;
+	listen 443 ssl;
+    ssl_certificate /etc/letsencrypt/live/kotchan.org-0001/fullchain.pem;
 
-    server_name localhost;
-    #access_log /var/log/nginx/kotchan.log;
-    access_log off;
+    ssl_certificate_key /etc/letsencrypt/live/kotchan.org-0001/privkey.pem;
+    ssl_protocols       TLSv1 TLSv1.1 TLSv1.2;
+    ssl_ciphers         HIGH:!aNULL:!MD5;
+
+    server_name new.kotchan.org;
+    access_log /var/log/nginx/kotchan.log;
+    #access_log off;
 
     location /tmp {
       alias /app/public/tmp;
@@ -77,9 +79,26 @@ server {
 
 ### DEFAULT HTTP
 
-#server {
-#    listen 80 default_server;
-#    server_name _;
-#    access_log off;
-#    return 301 https://$host$request_uri;
-#}
+server {
+    listen 80 default_server;
+    server_name _;
+    access_log off;
+    return 301 https://$host$request_uri;
+}
+
+server {
+	listen 443 ssl;
+	listen [::]:433 ssl;
+
+    ssl_certificate /etc/letsencrypt/live/kotchan.org-0001/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/kotchan.org-0001/privkey.pem;
+
+
+    server_name map.kotchan.org;
+    access_log off;
+
+    location / {
+        proxy_pass http://map:8007;
+	root /app/map;
+	}
+}

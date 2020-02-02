@@ -2,6 +2,8 @@
 import os
 from tripcode import tripcode
 
+os.chdir(os.path.dirname(__file__) or '.')
+
 scr = open('public/js/tripflags.js').read()
 
 files = [l.rsplit('"',2)[1] for l in scr.splitlines() if l.startswith('flags_image_table')]

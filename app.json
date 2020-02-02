@@ -1,0 +1,19 @@
+{
+  "name": "livechan",
+  "description": "",
+  "stack": "container",
+  "buildpacks": [],
+  "scripts": {
+    "dokku": {
+      "postdeploy": "python tripflags.py;python banners.py; python stickers.py;"
+    }
+  },
+  "dokku":{
+    "plugins":[
+      "mongo"
+    ],
+    "volumes":[
+      {"host":"/home/dokku/kotchan","app":"/app"}
+    ]
+  }
+}

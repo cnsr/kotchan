@@ -22,6 +22,8 @@ COPY . /app
 #RUN python banners.py
 #COPY requirements.txt requirements.txt
 RUN apk add py2-pip
+RUN wget https://bootstrap.pypa.io/get-pip.py
+RUN python get-pip.py
 RUN pip install -r requirements.txt
 #RUN python tripflags.py
 #RUN python graph.py

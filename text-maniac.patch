@@ -1,0 +1,47 @@
+diff --git a/config.js b/config.js
+index 84daec0..ad266e8 100644
+--- a/config.js
++++ b/config.js
+@@ -36,6 +36,7 @@ module.exports = {
+     image_formats: ['jpg', 'jpeg', 'png', 'gif'],
+     video_formats: ['ogv', 'webm', 'mp4'],
+     audio_formats: ['ogg', 'mp3', 'flac'],
++    text_formats: ['txt', ],
+ 
+     codec_names: {
+         video: ['theora', 'vp8', 'vp9', 'h264', 'vp6f'],
+diff --git a/lib/utils/categorize.js b/lib/utils/categorize.js
+index 89d1472..9e882a0 100644
+--- a/lib/utils/categorize.js
++++ b/lib/utils/categorize.js
+@@ -8,6 +8,7 @@ module.exports = function(filename) {
+     if (config.image_formats.indexOf(extension) > -1) return 'image';
+     if (config.video_formats.indexOf(extension) > -1) return 'video';
+     if (config.audio_formats.indexOf(extension) > -1) return 'audio';
++    if (config.text_formats.indexOf(extension) > -1) return 'text';
+     return 'invalid';
+ };
+ 
+diff --git a/lib/utils/format-image.js b/lib/utils/format-image.js
+index bc5e2d8..9169522 100644
+--- a/lib/utils/format-image.js
++++ b/lib/utils/format-image.js
+@@ -20,7 +20,8 @@ var format_names = {
+     'mp3': 'mp3',
+     'flac': 'flac',
+     'mp4': 'mp4',
+-    'flv': 'flv'
++    'flv': 'flv',
++    'txt': 'txt',
+ };
+ 
+ /* format_image
+@@ -54,6 +55,8 @@ module.exports = function(data, callback) {
+             command = 'ffprobe';
+             args = '-print_format json -show_format -show_streams'.split(' ');
+             args.push(data.image);
++ } else if (category === 'text') {
++     return callback();
+         } else {
+             return callback(new Error('unsupported file extension'));
+         }

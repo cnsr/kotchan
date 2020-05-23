@@ -383,6 +383,9 @@ pre {
     color:rgb(221, 0, 0);
 }
 
+.dev{
+    color:teal;
+}
 .contrib{
     color:blue;
 }

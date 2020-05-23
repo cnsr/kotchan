@@ -2,6 +2,14 @@ var flags_image_table  = {};
 var flags_hover_strings = {};
 
 //  Table of tripflags
+// supreme
+flags_image_table["!71XKIbn91Y"] = "supreme.png";
+flags_hover_strings["!71XKIbn91Y"] = "supreme";
+
+// jcdenton
+flags_image_table["!gsgn/MwysU"] = "jcdenton.png";
+flags_hover_strings["!gsgn/MwysU"] = "jcdenton";
+
 // proohh
 flags_image_table["!l4IdVYy2o2"] = "proohh.png";
 flags_hover_strings["!l4IdVYy2o2"] = "proohh";

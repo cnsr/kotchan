@@ -222,6 +222,7 @@ $(document).ready(function () {
 
     var prev_thumbnail_mode = $("#thumbnail_mode").val();
     $("#thumbnail_mode").change(function () {
+        if (html5) localStorage.thumbnail_mode = $(this).val();
         var new_value = $(this).val();
         if (prev_thumbnail_mode === "links-only") {
             $('.chat_img_cont').show('slow', function(){
@@ -450,6 +451,8 @@ function set_up_html(){
         $("#theme_select").val(default_theme);
     }
     get_css($("#theme_select").val());
+
+    if (localStorage.thumbnail_mode) $("#thumbnail_mode").prop("value",localStorage.thumbnail_mode)
 
 	$(".sidebar_banner").html(
 			$("<img>").attr("src",

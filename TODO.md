@@ -17,6 +17,8 @@ App structure
 - Modularize code by separating DB interactions
 - Models should prototype functions that are useful, eliminating ugly db code in web.js
 - Convert POST request file uploads to socket.io
+- Implament server-side file size limitations
+
 
 Hosting structure
 - Separate node.js process for GET requests for chat data

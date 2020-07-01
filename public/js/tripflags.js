@@ -2,6 +2,7 @@ var flags_image_table  = {};
 var flags_hover_strings = {};
 
 //  Table of tripflags
+
 // supreme
 flags_image_table["!71XKIbn91Y"] = "supreme.png";
 flags_hover_strings["!71XKIbn91Y"] = "supreme";

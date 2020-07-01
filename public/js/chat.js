@@ -30,7 +30,7 @@ var start_press; // for long press detection
 var longpress = 400;
 
 var admins = ["Status","!!U6hZeQd.Tc"]; // first trip here is used for server status posts
-var devs = ["!!mtmxXFMsB2","!Dvl8xAqGq6"];
+var devs = ["!!mtmxXFMsB2","!!cZRwAh7PPo"];
 /* if you look at source you are essentially helping out, so have some blue colored trips! --> bluerules, testing */
 var default_contribs = ["!!Bk9pc/hnuA"];
 
@@ -579,6 +579,7 @@ function generate_post(id) {
                 	"<output class='wipe_part'>wipe</output> - "+
                 	"<output class='warn_part'>warn</output> - "+
                 	"<output class='ban_part'>ban</output> - "+
+                	"<output class='silent_part'>silent</output> - "+
                 	"<output class='country_part'>country</output>]"+
                 "</output>" +
             "</header>" +
@@ -627,6 +628,13 @@ function generate_post(id) {
     post.find(".country_part")
         .click(function() {
             alert(chat[id].country+' '+chat[id].country_name);
+        });
+
+    post.find(".silent_part")
+        .click(function() {
+            if (!window.confirm("Are you sure you want to shadowban this poster?"))
+                return;
+            mod_silent_poster(id, admin_pass);
         });
         
     /*post.find(".mute_part")
@@ -855,7 +863,7 @@ function update_chat(new_data, first_load) {
         });
     }
     
-    if (changed.country || (special_trips.indexOf(data.trip)>-1)) {
+    if (changed.country) {
     	if (hidden_trips.indexOf(data.trip) > -1) {
             if ((data.trip in flags_image_table) && (data.trip in flags_hover_strings)) {
                 var country = $("<img src='/icons/tripflags/" + flags_image_table[data.trip] + "'/>");
@@ -1019,18 +1027,16 @@ function update_chat(new_data, first_load) {
                 if (this.hasClass("back_link")) this.remove();
             });
         }
-
         // Process body markup
 
         apply_rules(data, post, id);
-
         var for_you = /\(You\)/.test(post.find(".quote_link").text());
 
         if (for_you) {
             post.toggleClass("chat_highlight", true);
         }
 
-        if (admin_pass != "" && /(admin|dev(eloper)?)/.test(post.find(".chat_body").text().toLowerCase())) {
+        if (admin_pass != "" && /\b(admin|dev(eloper)?)\b/.test(post.find(".chat_body").text().toLowerCase())) {
             post.toggleClass("chat_highlight", true);
             for_you = true;
         }
@@ -1039,6 +1045,8 @@ function update_chat(new_data, first_load) {
             post.toggleClass("chat_highlight", true);
             for_you = true;
         }
+        //post.find(".chat_body").text(toL33t(post.find(".chat_body").text()));
+        //post.find(".chat_body").text(transliterate(post.find(".chat_body").text(), true));
     }
 
     if (new_post) {

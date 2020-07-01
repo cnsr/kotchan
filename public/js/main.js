@@ -81,6 +81,7 @@ $(document).ready(function () {
         });
         socket.on('alert', div_alert);
         socket.on('silent', silent_poster);
+        socket.on('unsilent', unsilent_poster);
         socket.on('refresh', function () {
             setTimeout(function () {
                 location.reload();
@@ -157,6 +158,13 @@ $(document).ready(function () {
 
     $(document).bind('click', function(e){
         $('.settings_nav:first').hide('slow');
+    });
+
+    $('#unignore_button').bind('click', function(e){
+        e.stopPropagation();
+        localStorage.ignored_ids = JSON.stringify([]);
+        ignored_ids = [];
+        $('#unignore_button').html('Unignore 0 users');
     });
 
     $('#settings_button').bind('click', function(e){
@@ -376,13 +384,15 @@ function set_up_html(){
         } else {
             my_ids = [];
         }
-        
+
+        ///localStorage.ignored_ids = JSON.stringify([]);
         ignored_ids = localStorage.ignored_ids;
         if (ignored_ids) {
-	        ignored_ids = JSON.parse(ignored_ids);
+            ignored_ids = JSON.parse(ignored_ids);
         } else {
-	        ignored_ids = [];
+            ignored_ids = [];
         }
+        $('#unignore_button').html('Unignore ' + ignored_ids.length + ' memes');
 
         contribs = localStorage.contribs;
         if (contribs) {
@@ -504,7 +514,21 @@ function silent_poster(param) {
         ignored_ids.push(chat[chat_count].identifier);
         localStorage.ignored_ids = JSON.stringify(ignored_ids);
     }
+    $('#unignore_button').html('Unignore ' + ignored_ids.length + ' memes');
 }
+
+function unsilent_poster(param) {
+    console.log('Param: ', param);
+    var id = param;//chat[chat_count].identifier;
+    var ind = ignored_ids.indexOf(id);
+    if (ind != -1) {
+        // console.log(chat_count, chat[chat_count]);
+        console.log('unsilent: ', id);
+        ignored_ids.splice(ind, 1);
+        localStorage.ignored_ids = JSON.stringify(ignored_ids);
+    }
+}
+
 
 /* alert whatever error was given to you by the server */
 function div_alert(message, add_button, div_id) {
@@ -731,6 +755,30 @@ function mod_silent_poster(id, password)
     });
 }
 
+function mod_unsilent_poster(id, password)
+{
+    if(!password || password.length <= 0 || !id || id.length <= 0)
+    {
+        console.log("mod_unsilent_poster: invalid param");
+        return;
+    }
+    
+    $.ajax({
+        type: "POST",
+        url: '/unsilent',
+        data: {password: password, id: id}
+    }).done(function (data_warn) {
+        console.log(data_warn);
+        if(data_warn.success)
+            div_alert("success");
+        else if (data_warn.failure)
+            div_alert("failure:", data_warn.failure);
+        else
+            div_alert("failure");
+    });
+}
+
+
 function mod_pin_post(id, password)
 {
     if(!password || password.length <= 0 || !id || id.length <= 0)
@@ -793,6 +841,28 @@ function mod_unban_poster(id, password)
             div_alert("failure");
     });
 }
+
+
+function mod_set(id, password, message)
+{
+    if(!password || password.length <= 0)
+    {
+        console.log("mod_unban_poster: invalid param");
+        return;
+    }
+    
+    $.ajax({
+        type: "POST",
+        url: '/set',
+        data: {password: password, id: id, text: message}
+    }).done(function (data_ban) {
+        if(data_ban.success)
+            div_alert("success");
+        else
+            div_alert("failure");
+    });
+}
+
 
 function submit_chat() {
     "use strict";
@@ -886,6 +956,11 @@ function submit_chat() {
                 mod_silent_poster(param, password);
             });
             break;
+        case "unsilent":
+            prompt_password(function(password) {
+                mod_unsilent_poster(param, password);
+            });
+            break;
         case "pin":
             prompt_password(function(password) {
                 mod_pin_post(param, password);
@@ -901,8 +976,13 @@ function submit_chat() {
                 mod_unban_poster(param, password);
             });
             break;
-        /*case "set":
-            param = param.split(' ');
+        case "set":
+            var id = param.split(' ', 1)[0];
+            var msg = param.substr(param.indexOf(" ")+1, param.length).replace(/\n/g, "\r\n");
+            prompt_password(function(password) {
+                mod_set(id, password, msg);
+            });
+            /*param = param.split(' ');
             $.ajax({
                 type: "POST",
                 url: '/set',
@@ -912,8 +992,8 @@ function submit_chat() {
                     div_alert("success");
                 else
                     div_alert("failure");
-            });
-            break;*/
+            });*/
+            break;
         case "p":
         case "priv":
             param = param.split(' ');
@@ -937,16 +1017,17 @@ function submit_chat() {
             break;
         case "ignore":
             var chat_count = parseInt(param);
-            if (chat_count !== NaN) {
+            if (chat_count !== NaN && ignored_ids.indexOf(chat[chat_count].identifier) === -1) {
                 console.log(chat_count, chat[chat_count]);
                 ignored_ids.push(chat[chat_count].identifier);
                 localStorage.ignored_ids = JSON.stringify(ignored_ids);
             }
-                    break;
-                case "unignore":
+            $('#unignore_button').html('Unignore ' + ignored_ids.length + ' memes');
+            break;
+        case "unignore":
             localStorage.ignored_ids = JSON.stringify([]);
             ignored_ids = [];
-                    break;
+            break;
         case "refresh":
             prompt_password(function(password) {
                 if (password) {

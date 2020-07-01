@@ -413,6 +413,10 @@ ul {
     color:rgb(221, 0, 0);
     cursor:pointer;
 }
+.silent_part:hover {
+    color:rgb(221, 0, 0);
+    cursor:pointer;
+}
 .country_part:hover {
     color:rgb(221, 0, 0);
     cursor:pointer;

@@ -43,9 +43,10 @@
 	    <span id="user_count" class="left_float" style="padding-left:5px;"></span>
 	    <span id="tabs" class="left_float"></span>
 	    <button id="settings_button" class="right_float">Settings</button>
-	    <a href="https://map.kotchan.org/" class="right_float" style="margin-right:6px;">Poster&nbsp;map</a>
+	    <button id="unignore_button" class="right_float">Unignore 0 memes</button>
+	    <a href="https://map.kotchan.fun/" class="right_float" style="margin-right:6px;">Poster&nbsp;map</a>
 	    <!--a href="http://webm.kotchan.org/" class="right_float" style="margin-right:6px;">Webms</a-->
-	    <a href="https://map.kotchan.org/help" class="right_float" style="margin-right:6px;">Help</a>
+	    <a href="https://map.kotchan.fun/help" class="right_float" style="margin-right:6px;">Help</a>
 	    <!--<a href="https://radio.kotchan.org/" class="right_float" style="margin-right:6px;">Radio</a>
 	    <span id="radio_track" class="right_float" style="margin-right:6px;overflow:hidden;"></span>-->
 	</header>
@@ -64,13 +65,13 @@
 		<li><input type="range" id="image_paste_quality" class="input_range" min="0" max="1" step="0.05" value="1"/> <label for="image_paste_quality" style="font-size:14px" >Image quality</label></li>
 		
 
-        <li><select id="image_paste_format" class="input_select">
-                    <option value="jpeg" selected>jpeg</option>
-                    <option value="png">png</option>
-                    <!--<option value="gif">gif</option>-->
-                    <!--<option value="bmp">bmp</option>-->
-                    <!--<option value="webp">webp</option>-->
-        </select><label for="image_paste_format" style="font-size:14px" >Image ctrl+v format</label></li>
+		<li><select id="image_paste_format" class="input_select">
+		    <option value="jpeg" selected>jpeg</option>
+		    <option value="png">png</option>
+		    <!--<option value="gif">gif</option>-->
+		    <!--<option value="bmp">bmp</option>-->
+		    <!--<option value="webp">webp</option>-->
+		    </select><label for="image_paste_format" style="font-size:14px" >Image ctrl+v format</label></li>
 
         <li><select id="thumbnail_mode" class="input_select">
                     <option value="links-only">Image links only</option>
@@ -156,7 +157,7 @@ backup domains: <a href="http://kotchan.ga">kotchan.ga</a> , <a href="http://deb
                  
                  <br>
 
-                 <p>Check out <a href="https://map.kotchan.org/help">help page</a>.</p>
+                 <p>Check out <a href="https://map.kotchan.fun/help">help page</a>.</p>
 
                  <!--b>Radio</b>
                  <p>Check out our <a href="http://radio.kotchan.org/">radio</a></p-->
@@ -236,6 +237,8 @@ backup domains: <a href="http://kotchan.ga">kotchan.ga</a> , <a href="http://deb
         <script src="/js/jquery.min.js"></script>
         <script src="/js/tripflags.js"></script>
 		<script src="/js/rules.js"></script>
+        <script src="/js/leet.js"></script>
+        <script src="/js/transl.js"></script>
         <script src="/js/chat.js"></script>
         <script src="/js/stream/sha256.js"></script>
         <script src="/js/banners.js"></script>

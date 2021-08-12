@@ -8,9 +8,12 @@ var createError = require('./createError');
 
 // The concurrency limit here is kind of magic. You don't really gain a lot from
 // having a large number of commands spawned at once, so it isn't super
-// important for this number to be large. However, it would still be nice to
-// *know* how high this number can be, rather than having to guess low.
-var throttler = new PThrottler(50);
+// important for this number to be large. Reports have shown that much more than 5
+// or 10 cause issues for corporate networks, private repos or situations where
+// internet bandwidth is limited. We're running with a concurrency of 5 until
+// 1.4.X is released, at which time we'll move to what was discussed in #1262
+// https://github.com/bower/bower/pull/1262
+var throttler = new PThrottler(5);
 
 var winBatchExtensions;
 var winWhichCache;
@@ -34,17 +37,17 @@ function getWindowsCommand(command) {
     try {
         fullCommand = which.sync(command);
     } catch (err) {
-        return winWhichCache[command] = command;
+        return (winWhichCache[command] = command);
     }
 
     extension = path.extname(fullCommand).toLowerCase();
 
     // Does it need to be converted?
     if (winBatchExtensions.indexOf(extension) === -1) {
-        return winWhichCache[command] = command;
+        return (winWhichCache[command] = command);
     }
 
-    return winWhichCache[command] = fullCommand;
+    return (winWhichCache[command] = fullCommand);
 }
 
 // Executes a shell command, buffering the stdout and stderr
@@ -64,25 +67,25 @@ function executeCmd(command, args, options) {
 
     // Buffer output, reporting progress
     process = cp.spawn(command, args, options);
-    process.stdout.on('data', function (data) {
+    process.stdout.on('data', function(data) {
         data = data.toString();
         deferred.notify(data);
         stdout += data;
     });
-    process.stderr.on('data', function (data) {
+    process.stderr.on('data', function(data) {
         data = data.toString();
         deferred.notify(data);
         stderr += data;
     });
 
     // If there is an error spawning the command, reject the promise
-    process.on('error', function (error) {
+    process.on('error', function(error) {
         return deferred.reject(error);
     });
 
     // Listen to the close event instead of exit
     // They are similar but close ensures that streams are flushed
-    process.on('close', function (code) {
+    process.on('close', function(code) {
         var fullCommand;
         var error;
 
@@ -96,10 +99,19 @@ function executeCmd(command, args, options) {
             fullCommand += args.length ? ' ' + args.join(' ') : '';
 
             // Build the error instance
-            error = createError('Failed to execute "' + fullCommand + '", exit code of #' + code, 'ECMDERR', {
-                details: stderr,
-                exitCode: code
-            });
+            error = createError(
+                'Failed to execute "' +
+                    fullCommand +
+                    '", exit code of #' +
+                    code +
+                    '\n' +
+                    stderr,
+                'ECMDERR',
+                {
+                    details: stderr,
+                    exitCode: code
+                }
+            );
 
             return deferred.reject(error);
         }

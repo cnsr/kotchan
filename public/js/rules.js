@@ -37,6 +37,29 @@ function apply_rules(data, post, id) {
             var body = this.parse(rules, /\[\/spoiler\]/g);
             o.push($("<span class='spoiler'/>").append(body));
         }],
+        [/(?:https?:\/\/)?(?:www\.)?(?:tiktok\.com)\/(.*)(\?.*)/g, function (m, o) {
+            var main = $("<span/>");
+            var url = "https://www.tiktok.com/" + m[1];
+            var elem = $("<a target='_blank'/>").attr("href", url).text(m[0]);
+            var embed = $("<span>(embed)</span>").css({cursor: "pointer", fontSize: '10px'});
+            main.append(elem, " ", embed);
+            o.push(main);
+            var embedded = false;
+            embed.click(function (e) {
+                e.stopPropagation();
+                if (embedded) {
+                    main.find("div.tiktok").remove();
+                } else {
+                  fetch('https://www.tiktok.com/oembed?url=' + url).then(async (res) => {
+                   main.append('<div class="tiktok">' + (await res.json()).html + '</div>');
+                  })
+                }
+                embedded = !embedded;
+                embed.text(embedded ? "(unembed)" : "(embed)");
+                var post = main.parents(".chat");
+                post.toggleClass('chat_embed', embedded);// post.find("div.tiktok").length > 0);
+            });
+        }],
         [/(?:https?:\/\/)?(?:www\.)?(?:twitter\.com)\/(.*)/g, function (m, o) {
             var main = $("<span/>");
             var url = m[0][0] == 'y' ? "https://" + m[0] : m[0];

@@ -37,7 +37,7 @@ function apply_rules(data, post, id) {
             var body = this.parse(rules, /\[\/spoiler\]/g);
             o.push($("<span class='spoiler'/>").append(body));
         }],
-        [/(?:https?:\/\/)?(?:www\.)?(?:tiktok\.com)\/(.*)(\?.*)/g, function (m, o) {
+        [/(?:https?:\/\/)?(?:www\.)?(?:tiktok\.com)\/(.*)(?:\?.*)?/g, function (m, o) {
             var main = $("<span/>");
             var url = "https://www.tiktok.com/" + m[1];
             var elem = $("<a target='_blank'/>").attr("href", url).text(m[0]);

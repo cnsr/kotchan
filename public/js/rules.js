@@ -37,7 +37,7 @@ function apply_rules(data, post, id) {
             var body = this.parse(rules, /\[\/spoiler\]/g);
             o.push($("<span class='spoiler'/>").append(body));
         }],
-        [/(?:https?:\/\/)?(?:www\.)?(?:tiktok\.com)\/(.*)(?:\?.*)?/g, function (m, o) {
+        [/(?:https?:\/\/)?(?:www\.)?(?:tiktok\.com)\/(\S+)(?:\?\S+)?/g, function (m, o) {
             var main = $("<span/>");
             var url = "https://www.tiktok.com/" + m[1];
             var elem = $("<a target='_blank'/>").attr("href", url).text(m[0]);
@@ -60,7 +60,7 @@ function apply_rules(data, post, id) {
                 post.toggleClass('chat_embed', embedded);// post.find("div.tiktok").length > 0);
             });
         }],
-        [/(?:https?:\/\/)?(?:www\.)?(?:twitter\.com)\/(.*)/g, function (m, o) {
+        [/(?:https?:\/\/)?(?:www\.)?(?:twitter\.com)\/(\S+)/g, function (m, o) {
             var main = $("<span/>");
             var url = m[0][0] == 'y' ? "https://" + m[0] : m[0];
             var elem = $("<a target='_blank'/>").attr("href", url).text(m[0]);
@@ -111,7 +111,7 @@ function apply_rules(data, post, id) {
                 post.toggleClass('chat_embed', post.find("iframe").length > 0);
             });
         }],
-        [/(?:https?:\/\/)?(?:www\.)?(?:instagram\.com)\/(.*)/g, function (m, o) {
+        [/(?:https?:\/\/)?(?:www\.)?(?:instagram\.com)\/(\S+)/g, function (m, o) {
             var main = $("<span/>");
             var url = m[0][0] == 'y' ? "https://" + m[0] : m[0];
             var elem = $("<a target='_blank'/>").attr("href", url).text(m[0]);

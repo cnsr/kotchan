@@ -955,7 +955,7 @@ function update_chat(new_data, first_load) {
 
         if (data.image) {
             var base_name = data.image.match(/[\w\-\.]*$/)[0];
-            var extension = base_name.match(/\w*$/)[0];
+            var extension = base_name.match(/\w*$/)[0].toLowerCase();
             var url_file = "/tmp/uploads/" + base_name;
 
             post.find(".file_link")

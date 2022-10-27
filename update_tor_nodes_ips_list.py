@@ -4,7 +4,8 @@ import json
 
 from urllib import request
 
-URL = 'https://check.torproject.org/cgi-bin/TorBulkExitList.py?ip=31.148.96.156'
+IP = '178.170.14.61'
+URL = f'https://check.torproject.org/cgi-bin/TorBulkExitList.py?ip={IP}'
 OUT_FILE = 'tor_nodes_ips_list.json'
 
 if __name__=='__main__':

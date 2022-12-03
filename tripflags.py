@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 import os
 from tripcode import tripcode
 
@@ -18,7 +18,7 @@ for f in new_files:
     new_code += 'flags_image_table["!%s"] = "%s";\n' % (trip, f)
     new_code += 'flags_hover_strings["!%s"] = "%s";\n' % (trip, f.split('.')[0])
 
-print new_code
+print(new_code)
 
 new_scr = scr.replace('//  Table of tripflags', '//  Table of tripflags\n%s' % new_code)
 

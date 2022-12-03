@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 import os
 import pymongo
 col = col = pymongo.MongoClient().livechan_db.chat_dbs
@@ -18,6 +18,6 @@ for d in ('/home/ph/livechan-js/public/tmp/thumb/', '/home/ph/livechan-js/public
         ondisk.add(os.path.join(d, f))
 
 for f in (ondisk - files):
-    print f
+    print(f)
     os.unlink(f)
 

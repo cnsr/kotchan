@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 import os
 
 names = [f for f in os.listdir('public/icons/smiles/') if f.endswith('gif')]

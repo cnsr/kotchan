@@ -255,6 +255,18 @@ function apply_rules(data, post, id) {
             var body = this.parse(rules, /\[\/nonono\]/g);
             o.push($("<article class='nonono'/>").append(body));
         }],
+        [/\[hop\]/g, function (m, o) {
+            var body = this.parse(rules, /\[\/hop\]/g);
+            o.push($("<article class='hop'/>").append(body));
+        }],
+        [/\[walk\]/g, function (m, o) {
+            var body = this.parse(rules, /\[\/walk\]/g);
+            o.push($("<article class='walk'/>").append(body));
+        }],
+        [/\[lwalk\]/g, function (m, o) {
+            var body = this.parse(rules, /\[\/lwalk\]/g);
+            o.push($("<article class='lwalk'/>").append(body));
+        }],
         [/\[color=([#\w]+)\]/g, function (m, o) {
             var body = this.parse(rules, /\[\/color\]/g);
             if ($('#spoilers').prop("checked")) {

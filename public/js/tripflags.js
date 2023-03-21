@@ -2,6 +2,9 @@ var flags_image_table  = {};
 var flags_hover_strings = {};
 
 //  Table of tripflags
+// liberal
+flags_image_table["!tPhjcQGXRQ"] = "liberal.png";
+flags_hover_strings["!tPhjcQGXRQ"] = "liberal";
 
 // supreme
 flags_image_table["!71XKIbn91Y"] = "supreme.png";
@@ -664,5 +667,5 @@ flags_image_table["!V8rJANBJ4M"] = "fbikun.png";
 flags_hover_strings["!V8rJANBJ4M"] = "I am not a federal employee";
 
 var hidden_trips = Object.keys(flags_image_table);
-var bots = ["!!Vixfie/c7U"];
+var bots = ["!!dhKR/S5BfA"];
 var special_trips = bots.concat(hidden_trips);

@@ -14,7 +14,7 @@
 */
 
 
-.chat_body > .spin {
+:not(.spin, .spin *) > .spin {
 /* .spin { */
 
     -webkit-animation-name: spin;

@@ -14,7 +14,7 @@
 */
 
 
-.chat_body > .roll {
+:not(.roll, .roll *) > .roll {
 /* .roll {
 
     -webkit-animation-name: roll;

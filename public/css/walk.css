@@ -1,0 +1,24 @@
+:not(.walk, .walk *) > .walk {
+    position: relative;
+    animation: moveLeftToRight 4s linear infinite;
+}
+:not(.lwalk, .lwalk *) > .lwalk {
+	display:inline-block;
+    position: relative;
+    animation: moveRightToLeft 4s linear infinite;
+}
+
+@keyframes moveRightToLeft {
+  0%   { right: -100px; }
+  100% { right: 100%; }
+}
+
+@-moz-keyframes moveRightToLeft {
+  from   { right: -100px; }
+  to     { right: 100%; }
+}
+
+@-webkit-keyframes moveRightToLeft {
+  from   { right: -100px; }
+  to     { right: 100%; }
+}

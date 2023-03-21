@@ -1,0 +1,11 @@
+@keyframes hop {
+  0%   {transform: translate3d(0,0,0) scale3d(1,1,1);}
+  40%  {transform: translate3d(0,30%,0) scale3d(1,1.5,1);}
+  100% {transform: translate3d(0,100%,0) scale3d(1,.7,1);}
+}
+:not(.hop, .hop *) > .hop {
+  position: relative;
+  /*transform-origin: 50% 50%; */
+  transform-origin: 100% 100%;
+  animation: hop .5s linear alternate infinite;
+}

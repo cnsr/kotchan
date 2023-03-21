@@ -559,7 +559,7 @@ function generate_post(id) {
     "use strict";
     //var hat = "<img src=\"/images/icon-santa.png\" style=\"position:absolute;margin-top:-7px;margin-left:10px;z-index:3;\">";
     //if (localStorage.theme == "/sad.css")
-    var hat = "";
+     var hat = "";
 
     var post = $(
         "<article class='chat'>" +

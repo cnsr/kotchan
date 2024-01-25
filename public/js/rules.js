@@ -267,6 +267,12 @@ function apply_rules(data, post, id) {
             var body = this.parse(rules, /\[\/lwalk\]/g);
             o.push($("<article class='lwalk'/>").append(body));
         }],
+        [/\[random\]/g, function (m, o) {
+            var body = this.parse(rules, /\[\/random\]/g);
+            var tags_ = ['shake', 'roll', 'lspin', 'spin', 'hflip', 'vflip', 'nonono', 'hop', 'walk', 'lwalk'];
+//            var tags_ = ["roll", "spin", "nonono", "lspin", "walk", "lwalk", "hop", "shake"]
+            o.push($("<article class='" + tags_[Math.floor(Math.random() * tags_.length)]  + "'/>").append(body));
+        }],
         [/\[color=([#\w]+)\]/g, function (m, o) {
             var body = this.parse(rules, /\[\/color\]/g);
             if ($('#spoilers').prop("checked")) {
@@ -278,6 +284,10 @@ function apply_rules(data, post, id) {
         [/\[rotate=([+-]{0,1}[\d]+)\]/g, function (m, o) {
             var body = this.parse(rules, /\[\/rotate\]/g);
             o.push($("<article/>").css("transform", "rotate(" + m[1] + "deg)").css("display", "inline-block").append(body));
+        }],
+        [/\[scale=([+-]?\d+(\.\d+)?)\]/g, function (m, o) {
+            var body = this.parse(rules, /\[\/scale\]/g);
+            o.push($("<article/>").css("transform", "scale(" + m[1] + ")").css("transform-origin", "0 0").css("display", "inline-block").append(body));
         }],
         [/\[flag\]/g, function (m, o) {
             var body = this.parse(rules, /\[\/flag\]/g);

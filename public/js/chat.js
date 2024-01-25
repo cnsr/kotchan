@@ -559,7 +559,7 @@ function generate_post(id) {
     "use strict";
     //var hat = "<img src=\"/images/icon-santa.png\" style=\"position:absolute;margin-top:-7px;margin-left:10px;z-index:3;\">";
     //if (localStorage.theme == "/sad.css")
-     var hat = "";
+    var hat = "";
 
     var post = $(
         "<article class='chat'>" +
@@ -743,6 +743,7 @@ function Parser(text) {
 
 function get_youtube_data(y_id, element){
     y_id = y_id.split('&')[0];
+
     $.ajax({
             type: "GET",
             url: location.protocol+'//'+location.host+'/youtube_data/'+y_id,
@@ -751,6 +752,7 @@ function get_youtube_data(y_id, element){
                 element.text(xml.items[0].snippet.title);
             }
         });
+
 }
 
 /*
@@ -1453,7 +1455,13 @@ function setup_convos(string){
 
 $(document).ready(function () {
     "use strict";
-    
+
+
+    /*setTimeout(() => {
+	$("#unignore_button").click();
+    }, 15 * 60 * 1000);*/
+
+
     // setup home * HACKY HACKY HACKY *
 /*    if (window.location.pathname === "/chat/home"){
         var all_frame = $("<iframe/>");

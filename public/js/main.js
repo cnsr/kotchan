@@ -63,7 +63,11 @@ $(document).ready(function () {
     /* set up socket */
         socket = {emit: function(){}}
 
-        socket = io.connect('/', {secure: (location.protocol === "https:")});
+        socket = io.connect('/', {
+		secure: (location.protocol === "https:"), 
+		reconnect: true,
+		autoConnect: true,
+	});
         if(localStorage.sse == 'sse') {
             var evtSource = new EventSource('/messages');
             evtSource.addEventListener('event', function(evt) {
@@ -88,10 +92,22 @@ $(document).ready(function () {
             }, 5000);
         });
 
+	let conn_was_closed = false;
         socket.on('disconnect', function () {
             create_server_post('You have been disconnected from the server, attempting to reconnect...');
+	    conn_was_closed = true;
         });
-        socket.on('reconnect', function () {
+
+	socket.on('connect', function() {
+		console.log("Connected to the kot") 
+		if (conn_was_closed) set_channel(chat_id);
+		conn_was_closed = false;
+	});
+	socket.on("connect_error", function(err) { console.error(err) });
+
+
+        socket.on('reconnect', function (attemt) {
+	    create_server_post('Attemting to reconnect..');
             var old_id = chat_id;
             chat_id = "home";
             set_channel(old_id);
@@ -423,15 +439,11 @@ function set_up_html(){
 	    $("#image_paste_format").val(localStorage.image_paste_format);
 	}
 
-	//$("#volume").val(1);
-	//$("#sounds").prop("checked", true);
-        //$("#sounds_onyou").prop("checked", true);
 /*
 *---------------------------------------------------
 *	Why does this keep gettin commented out?
 *---------------------------------------------------
 */
-
 
         if (localStorage.sounds !== undefined) $("#sounds").prop("checked", localStorage.sounds === "true");
 	    else $("#sounds").prop("checked", false);
@@ -453,6 +465,11 @@ function set_up_html(){
         if (localStorage.max_chats !== undefined) max_chats = localStorage.max_chats;
 
         cool_down_timer = localStorage.cool_down_timer ? parseInt(localStorage.cool_down_timer) : 0;
+
+//	$("#volume").val(1);
+//	$("#sounds").prop("checked", true);
+//        $("#sounds_onyou").prop("checked", true);
+
     }
 
     if (cool_down_timer>0)

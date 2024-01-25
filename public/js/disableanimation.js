@@ -9,7 +9,7 @@ var disableanimation_stylesheet = (function() {
     document.head.appendChild(style);
 
 
-    style.sheet.insertRule(`.roll, .spin, .nonono, .lspin, :before, :after {
+    style.sheet.insertRule(`.roll, .spin, .nonono, .lspin, .walk, .lwalk, .hop, .shake, :before, :after {
      /*CSS transitions*/
      transition-property: none !important;
      /*CSS transforms*/

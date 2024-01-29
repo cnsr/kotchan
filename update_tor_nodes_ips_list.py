@@ -13,4 +13,4 @@ if __name__=='__main__':
         data = filter(lambda x: x and (not x.startswith('#')), f.read().decode('utf-8').split('\n'))
 
     with open(OUT_FILE, 'w') as f:
-        json.dump(tuple(data), f)
+        json.dump(tuple(data), f, indent=2)

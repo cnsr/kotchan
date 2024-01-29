@@ -20,6 +20,7 @@ node_modules/*
 bower_components/*
 public/chats.json
 nohup.out
+config.js
 *.swp
 *.swo
 ca.pem

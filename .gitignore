@@ -21,7 +21,6 @@ bower_components/*
 public/chats.json
 nohup.out
 config.js
-config*
 *.swp
 *.swo
 ca.pem

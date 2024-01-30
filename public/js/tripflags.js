@@ -2,6 +2,10 @@ var flags_image_table  = {};
 var flags_hover_strings = {};
 
 //  Table of tripflags
+// dprk
+flags_image_table["!MOy4HtRwHk"] = "dprk.png";
+flags_hover_strings["!MOy4HtRwHk"] = "dprk";
+
 // liberal
 flags_image_table["!tPhjcQGXRQ"] = "liberal.png";
 flags_hover_strings["!tPhjcQGXRQ"] = "liberal";

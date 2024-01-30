@@ -1,0 +1,130 @@
+module.exports = {
+    boards: [
+        'all', 'int'// 'fag' 'draw', 'hotel', 'r', 'v', 'pol', 'fit', 'cult',
+        /*'a', 'b', 'c', 'd', 'e', 'f', 'film', 'g', 'gif', 'h', 'hr', 'k',
+        'm', 'o', 'p', 'r', 's', 't', 'u', 'v', 'vg', 'vr', 'w', 'wg', 'i',
+        'ic', 'r9k', 's4s', 'cm', 'hm', 'lgbt', 'y', '3', 'adv', 'an', 'asp',
+        'cgl', 'ck', 'co', 'diy', 'fa', 'fit', 'gd', 'hc', 'int', 'jp', 'lit',
+        'mlp', 'mu', 'n', 'out', 'po', 'pol', 'sci', 'soc', 'sp', 'tg', 'toy',
+        'trv', 'tv', 'vp', 'waifu', 'wsg', 'x', 'dev', 'tech', 'prog',
+        'dogecoin', 'fedoracoin', 'coin', 'q', 'cats', 'draw', 'hotel'*/
+    ],
+
+    all_fields: 'chat name body convo convo_id count date trip',
+    board_fields: 'chat name body convo convo_id count date trip country country_name image image_filename image_filesize image_width image_height duration thumb identifier',
+
+    admin_pw_file: 'admin_pw.txt',
+    no_limit_cookie_file: 'no_limit_cookie.txt',
+    no_limit_cookie: 'anna_no_limit_cookie1',
+    bavkamode: false,
+    max_pw_attempts: 10,
+    bavka_prob: -1.0,
+    max_pw_attempts_window: 30000,
+    securetrip_salt: '',
+    salt_file: 'salt.txt',
+
+    /* User session expires every 24 hours */
+    user_session_age: '24h',
+
+    max_convos: 10,
+    max_general_posts: 1000,
+    max_posts: 3000,
+
+    ssl: {
+        ca: 'cert/ca.pem',
+        key: 'cert/privkey.pam',
+        cert: 'cert/fullchain.crt'
+    },
+
+    /* Supported file types */
+//    image_formats: [],
+//    video_formats: [], 
+    image_formats: ['jpg', 'jpeg', 'png', 'gif', 'webp'],
+    video_formats: ['ogv', 'webm', 'mp4'],
+    audio_formats: ['ogg', 'mp3', 'flac'],
+
+    restrict_image_posting: false,
+
+
+    codec_names: {
+        video: ['theora', 'vp8', 'vp9', 'h264', 'vp6f', 'hevc','av1'],
+        audio: ['vorbis', 'libopus', 'mp3', "aac", "opus"]
+    },
+
+
+    youtube_key: '',
+
+    banned_ranges: [],
+
+    block_proxies: ['PUB', 'WEB', 'DCH', 'TOR', 'VPN'],
+    // 'VPN', 'WEB', 'PUB', 'DCH'],
+    //block_proxies: ['TOR'], //PUB, 'DCH'
+
+    image_whitelist_ips: [],
+
+    block_exceptions: ['79.170.112.3', '31.148.96.156', "83.220.238.244"],
+    // pls dont delete anything
+    banned_words: [ "s4.lv", "imgsrc.ru", "siberianm", "masklinks", "tini.to", "ptown", "gg.gg", "schweigen", "wemodels", "apg.de", "mlp", "littleteenclub.co", "newfag", "lur.ch", "chan.ru", "yrl.pw", "rif24.ru", "sss.gd", "vara.jp", "r-ti.ru", "icdn.ru" ,"http://" , "marry into wealth", "my depression won't go away", "i'm high iq"], // "nigger",  "fag", "me", "i", "kotchan", "fuck", "f a g", "egor", "gay", "worry", "stef", "fug", "fugg", "test", "admin", "ekb", "bavaria", "miyo", "finland", "finnish", "finn", "iceland", "moscow", "muscovite", "mods", "mod", "iwd", "i want death", "ebin", "fun", "death", "die", "kms", "kill myself", "ban", "banned", "unban", "unbanned", "permaban", "tranny", "man"],
+    //bavka is a cucklord
+//"sex", "segs", "satan", "nigger", 
+    banned_trips: ["fakespb","kotch/acc"],//"cockmongler", "!MeMeRKeOTU"], // "!OwO/8SEX9M" 
+
+
+    id2convo: {'ax.9gjIgSG': 'spam'},
+
+    ip_exceptions: {
+//    "": "DE-02",
+        "95.24.213.240": "DE-02",
+//        "95.24.213.240": "DODO",
+        "46.150.": "RU-47",
+        "83.220.": "RU-47",
+        "94.21.": "HU-05",
+        "31.221.": "ES-51",
+        "213.65.": "SE-28",
+        "85.140.": "RU-08",
+        "95.215.": "SE-26",
+        "109.122.": "UA-12",
+        "88.128.": "DE-04",
+        "78.51.": "DE-04",
+        "89.70.": "PL-78",
+        "212.62.": "RS-05",
+        "188.191.": "RU-82",
+        "217.118.79.": "RU-75",
+        "77.252.": "PL-77",
+        "37.249.": "PL-77",
+        "89.64.": "PL-77",
+        "46.211.": "UA-12",
+        "94.45.": "UA-12",
+        "37.190.": "PL-73",
+        "178.155.": "DK-17",
+        "46.133.": "UA-07",
+        "82.23.114.": "GB-V2",
+        "93.73.152.": "UA-12",
+        "78.159.": "UA-12",
+        "2.242.": "DE-04",
+        "71.34.": "US-MN",
+        "80.187.100.": "DE-05",
+        "80.187.109.": "DE-07",
+        "94.254.144.": "PL-80",
+        "188.163.50.": "UA-07",
+        "194.34.132.": "FI-13",
+        "146.185.157.": "UA-12",
+        "37.5.247.": "DE-02",
+        "174.231.160.": "US-KY",
+        "74.215.": "US-OH",
+        "102.164.252.": "DE-02",
+        "217.147.1.": "DE-02",
+        "136.49.42.": "US-TX",
+        "172.58.45.": "US-OR",
+        "83.220.238.": "RU-47",
+        "162.158.": "RU-47",
+        "91.193.177.": "RU-47",
+        "31.13.144.": "RU-45",
+        "91.116.": "DE-04",
+        "77.10.": "DE-04",
+        "95.91.205.": "DE-02",
+        "134.249.229.125": "UA-07",
+        "108.56.137.185": "US-MD"
+    }
+
+};

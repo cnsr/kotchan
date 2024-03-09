@@ -15,7 +15,7 @@ module.exports = {
 
     admin_pw_file: 'admin_pw.txt',
     no_limit_cookie_file: 'no_limit_cookie.txt',
-    no_limit_cookie: 'anna_no_limit_cookie1',
+    no_limit_cookie: 'REDACTED',
     bavkamode: false,
     max_pw_attempts: 10,
     bavka_prob: -1.0,

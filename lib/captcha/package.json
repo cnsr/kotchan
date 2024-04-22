@@ -1,0 +1,44 @@
+{
+  "_args": [
+    [
+      "captcha@0.0.4",
+      "/mnt/storage/code/kotchan"
+    ]
+  ],
+  "_from": "captcha@0.0.4",
+  "_id": "captcha@0.0.4",
+  "_inBundle": false,
+  "_integrity": "sha512-wvekWVE1tymYs9uZz3TQFtSWpepb631WvI86AihYzrYguotbIC9h4Sfg1pr4y362t8bDg7R64dWYOwYkI+C/8g==",
+  "_location": "/captcha",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "captcha@0.0.4",
+    "name": "captcha",
+    "escapedName": "captcha",
+    "rawSpec": "0.0.4",
+    "saveSpec": null,
+    "fetchSpec": "0.0.4"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/captcha/-/captcha-0.0.4.tgz",
+  "_spec": "0.0.4",
+  "_where": "/mnt/storage/code/kotchan",
+  "author": {
+    "name": "napa3um",
+    "email": "napa3um@gmail.com"
+  },
+  "dependencies": {
+    "canvas": ">= 0.9.0"
+  },
+  "description": "Simple captcha middleware for Connect",
+  "engines": {
+    "node": ">= 0.1.98"
+  },
+  "main": "./captcha.js",
+  "name": "captcha",
+  "version": "0.0.4"
+}

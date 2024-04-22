@@ -500,7 +500,7 @@ function set_up_html(){
 /* give me captcha TODO: clean this up and make it work better */
 function captcha_div() {
     "use strict";
-    return '<span>Please enter the captcha</span><br><img src="/captcha.jpg#' + new Date().getTime() + '" alt="Lynx is best browser" /><form id="loginform" action="/login" method="post" target="miframe" style="padding:0;"><input type="text" name="digits" style="display:inline;" /><input style="display:inline;" type="submit"/></form>';
+    return '<span>Перевірка на чурку:</span><br><img src="/captcha.jpg#' + new Date().getTime() + '" alt="Lynx is best browser" /><form id="loginform" action="/login" method="post" target="miframe" style="padding:0;"><input type="text" name="digits" style="display:inline;" /><input style="display:inline;" type="submit"/></form>';
 }
 
 /* gets cookie, use this function instead of document.cookie */

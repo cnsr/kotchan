@@ -34,7 +34,7 @@ $('document').ready(function(){
 			drawConvoList(data[i]);
 		}
 	});
-	submitCaptcha();
+	// submitCaptcha();
 });
 
 function drawConvoList(data) {
@@ -535,11 +535,11 @@ function submitCaptcha() {
 	var captchaInput = $("<input type='text' name='digits' style='display:inline;'>");
 	var captchaSubmit = $("<input type='submit' style='display:inline;'>");
 
-	captchaDiv
-		.append(captchaImg)
-		.append(captchaSpan)
-		.append(captchaForm.append(captchaInput).append(captchaSubmit));
-	$(".chat_input").prepend(captchaDiv);
+	// captchaDiv
+	// 	.append(captchaImg)
+	// 	.append(captchaSpan)
+	// 	.append(captchaForm.append(captchaInput).append(captchaSubmit));
+	// $(".chat_input").prepend(captchaDiv);
 }
 
 
